@@ -1,0 +1,44 @@
+<div class='main-nav' style="background-color:#64c8e436">
+    <div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
+          <ul>
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-home'></span> Home
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/candidate"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-user'></span> Profile
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/experience"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-list'></span> Experience
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/education"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-education'></span> Education
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/skill"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-bookmark'></span> Skills
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/certification"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-star'></span> Certification
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/profile/resume"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-file'></span> Resume
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+C:\Dev\BestRecruit\DatabaseAccess\bin\Debug\netstandard2.0\DataRepository.deps.json
+C:\Dev\BestRecruit\DatabaseAccess\bin\Debug\netstandard2.0\DataRepository.dll
+C:\Dev\BestRecruit\DatabaseAccess\bin\Debug\netstandard2.0\DataRepository.pdb
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.csproj.CoreCompileInputs.cache
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.AssemblyInfoInputs.cache
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.AssemblyInfo.cs
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.dll
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.pdb
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DataRepository.csprojAssemblyReference.cache

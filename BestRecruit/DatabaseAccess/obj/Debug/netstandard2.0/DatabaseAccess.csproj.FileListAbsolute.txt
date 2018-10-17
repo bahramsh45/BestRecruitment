@@ -1,0 +1,5 @@
+C:\Dev\BestRecruit\DatabaseAccess\bin\Debug\netstandard2.0\DatabaseAccess.deps.json
+C:\Dev\BestRecruit\DatabaseAccess\bin\Debug\netstandard2.0\DatabaseAccess.dll
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DatabaseAccess.csproj.CoreCompileInputs.cache
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DatabaseAccess.AssemblyInfoInputs.cache
+C:\Dev\BestRecruit\DatabaseAccess\obj\Debug\netstandard2.0\DatabaseAccess.AssemblyInfo.cs
