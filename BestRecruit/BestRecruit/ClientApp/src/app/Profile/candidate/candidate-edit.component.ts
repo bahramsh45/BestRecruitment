@@ -1,4 +1,7 @@
+
 import { Component } from '@angular/core'
+import * as can from './interface/candidate'
+
 
 @Component({
   selector: 'candidate-edit',
@@ -6,5 +9,5 @@ import { Component } from '@angular/core'
 })
 
 export class CandidateComponent {
-
+  cos: can.Candidate.candidate
 }
