@@ -4,11 +4,11 @@
 <div class="row">
   <div class="col-sm-3">
     <label class="">First Name</label>
-    <input type="text" name="firstname" class="form-control" placeholder="First Name" />
+    <input type="text" name="firstname" [(ngModel)]="candidate.firstName" class="form-control" placeholder="First Name" />
   </div>
   <div class="col-sm-3">
     <label>Last Name</label>
-    <input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+    <input type="text" name="lastname" [(ngModel)]="candidate.lastName" class="form-control" placeholder="Last Name" />
   </div>
 </div>
 <h3>Contact</h3>
@@ -16,19 +16,19 @@
 <div class="row">
   <div class="col-sm-3">
     <label class="">Phone</label>
-    <input type="text" name="phone" class="form-control" placeholder="Phone" />
+    <input type="text" name="phone" [(ngModel)]="contact.phoneNumber" class="form-control" placeholder="Phone" />
   </div>
   <div class="col-sm-3">
     <label class="">Email</label>
-    <input type="text" name="email" class="form-control" placeholder="Email" />
+    <input type="text" name="email" [(ngModel)]="contact.email" class="form-control" placeholder="Email" />
   </div>
   <div class="col-sm-3">
     <label class="">Mobile</label>
-    <input type="text" name="mobile" class="form-control" placeholder="Mobile" />
+    <input type="text" name="mobile" [(ngModel)]="contact.mobile" class="form-control" placeholder="Mobile" />
   </div>
   <div class="col-sm-3">
     <label class="">Skyp Id</label>
-    <input type="text" name="skypid" class="form-control" placeholder="Skyp Id" />
+    <input type="text" name="skypid" [(ngModel)]="candidate.skypId" class="form-control" placeholder="Skyp Id" />
   </div>
 
 </div>
@@ -37,19 +37,19 @@
 <div class="row">
   <div class="col-sm-3">
     <label class="">Address 1</label>
-    <input type="text" name="address1" class="form-control" placeholder="Address 1" />
+    <input type="text" name="address1" [(ngModel)]="address.address1" class="form-control" placeholder="Address 1" />
   </div>
   <div class="col-sm-3">
     <label class="" for="city">City</label>
-    <input type="text" name="city" class="form-control" placeholder="City" />
+    <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="City" />
   </div>
   <div class="col-sm-3">
     <label class="" for="postalcode">Postal Code</label>
-    <input type="text" name="postalcode" class="form-control" placeholder="Postal Code" />
+    <input type="text" name="postalcode" [(ngModel)]="address.postalCode" class="form-control" placeholder="Postal Code" />
   </div>
   <div class="col-sm-3">
     <label class="">Country</label>
-    <input type="text" name="country" class="form-control" placeholder="Country" />
+    <input type="text" name="country" [(ngModel)]="address.country" class="form-control" placeholder="Country" />
   </div>
 </div>
 <!--<div class="row" style="margin-top:30px;">

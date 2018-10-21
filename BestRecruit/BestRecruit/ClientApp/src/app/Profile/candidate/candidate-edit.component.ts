@@ -1,6 +1,7 @@
 
-import { Component } from '@angular/core'
-import * as can from './interface/candidate'
+import { Component, OnInit } from '@angular/core'
+import { Candidate } from './class/candidate'
+
 
 
 @Component({
@@ -8,6 +9,23 @@ import * as can from './interface/candidate'
   templateUrl: './candidate-edit.component.html'
 })
 
-export class CandidateComponent {
-  cos: can.Candidate.candidate
+export class CandidateComponent implements OnInit {
+
+  public candidate: Candidate.Candidate;
+  public address: Candidate.Address;
+  public contact: Candidate.Contact;
+  constructor() {
+    this.candidate = new Candidate.Candidate();
+    this.address = new Candidate.Address();
+    this.contact = new Candidate.Contact(); 
+  }
+
+  ngOnInit() {
+    this.candidate.firstName = "bahram";
+
+  }
+
+  
+
+  
 }
