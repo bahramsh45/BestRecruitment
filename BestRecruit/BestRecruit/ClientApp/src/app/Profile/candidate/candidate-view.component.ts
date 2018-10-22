@@ -6,37 +6,29 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'candidate-edit',
-  templateUrl: './candidate-edit.component.html'
+  selector: 'candidate-view',
+  templateUrl: './candidate-view.component.html'
 })
 
-export class CandidateComponent implements OnInit {
+export class CandidateViewComponent implements OnInit {
 
   public candidate: Candidate.Candidate;
   public address: Candidate.Address;
   public contact: Candidate.Contact;
-  public employmentType: string[];
-
-
   constructor(private router : Router) {
     this.candidate = new Candidate.Candidate();
     this.address = new Candidate.Address();
     this.contact = new Candidate.Contact(); 
   }
 
-  cancel() {
-    this.router.navigate(["/profile/candidateView"]);
-
-  }
-  actionOnSubmit(form) {
-    alert('dd');
-  }
-
   ngOnInit() {
+    this.candidate.firstName = "bahram";
 
-    this.employmentType = ['Full Time', 'Part Time', 'Contract'];
-    //this.candidate.firstName = "bahram";
+  }
 
+  edit() {
+    this.router.navigate(["/profile/candidateEdit"]);
+   
   }
 
   

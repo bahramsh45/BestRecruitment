@@ -1,100 +1,126 @@
+<!--<div class="col-sm-12">-->
 
-<h3>Profile</h3>
-<hr />
-<div class="row">
-  <div class="col-sm-3">
-    <label class="">First Name</label>
-    <input type="text" name="firstname" [(ngModel)]="candidate.firstName" class="form-control" placeholder="First Name" />
-  </div>
-  <div class="col-sm-3">
-    <label>Last Name</label>
-    <input type="text" name="lastname" [(ngModel)]="candidate.lastName" class="form-control" placeholder="Last Name" />
-  </div>
+<div style="width:100%;padding-top:20px">
+  <h3 style="display:inline;">Profile</h3>
+  <hr />
 </div>
-<h3>Contact</h3>
-<hr />
-<div class="row">
-  <div class="col-sm-3">
-    <label class="">Phone</label>
-    <input type="text" name="phone" [(ngModel)]="contact.phoneNumber" class="form-control" placeholder="Phone" />
-  </div>
-  <div class="col-sm-3">
-    <label class="">Email</label>
-    <input type="text" name="email" [(ngModel)]="contact.email" class="form-control" placeholder="Email" />
-  </div>
-  <div class="col-sm-3">
-    <label class="">Mobile</label>
-    <input type="text" name="mobile" [(ngModel)]="contact.mobile" class="form-control" placeholder="Mobile" />
-  </div>
-  <div class="col-sm-3">
-    <label class="">Skyp Id</label>
-    <input type="text" name="skypid" [(ngModel)]="candidate.skypId" class="form-control" placeholder="Skyp Id" />
-  </div>
 
-</div>
-<h3>Address</h3>
-<hr />
-<div class="row">
-  <div class="col-sm-3">
-    <label class="">Address 1</label>
-    <input type="text" name="address1" [(ngModel)]="address.address1" class="form-control" placeholder="Address 1" />
+<form #candidateForm ="ngForm" (ngSubmit)="actionOnSubmit(candidateForm)" novalidate>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">First Name</label>
+      <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="candidate.firstName" class="form-control"  required placeholder="First Name" />
+      <small   [hidden]="firstName.valid || (firstName.pristine && !candidateForm.submitted)"  class="text-danger">
+        First Name is required.
+      </small>
+    </div>
+    <div class="col-sm-3">
+      <label>Last Name</label>
+      <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="candidate.lastName" class="form-control" required placeholder="Last Name" />
+      <small [hidden]="lastName.valid || (lastName.pristine && !candidateForm.submitted)" class="text-danger">
+        Last Name is required.
+      </small>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <label class="" for="city">City</label>
-    <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="City" />
-  </div>
-  <div class="col-sm-3">
-    <label class="" for="postalcode">Postal Code</label>
-    <input type="text" name="postalcode" [(ngModel)]="address.postalCode" class="form-control" placeholder="Postal Code" />
-  </div>
-  <div class="col-sm-3">
-    <label class="">Country</label>
-    <input type="text" name="country" [(ngModel)]="address.country" class="form-control" placeholder="Country" />
-  </div>
-</div>
-<!--<div class="row" style="margin-top:30px;">
-  <div class="col-sm-12" style="float:right">
-    <button class="btn btn-primary">Submit</button>
-  </div>
-</div>-->
-<h3>Other</h3>
-<hr />
-<div class="row">
-  <div class="col-sm-4" style="margin-top:10px">
-    <label>Employment Type</label>
-    <select class="form-control">
-      <option>Full Time</option>
-      <option>Part Time</option>
-      <option>Contract</option>
-    </select>
-  </div>
-  <div class="col-sm-4" style="margin-top:10px">
-    <label>&nbsp;</label>
+  <h3>Contact</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">Phone</label>
+      <input type="text" name="phone" #phone="ngModel" [(ngModel)]="contact.phoneNumber" class="form-control" required placeholder="Phone" />
+      <small [hidden]="phone.valid || (phone.pristine && !candidateForm.submitted)" class="text-danger">
+        Phone Number is required.
+      </small>
+    </div>
+    <div class="col-sm-5">
+      <label class="">Email</label>
+      <input type="text" name="email" [(ngModel)]="contact.email" #email="ngModel" class="form-control" required email placeholder="Email"  />
+     
+      <div *ngIf="candidateForm.submitted && email.invalid" >
+        <div *ngIf="email.errors.required" class="text-danger">Email is required</div>
+        <div *ngIf="email.errors.email" class="text-danger">Invalid email address</div>
+      </div>
+      
+
+    </div>
+    <div class="col-sm-2">
+      <label class="">Mobile</label>
+      <input type="text" name="mobile" [(ngModel)]="contact.mobile" class="form-control" placeholder="Mobile" />
+    </div>
+    <div class="col-sm-2">
+      <label class="">Skyp Id</label>
+      <input type="text" name="skypid" [(ngModel)]="candidate.skypId" class="form-control" placeholder="Skyp Id" />
+    </div>
 
   </div>
-  <div class="col-sm-4" style="margin-top:10px">
-    <label class="" for="city">Start Date</label>
-    <input type="date" name="city" class="form-control" placeholder="City" />
+  <h3>Address</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">Address 1</label>
+      <input type="text" name="address1" [(ngModel)]="address.address1" class="form-control" placeholder="Address 1" />
+    </div>
+    <div class="col-sm-3">
+      <label class="" for="city">City</label>
+      <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="City" />
+    </div>
+    <div class="col-sm-3">
+      <label class="" for="postalcode">Postal Code</label>
+      <input type="text" name="postalcode" [(ngModel)]="address.postalCode" class="form-control" placeholder="Postal Code" />
+    </div>
+    <div class="col-sm-3">
+      <label class="">Country</label>
+      <input type="text" name="country" [(ngModel)]="address.country" class="form-control" placeholder="Country" />
+    </div>
+  </div>
+  <!--<div class="row" style="margin-top:30px;">
+    <div class="col-sm-12" style="float:right">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </div>-->
+  <h3>Other</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-4" style="margin-top:10px">
+      <label>Employment Type</label>
+      <select class="form-control">
+        <option>Full Time</option>
+        <option>Part Time</option>
+        <option>Contract</option>
+      </select>
+    </div>
+    <div class="col-sm-4" style="margin-top:10px">
+      <label>&nbsp;</label>
+
+    </div>
+    <div class="col-sm-4" style="margin-top:10px">
+      <label class="" for="city">Start Date</label>
+      <input type="date" name="city" class="form-control" placeholder="City" />
+
+    </div>
 
   </div>
+  <div class="row">
+    <div class="col-sm-4" style="margin-top:10px">
+      <input type="checkbox" name="athorized" />
+      <label>Authorized to work in Canada</label>
+    </div>
+    <div class="col-sm-4" style="margin-top:10px">
+      <input type="checkbox" name="relocate" />
+      <label>Willing to Relocate</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" style="margin-top:10px">
+      <label>Notes</label>
+      <textarea rows="3" style="width:100%"></textarea>
 
-</div>
-<div class="row">
-  <div class="col-sm-4" style="margin-top:10px">
-    <input type="checkbox" name="athorized" />
-    <label>Authorized to work in Canada</label>
+    </div>
+    <div class="col-sm-6" style="margin-top:10px;text-align:right;padding-top:50px">
+      <button id="btnCancel" class="btn btn-danger" (click)="cancel()">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
+      <button id="btnSave" type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
+    </div>
   </div>
-  <div class="col-sm-4" style="margin-top:10px">
-    <input type="checkbox" name="relocate" />
-    <label>Willing to Relocate</label>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6" style="margin-top:10px">
-    <label>Notes</label>
-    <textarea rows="3" style="width:100%"></textarea>
-
-  </div>
-</div>
+</form>
 
 

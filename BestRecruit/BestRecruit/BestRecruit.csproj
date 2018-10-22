@@ -26,14 +26,16 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
-    <None Remove="ClientApp\src\app\Profile\candidate\interface\candidate.ts" />
+    <None Remove="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
+    <None Remove="ClientApp\src\app\Profile\candidate\class\candidate.ts" />
     <None Remove="ClientApp\src\app\Profile\Profile.component.ts" />
     <None Remove="ClientApp\src\app\Profile\profile.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\interface\candidate.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\class\candidate.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.module.ts" />
   </ItemGroup>

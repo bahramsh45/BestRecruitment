@@ -9,6 +9,7 @@ import { SkillComponent } from '../profile/skills/skill-edit.component';
 import { ExperienceComponent } from '../profile/experience/experience-edit.component';
 import { ProfileComponent } from './Profile.component';
 import { CandidateComponent } from './candidate/candidate-edit.component';
+import { CandidateViewComponent } from './candidate/candidate-view.component';
 import { EducationComponent } from './education/education-edit.component';
 import { CertificationComponent } from './certification/Certification-edit.component';
 import { ResumeComponent } from './resume/resume-edit.component';
@@ -21,6 +22,7 @@ import { ResumeComponent } from './resume/resume-edit.component';
     ExperienceComponent,
     SkillComponent,
     CandidateComponent,
+    CandidateViewComponent,
     EducationComponent,
     CertificationComponent,
     ResumeComponent
@@ -34,10 +36,11 @@ import { ResumeComponent } from './resume/resume-edit.component';
       [
         {
           path: 'profile', component: ProfileComponent, children: [
+            { path: 'candidateEdit', component: CandidateComponent },
             { path: 'experience', component: ExperienceComponent },
             { path: 'education', component: EducationComponent },
             { path: 'skill', component: SkillComponent },
-            { path: 'candidate', component: CandidateComponent },
+            { path: 'candidateView', component: CandidateViewComponent },           
             { path: 'certification', component: CertificationComponent },
             { path: 'resume', component: ResumeComponent }
           ]
