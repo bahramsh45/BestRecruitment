@@ -56,15 +56,21 @@
   <h3>Address</h3>
   <hr />
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label class="">Address 1</label>
-      <input type="text" name="address1" [(ngModel)]="address.address1" class="form-control" placeholder="Address 1" />
+      <input type="text" name="address1" [(ngModel)]="address.address1" #address1="ngModel" class="form-control" required placeholder="Address 1" />
+      <small [hidden]="address1.valid || (address1.pristine && !candidateForm.submitted)" class="text-danger">
+        Address 1 is required.
+      </small>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <label class="" for="city">City</label>
-      <input type="text" name="city" [(ngModel)]="address.city" class="form-control" placeholder="City" />
+      <input type="text" name="city" [(ngModel)]="address.city" #city="ngModel" class="form-control" required  placeholder="City" />
+      <small [hidden]="city.valid || (city.pristine && !candidateForm.submitted)" class="text-danger">
+        City is required.
+      </small>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <label class="" for="postalcode">Postal Code</label>
       <input type="text" name="postalcode" [(ngModel)]="address.postalCode" class="form-control" placeholder="Postal Code" />
     </div>
@@ -84,16 +90,16 @@
     <div class="col-sm-4" style="margin-top:10px">
       <label>Employment Type</label>
       <select class="form-control">
-        <option>Full Time</option>
-        <option>Part Time</option>
-        <option>Contract</option>
+        <option *ngFor="let emp of employmentType" >
+          {{emp}}
+        </option>
       </select>
     </div>
     <div class="col-sm-4" style="margin-top:10px">
       <label>&nbsp;</label>
 
     </div>
-    <div class="col-sm-4" style="margin-top:10px">
+    <div class="col-sm-3" style="margin-top:10px">
       <label class="" for="city">Start Date</label>
       <input type="date" name="city" class="form-control" placeholder="City" />
 

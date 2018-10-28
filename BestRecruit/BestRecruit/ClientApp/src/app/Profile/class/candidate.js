@@ -20,5 +20,11 @@ var Candidate;
         return Address;
     }());
     Candidate_1.Address = Address;
+    var Experience = /** @class */ (function () {
+        function Experience() {
+        }
+        return Experience;
+    }());
+    Candidate_1.Experience = Experience;
 })(Candidate = exports.Candidate || (exports.Candidate = {}));
 //# sourceMappingURL=candidate.js.map

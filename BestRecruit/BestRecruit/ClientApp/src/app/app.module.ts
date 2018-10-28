@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './Profile/Profile.component';
 import { ProfileModule } from './Profile/profile.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ProfileModule } from './Profile/profile.module';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+  
    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

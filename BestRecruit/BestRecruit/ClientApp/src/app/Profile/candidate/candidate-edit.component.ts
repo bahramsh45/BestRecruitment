@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core'
-import { Candidate } from './class/candidate'
+import { Candidate } from '../class/candidate'
 import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -18,7 +17,7 @@ export class CandidateComponent implements OnInit {
   public employmentType: string[];
 
 
-  constructor(private router : Router) {
+  constructor(private router: Router) {
     this.candidate = new Candidate.Candidate();
     this.address = new Candidate.Address();
     this.contact = new Candidate.Contact(); 
@@ -29,7 +28,9 @@ export class CandidateComponent implements OnInit {
 
   }
   actionOnSubmit(form) {
-    alert('dd');
+   
+   
+  
   }
 
   ngOnInit() {

@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core'
-import { Candidate } from './class/candidate'
+import { Candidate } from '../class/candidate'
 import { Router } from '@angular/router';
-
 
 
 @Component({

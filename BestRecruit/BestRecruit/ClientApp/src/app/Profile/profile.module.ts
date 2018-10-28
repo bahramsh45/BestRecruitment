@@ -13,6 +13,10 @@ import { CandidateViewComponent } from './candidate/candidate-view.component';
 import { EducationComponent } from './education/education-edit.component';
 import { CertificationComponent } from './certification/Certification-edit.component';
 import { ResumeComponent } from './resume/resume-edit.component';
+import { ExperienceListComponent } from './experience/experience-view.component';
+
+
+
 
 
 
@@ -20,6 +24,7 @@ import { ResumeComponent } from './resume/resume-edit.component';
   declarations: [    
     ProfileMenuComponent,
     ExperienceComponent,
+    ExperienceListComponent,
     SkillComponent,
     CandidateComponent,
     CandidateViewComponent,
@@ -31,13 +36,14 @@ import { ResumeComponent } from './resume/resume-edit.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    FormsModule,   
     RouterModule.forChild(
       [
         {
           path: 'profile', component: ProfileComponent, children: [
             { path: 'candidateEdit', component: CandidateComponent },
-            { path: 'experience', component: ExperienceComponent },
+            { path: 'experienceEdit/:id', component: ExperienceComponent },  
+            { path: 'experienceView', component: ExperienceListComponent },                               
             { path: 'education', component: EducationComponent },
             { path: 'skill', component: SkillComponent },
             { path: 'candidateView', component: CandidateViewComponent },           

@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs/BestRecruit/v15
+/BestRecruit/DatabaseAccess/obj/Debug/netstandard2.0
+/BestRecruit/DatabaseAccess/obj
+/BestRecruit/DataAccess/obj
+/.vs
+/BestRecruit/node_modules/@angular/animations/src/animation_metadata.d.ts
+/BestRecruit/node_modules/@angular/animations/src/animation_event.d.ts
+/BestRecruit/node_modules/@angular/animations/src/animation_builder.d.ts
+/BestRecruit/node_modules/@angular/animations/src/animations.d.ts
+/BestRecruit/node_modules
+/BestRecruit/package-lock.json
