@@ -14,8 +14,7 @@ import { EducationComponent } from './education/education-edit.component';
 import { CertificationComponent } from './certification/Certification-edit.component';
 import { ResumeComponent } from './resume/resume-edit.component';
 import { ExperienceListComponent } from './experience/experience-view.component';
-
-
+import { EducationViewComponent } from './education/education-view.component';
 
 
 
@@ -29,6 +28,7 @@ import { ExperienceListComponent } from './experience/experience-view.component'
     CandidateComponent,
     CandidateViewComponent,
     EducationComponent,
+    EducationViewComponent,
     CertificationComponent,
     ResumeComponent
   ],
@@ -36,7 +36,7 @@ import { ExperienceListComponent } from './experience/experience-view.component'
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,   
+    FormsModule,
     RouterModule.forChild(
       [
         {
@@ -44,7 +44,8 @@ import { ExperienceListComponent } from './experience/experience-view.component'
             { path: 'candidateEdit', component: CandidateComponent },
             { path: 'experienceEdit/:id', component: ExperienceComponent },  
             { path: 'experienceView', component: ExperienceListComponent },                               
-            { path: 'education', component: EducationComponent },
+            { path: 'educationEdit/:id', component: EducationComponent },
+            { path: 'educationView', component: EducationViewComponent },
             { path: 'skill', component: SkillComponent },
             { path: 'candidateView', component: CandidateViewComponent },           
             { path: 'certification', component: CertificationComponent },
@@ -54,6 +55,7 @@ import { ExperienceListComponent } from './experience/experience-view.component'
       ]
     )
   ],
-  exports: [ProfileMenuComponent]
+  exports: [ProfileMenuComponent],
+  providers: []
 })
 export class ProfileModule { }

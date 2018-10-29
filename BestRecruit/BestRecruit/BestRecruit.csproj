@@ -27,23 +27,35 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\address.ts" />
     <None Remove="ClientApp\src\app\Profile\class\candidate.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\contact.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\education.ts" />
     <None Remove="ClientApp\src\app\Profile\class\experience-data.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\experience.ts" />
     <None Remove="ClientApp\src\app\Profile\Profile.component.ts" />
     <None Remove="ClientApp\src\app\Profile\profile.module.ts" />
+    <None Remove="ClientApp\src\app\shared\education-service.ts" />
+    <None Remove="ClientApp\src\app\shared\shared.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\experience-data.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\address.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\contact.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\education.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\education-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\experience.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\candidate.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\experience.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\shared.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ClientApp\src\app\Profile\class\experience-data.js.map">
+    <None Update="ClientApp\src\app\shared\experience-data.js.map">
       <DependentUpon>experience-data.js</DependentUpon>
     </None>
   </ItemGroup>

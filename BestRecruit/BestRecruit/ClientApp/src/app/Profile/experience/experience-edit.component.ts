@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { Candidate } from '../class/candidate';
-//import { experienceData } from '../class/experience-data';
 
+import { Component, OnInit } from '@angular/core';
+import { Experience } from '../class/experience';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { experienceService } from '../../shared/experience.service';
 
 
 @Component({
   selector: 'experience-edit',
-  templateUrl: './experience-edit.component.html'
+  templateUrl: './experience-edit.component.html',
+  
 
 })
 export class ExperienceComponent implements OnInit {
 
-  //public experience: Candidate.Experience;
+  public experience: Experience;
   id: number;
  
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: experienceService) {
 
   }
 
@@ -31,10 +32,7 @@ export class ExperienceComponent implements OnInit {
 
     });
 
-    //let exdata = new experienceData();
-    //this.experience = exdata.experience.filter(x => x.id == this.id)[0];
-    //this.experience.startDate = this.toDateString(new Date(this.experience.startDate))
-    //this.experience.endDate = this.toDateString(new Date(this.experience.endDate))
+   this.experience = this.dataService.getExperience(this.id)
 
   };
 

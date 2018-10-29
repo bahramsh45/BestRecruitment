@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Candidate } from '../class/candidate';
+import { Experience } from '../class/experience';
 import { Router } from '@angular/router';
-import { experienceData } from '../class/experience-data';
-
+import { experienceService } from '../../shared/experience.service';
 
 
 @Component({
   selector: 'experience-view',
-  templateUrl: './experience-view.component.html'
+  templateUrl: './experience-view.component.html',
+  providers: []
 })
 export class ExperienceListComponent implements OnInit {
 
-  public experienceList: Candidate.Experience[];
+  public experienceList: Experience[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public dataService: experienceService) {
 
   }
 
@@ -24,9 +24,8 @@ export class ExperienceListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.experienceList = (new experienceData()).experience;
-    
-    
+    this.experienceList = this.dataService.getExperiences();
+
   }
   
 }

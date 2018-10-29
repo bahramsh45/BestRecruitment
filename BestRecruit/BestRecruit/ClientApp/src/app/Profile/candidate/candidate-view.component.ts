@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core'
 import { Candidate } from '../class/candidate'
+import { Address } from '../class/address'
+import { Contact } from '../class/contact'
 import { Router } from '@angular/router';
 
 
@@ -11,13 +13,13 @@ import { Router } from '@angular/router';
 
 export class CandidateViewComponent implements OnInit {
 
-  public candidate: Candidate.Candidate;
-  public address: Candidate.Address;
-  public contact: Candidate.Contact;
+  public candidate: Candidate;
+  public address: Address;
+  public contact: Contact;
   constructor(private router : Router) {
-    this.candidate = new Candidate.Candidate();
-    this.address = new Candidate.Address();
-    this.contact = new Candidate.Contact(); 
+    this.candidate = new Candidate();
+    this.address = new Address();
+    this.contact = new Contact(); 
   }
 
   ngOnInit() {

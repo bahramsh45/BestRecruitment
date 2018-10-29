@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var experienceData = /** @class */ (function () {
-    function experienceData() {
-        this.experience = [
+var experienceService = /** @class */ (function () {
+    function experienceService() {
+    }
+    experienceService.prototype.getExperience = function () {
+        return [
             {
                 id: 1,
                 candiadateId: 1001,
@@ -28,10 +30,8 @@ var experienceData = /** @class */ (function () {
                 description: 'nice!'
             }
         ];
-    }
-    experienceData.prototype.ngOnInit = function () {
     };
-    return experienceData;
+    return experienceService;
 }());
-exports.experienceData = experienceData;
-//# sourceMappingURL=experience-data.js.map
+exports.experienceService = experienceService;
+//# sourceMappingURL=experience.service.js.map

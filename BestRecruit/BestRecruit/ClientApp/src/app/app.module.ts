@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './Profile/Profile.component';
 import { ProfileModule } from './Profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+
+
 
 
 @NgModule({
@@ -22,8 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-  
-   
+    SharedModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent }
