@@ -9,6 +9,7 @@ import { ProfileComponent } from './Profile/Profile.component';
 import { ProfileModule } from './Profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    CommonModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot([

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'candidate-edit',
-  templateUrl: './candidate-edit.component.html'
+  templateUrl: './candidate-edit.component.html',
+  styles:['./candidate-edit.component.css']
 })
 
 export class CandidateComponent implements OnInit {
@@ -33,6 +34,16 @@ export class CandidateComponent implements OnInit {
    
    
   
+  }
+
+  getStyle(f,form) {
+    if ((!f.valid && !f.pristine) || form ) {
+      return '#a94442';
+    }
+
+    return 'silver';
+
+
   }
 
   ngOnInit() {
