@@ -1,0 +1,31 @@
+<h3>Certification</h3>
+<hr />
+<div *ngFor="let e of certificationList">
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="">Certification Name</label>
+      <span class="form-control">{{e.certificationName}}</span>
+    </div>
+    <div class="col-sm-1">
+      <div>&nbsp;</div>
+      <a [routerLink]='["/profile/certificationEdit",e.id]' class="btn btn-primary form-control"><i class="glyphicon glyphicon-edit"></i></a>
+    </div>
+    <div class="col-sm-1">
+      <div>&nbsp;</div>
+      <a class="btn btn-danger form-control"><i class="glyphicon glyphicon-remove"></i></a>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">Year</label>
+      <span class="form-control">{{e.year}}</span>
+    </div>
+  </div>
+  <br/>
+</div>
+<div class="row" style="margin-top:30px">
+  <div class="col-sm-6">
+    <button class="btn btn-primary form-control" (click)="addCertification()">Add Certification</button>
+  </div>
+</div>

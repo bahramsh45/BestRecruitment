@@ -3,20 +3,22 @@
 <div class="row">
   <div class="col-sm-6">
     <label class="">Certification Name</label>
-    <input type="text" name="certificationname" class="form-control" placeholder="Certification Name" />
+    <input type="text" name="certificationname" [(ngModel)]="certification.certificationName" class="form-control" placeholder="Certification Name" />
   </div>
 
 </div>
 <div class="row">
   <div class="col-sm-3">
     <label class="">Year</label>
-    <input type="text" name="year" class="form-control" placeholder="Year" />
+    <input type="text" name="year" [(ngModel)]="certification.year" class="form-control" placeholder="Year" />
   </div>
  
 </div>
-
 <div class="row" style="margin-top:30px">
-  <div class="col-sm-6">
-    <button class="btn btn-primary form-control">Add Certification</button>
+  <div class="col-sm-3">
+    <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn btn-primary form-control">Save</button>
   </div>
 </div>
