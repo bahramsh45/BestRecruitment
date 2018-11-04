@@ -1,23 +1,31 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { skillService } from '../../shared/skill-service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Skill } from '../class/skill';
 //import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'skill-edit',
   templateUrl: './skill-edit.component.html'
 })
-export class SkillComponent {
-  //public forecasts: WeatherForecast[];
+export class SkillComponent implements OnInit {
+  public skill: Skill;
+  id: number;
 
-  //constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-  //  http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-  //    this.forecasts = result;
-  //  }, error => console.error(error));
-  //}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: skillService) {
+
+  }
+
+  cancel() {
+    this.router.navigate(["/profile/skillView"]);
+  }
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+    this.id = params['id'];
+
+    });
+    this.skill = this.dataService.getSkill(this.id)
+  }
 }
 
-//interface WeatherForecast {
-//  dateFormatted: string;
-//  temperatureC: number;
-//  temperatureF: number;
-//  summary: string;
-//}

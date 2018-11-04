@@ -16,6 +16,7 @@ import { ResumeComponent } from './resume/resume-edit.component';
 import { ExperienceListComponent } from './experience/experience-view.component';
 import { EducationViewComponent } from './education/education-view.component';
 import { CertificationViewComponent } from './certification/certification-view.component';
+import { SkillViewComponent } from './skills/skill-view.component';
 
 
 
@@ -26,6 +27,7 @@ import { CertificationViewComponent } from './certification/certification-view.c
     ExperienceComponent,
     ExperienceListComponent,
     SkillComponent,
+    SkillViewComponent,
     CandidateComponent,
     CandidateViewComponent,
     EducationComponent,
@@ -48,7 +50,8 @@ import { CertificationViewComponent } from './certification/certification-view.c
             { path: 'experienceView', component: ExperienceListComponent },                               
             { path: 'educationEdit/:id', component: EducationComponent },
             { path: 'educationView', component: EducationViewComponent },
-            { path: 'skill', component: SkillComponent },
+            { path: 'skillEdit/:id', component: SkillComponent },
+            { path: 'skillView', component: SkillViewComponent },
             { path: 'candidateView', component: CandidateViewComponent },           
             { path: 'certificationEdit/:id', component: CertificationComponent },
             { path: 'certificationView', component: CertificationViewComponent },
