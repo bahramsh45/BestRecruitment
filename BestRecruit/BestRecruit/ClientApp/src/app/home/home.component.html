@@ -15,72 +15,36 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="row c1912">
-    <div id="iwcl" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
-      <div class="container c5299">
-        <h1 data-type="header" id="i0nmti">Job Search</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              Sign In
+            </h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <input type="email" placeholder="Email address" required="" autofocus="" class="form-control" />
+                <label for="inputEmail">Email address</label>
+              </div>
+              <div class="form-label-group">
+                <input type="password" placeholder="Password" required="" class="form-control" />
+                <label for="inputPassword">Password</label>
+              </div>
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" />
+                <label for="customCheck1" class="custom-control-label">Remember password</label>
+              </div>
+              <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">Sign in</button>
+              <hr class="my-4" />
+              <button type="submit" class="btn btn-lg btn-google btn-block text-uppercase">Sign in with Google</button>
+              <button type="submit" class="btn btn-lg btn-facebook btn-block text-uppercase">Sign in with Facebook</button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-    <div  class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 c1958">
-      <h1 data-type="header" class="c5409">Employee</h1>
-      <div class="container c4311">
-        <form>
-          <div class="form-group"><label for="exampleInputEmail1" id="i5pft">Email address</label><input type="email" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" /><small class="form-text text-muted">We'll never share your email with anyone else.</small></div>
-          <div class="form-group"><label for="exampleInputPassword1">Password</label><input type="password" placeholder="Password" class="form-control" /></div>
-          <!--<div class="form-group form-check"><input type="checkbox" class="form-check-input" /><label for="exampleCheck1" class="form-check-label">Check me out</label></div>-->
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <h1 data-type="header" class="c5409">Employer</h1>
-      <div class="container c4311">
-        <form>
-          <div class="form-group"><label for="exampleInputEmail1" id="isksz4">Email address</label><input type="email" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" /><small class="form-text text-muted">We'll never share your email with anyone else.</small></div>
-          <div class="form-group"><label for="exampleInputPassword1">Password</label><input type="password" placeholder="Password" class="form-control" /></div>
-          <!--<div class="form-group form-check"><input type="checkbox" class="form-check-input" /><label for="exampleCheck1" class="form-check-label">Check me out</label></div>-->
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <br class="Apple-interchange-newline" />
     </div>
   </div>
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md">
-          <img src="data:image/png;base64,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"
-               class="mb-2" /><small class="d-block mb-3 text-muted">© 2017-2018</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5 data-type="header">Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a href="#" class="text-muted">Cool stuff</a></li>
-            <li><a href="#" class="text-muted">Random feature</a></li>
-            <li><a href="#" class="text-muted">Team feature</a></li>
-            <li><a href="#" class="text-muted">Stuff for developers</a></li>
-            <li><a href="#" class="text-muted">Another one</a></li>
-            <li><a href="#" class="text-muted">Last time</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5 data-type="header">Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li><a href="#" class="text-muted">Resource</a></li>
-            <li><a href="#" class="text-muted">Resource name</a></li>
-            <li><a href="#" class="text-muted">Another resource</a></li>
-            <li><a href="#" class="text-muted">Final resource</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5 data-type="header">About</h5>
-          <ul class="list-unstyled text-small">
-            <li><a href="#" class="text-muted">Team</a></li>
-            <li><a href="#" class="text-muted">Locations</a></li>
-            <li><a href="#" class="text-muted">Privacy</a></li>
-            <li><a href="#" class="text-muted">Terms</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

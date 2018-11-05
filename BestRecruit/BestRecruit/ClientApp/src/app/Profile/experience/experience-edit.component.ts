@@ -8,8 +8,6 @@ import { experienceService } from '../../shared/experience.service';
 @Component({
   selector: 'experience-edit',
   templateUrl: './experience-edit.component.html',
-  
-
 })
 export class ExperienceComponent implements OnInit {
 
@@ -25,14 +23,25 @@ export class ExperienceComponent implements OnInit {
     this.router.navigate(["/profile/experienceView"]);
   }
 
+  actionOnSubmit(form) {
+
+  }
+  getStyle(f, form) {
+    if ((!f.valid && !f.pristine) || form) {
+      return '#a94442';
+    }
+
+    return 'silver';
+  }
+
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
 
     });
-
-   this.experience = this.dataService.getExperience(this.id)
+    var result = this.dataService.getExperience(this.id);
+    this.experience = result == null ? new Experience() : result;
 
   };
 

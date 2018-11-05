@@ -21,6 +21,7 @@ import { SkillViewComponent } from './skills/skill-view.component';
 
 
 
+
 @NgModule({
   declarations: [    
     ProfileMenuComponent,

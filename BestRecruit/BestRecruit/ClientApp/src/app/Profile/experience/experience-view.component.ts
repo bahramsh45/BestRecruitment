@@ -12,13 +12,14 @@ import { experienceService } from '../../shared/experience.service';
 export class ExperienceListComponent implements OnInit {
 
   public experienceList: Experience[];
+ 
 
   constructor(private router: Router, public dataService: experienceService) {
 
   }
 
   addExperience() {
-
+  
     this.router.navigate(["/profile/experienceEdit/0"]);
   }
 

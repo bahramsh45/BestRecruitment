@@ -42,8 +42,6 @@ export class CandidateComponent implements OnInit {
     }
 
     return 'silver';
-
-
   }
 
   ngOnInit() {

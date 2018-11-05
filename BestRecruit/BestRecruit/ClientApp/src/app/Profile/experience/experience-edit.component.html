@@ -1,33 +1,53 @@
 <h3>Experience</h3>
 <hr />
-<div class="row">
-  <div class="col-sm-6">
-    <label class="">Employer</label>
-    <input type="text" name="employer" [(ngModel)]="experience.employer" class="form-control" placeholder="Employer" />
+<form #experienceForm="ngForm" (ngSubmit)="actionOnSubmit(experienceForm)" novalidate>
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="">Employer</label>
+      <input type="text" name="employer" [ngStyle]="{'border-color' : getStyle(employer,experienceForm.submitted)}" [(ngModel)]="experience.employer" #employer="ngModel" class="form-control" required placeholder="Employer" />
+    </div>
   </div>
-
-</div>
-<div class="row">
-  <div class="col-sm-3">
-    <label class="">Start Date</label>
-    <input type="text" name="startdate" [(ngModel)]="experience.startDate" class="form-control" placeholder="Start Date" />
+  <div class="row">
+    <div class="col-sm-6">
+      <small [hidden]="employer.valid || (employer.pristine && !experienceForm.submitted)" class="text-danger">
+        Employer Name is required.
+      </small>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <label>End Date</label>
-    <input type="text" name="enddate" [(ngModel)]="experience.endDate" class="form-control" placeholder="End Date" />
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">Start Date</label>
+      <input type="text" name="startDate" [(ngModel)]="experience.startDate" [ngStyle]="{'border-color' : getStyle(startDate,experienceForm.submitted)}"  #startDate="ngModel" class="form-control" required placeholder="Start Date" />
+    </div>
+    <div class="col-sm-3">
+      <label>End Date</label>
+      <input type="text" name="endDate" [(ngModel)]="experience.endDate" [ngStyle]="{'border-color' : getStyle(endDate,experienceForm.submitted)}" #endDate="ngModel" class="form-control" required placeholder="End Date" />
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <label>Description</label>
-    <textarea name="description" [(ngModel)]="experience.description" class="form-control" rows="3"></textarea>
+  <div class="row">
+    <div class="col-sm-3">
+      <small [hidden]="startDate.valid || (startDate.pristine && !experienceForm.submitted)" class="text-danger">
+        Start date is required.
+      </small>
+    </div>
+    <div class="col-sm-3">
+      <small [hidden]="endDate.valid || (endDate.pristine && !experienceForm.submitted)" class="text-danger">
+        End date is required.
+      </small>
+    </div>
   </div>
-</div>
-<div class="row" style="margin-top:30px">
-  <div class="col-sm-3">
-    <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Description</label>
+      <textarea name="description" [(ngModel)]="experience.description" class="form-control" rows="3"></textarea>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <button class="btn btn-primary form-control">Save</button>
+  <div class="row" style="margin-top:30px">
+    <div class="col-sm-3">
+      <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+    </div>
+    <div class="col-sm-3">
+      <button type="submit" class="btn btn-primary form-control">Save</button>
+    </div>
   </div>
-</div>
+</form>
