@@ -17,11 +17,13 @@
   <div class="row">
     <div class="col-sm-3">
       <label class="">Start Date</label>
-      <input type="text" name="startDate" [(ngModel)]="experience.startDate" [ngStyle]="{'border-color' : getStyle(startDate,experienceForm.submitted)}"  #startDate="ngModel" class="form-control" required placeholder="Start Date" />
+      <angular2-date-picker name="startDate" [(ngModel)]="date" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+      
     </div>
     <div class="col-sm-3">
       <label>End Date</label>
-      <input type="text" name="endDate" [(ngModel)]="experience.endDate" [ngStyle]="{'border-color' : getStyle(endDate,experienceForm.submitted)}" #endDate="ngModel" class="form-control" required placeholder="End Date" />
+      <angular2-date-picker name="endDate" [(ngModel)]="date" #endDate="ngModel" [settings]="settings" ></angular2-date-picker>
+      <!--<input type="text" name="endDate" [(ngModel)]="experience.endDate" [ngStyle]="{'border-color' : getStyle(endDate,experienceForm.submitted)}" #endDate="ngModel" class="form-control" required placeholder="End Date" />-->
     </div>
   </div>
   <div class="row">

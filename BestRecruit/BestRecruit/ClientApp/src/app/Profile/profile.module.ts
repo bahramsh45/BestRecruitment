@@ -17,6 +17,7 @@ import { ExperienceListComponent } from './experience/experience-view.component'
 import { EducationViewComponent } from './education/education-view.component';
 import { CertificationViewComponent } from './certification/certification-view.component';
 import { SkillViewComponent } from './skills/skill-view.component';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 
 
@@ -42,6 +43,7 @@ import { SkillViewComponent } from './skills/skill-view.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    AngularDateTimePickerModule,
     RouterModule.forChild(
       [
         {

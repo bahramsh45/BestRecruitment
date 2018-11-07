@@ -3005,23 +3005,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bahram.Shamsollahi\\.nuget\\packages\\": {},
+    "C:\\Users\\bahram\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\BestRecruit\\DatabaseAccess\\DataRepository.csproj",
+      "projectUniqueName": "C:\\projects\\BestRecurit\\BestRecruit\\BestRecruit\\DatabaseAccess\\DataRepository.csproj",
       "projectName": "DataRepository",
-      "projectPath": "C:\\Dev\\BestRecruit\\DatabaseAccess\\DataRepository.csproj",
-      "packagesPath": "C:\\Users\\Bahram.Shamsollahi\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\BestRecruit\\DatabaseAccess\\obj\\",
+      "projectPath": "C:\\projects\\BestRecurit\\BestRecruit\\BestRecruit\\DatabaseAccess\\DataRepository.csproj",
+      "packagesPath": "C:\\Users\\bahram\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\BestRecurit\\BestRecruit\\BestRecruit\\DatabaseAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bahram.Shamsollahi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bahram\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

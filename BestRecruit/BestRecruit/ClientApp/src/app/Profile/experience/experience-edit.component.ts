@@ -13,7 +13,14 @@ export class ExperienceComponent implements OnInit {
 
   public experience: Experience;
   id: number;
- 
+
+  date: Date = new Date();
+  settings = {
+    bigBanner: false,
+    timePicker: false,
+    format: 'dd-MM-yyyy',
+    defaultOpen: false
+  }
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: experienceService) {
 
@@ -41,7 +48,7 @@ export class ExperienceComponent implements OnInit {
 
     });
     var result = this.dataService.getExperience(this.id);
-    this.experience = result == null ? new Experience() : result;
+    this.experience = this.id == 0 ? new Experience() : result;
 
   };
 
