@@ -10,11 +10,13 @@
 <div class="row">
   <div class="col-sm-3">
     <label class="">Start Date</label>
-    <input type="text" name="startdate" [(ngModel)]="education.startDate" class="form-control" placeholder="Start Date" />
+    <angular2-date-picker name="startDate" [(ngModel)]="education.startDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+    <!--<input type="text" name="startdate" [(ngModel)]="education.startDate" class="form-control" placeholder="Start Date" />-->
   </div>
   <div class="col-sm-3">
     <label>End Date</label>
-    <input type="text" name="enddate" [(ngModel)]="education.endDate" class="form-control" placeholder="End Date" />
+    <angular2-date-picker name="endDate" [(ngModel)]="education.endDate" #endDate="ngModel" [settings]="settings"></angular2-date-picker>
+    <!--<input type="text" name="enddate" [(ngModel)]="education.endDate" class="form-control" placeholder="End Date" />-->
   </div>
 </div>
 <div class="row">

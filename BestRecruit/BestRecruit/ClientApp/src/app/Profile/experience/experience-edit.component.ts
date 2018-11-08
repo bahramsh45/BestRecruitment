@@ -1,20 +1,22 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Experience } from '../class/experience';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { experienceService } from '../../shared/experience.service';
+declare var $: any;
 
 
 @Component({
   selector: 'experience-edit',
-  templateUrl: './experience-edit.component.html',
+  templateUrl: './experience-edit.component.html'
+ 
 })
-export class ExperienceComponent implements OnInit {
-
+export class ExperienceComponent implements OnInit, AfterViewChecked  {
+  
   public experience: Experience;
   id: number;
 
-  date: Date = new Date();
+  
   settings = {
     bigBanner: false,
     timePicker: false,
@@ -34,8 +36,14 @@ export class ExperienceComponent implements OnInit {
 
   }
   getStyle(f, form) {
-    if ((!f.valid && !f.pristine) || form) {
+    
+    if ((!f.valid && !f.pristine)) {
       return '#a94442';
+    }
+
+    if (form && !f.valid) {
+      return '#a94442';
+
     }
 
     return 'silver';
@@ -43,14 +51,29 @@ export class ExperienceComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
 
     });
     var result = this.dataService.getExperience(this.id);
     this.experience = this.id == 0 ? new Experience() : result;
+   
 
   };
+
+  ngAfterViewChecked() {
+    
+    $('.wc-date-container').each(function (i, v) {
+      var $this = $(this);
+      $this.css('border-color', 'silver')
+        .css('border-radius', '4px');
+      $this.find('span').css('color', 'black');
+
+    })
+
+   
+  }
 
 
 

@@ -1,5 +1,10 @@
 <h3>Experience</h3>
 <hr />
+<style>
+  .wc-date-container {
+    border-color: silver !important;
+  }
+</style>
 <form #experienceForm="ngForm" (ngSubmit)="actionOnSubmit(experienceForm)" novalidate>
   <div class="row">
     <div class="col-sm-6">
@@ -17,12 +22,12 @@
   <div class="row">
     <div class="col-sm-3">
       <label class="">Start Date</label>
-      <angular2-date-picker name="startDate" [(ngModel)]="date" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+      <angular2-date-picker name="startDate" [(ngModel)]="experience.startDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
       
     </div>
     <div class="col-sm-3">
       <label>End Date</label>
-      <angular2-date-picker name="endDate" [(ngModel)]="date" #endDate="ngModel" [settings]="settings" ></angular2-date-picker>
+      <angular2-date-picker name="endDate" [(ngModel)]="experience.endDate" #endDate="ngModel" [settings]="settings" ></angular2-date-picker>
       <!--<input type="text" name="endDate" [(ngModel)]="experience.endDate" [ngStyle]="{'border-color' : getStyle(endDate,experienceForm.submitted)}" #endDate="ngModel" class="form-control" required placeholder="End Date" />-->
     </div>
   </div>
@@ -53,3 +58,4 @@
     </div>
   </div>
 </form>
+
