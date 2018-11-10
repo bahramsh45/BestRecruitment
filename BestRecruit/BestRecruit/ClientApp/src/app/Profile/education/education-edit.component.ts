@@ -33,7 +33,10 @@ export class EducationComponent implements OnInit, AfterViewChecked {
       this.id = params['id'];
 
     });
-    this.education = this.dataService.getEducation(this.id)
+
+    var result = this.dataService.getEducation(this.id);
+    this.education = this.id == 0 ? new Education() : result;
+    
   }
   ngAfterViewChecked() {
 
