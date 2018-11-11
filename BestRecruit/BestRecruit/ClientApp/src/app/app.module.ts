@@ -10,6 +10,7 @@ import { ProfileModule } from './Profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { LandingComponent } from './landing/landing.component';
 
 
 
@@ -19,8 +20,8 @@ import { CommonModule } from '@angular/common';
   declarations: [
     AppComponent,
     ProfileComponent,
-    HomeComponent
-   
+    HomeComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +32,9 @@ import { CommonModule } from '@angular/common';
     SharedModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'landing', component: LandingComponent },
+
 
     ]),
      ProfileModule

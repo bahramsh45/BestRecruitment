@@ -18,6 +18,7 @@ import { EducationViewComponent } from './education/education-view.component';
 import { CertificationViewComponent } from './certification/certification-view.component';
 import { SkillViewComponent } from './skills/skill-view.component';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { ResumeViewComponent } from './resume/resume-view.component';
 
 
 
@@ -36,7 +37,10 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     EducationViewComponent,
     CertificationComponent,
     CertificationViewComponent,
-    ResumeComponent
+    ResumeComponent,
+    ResumeViewComponent,
+
+
   ],
 
   imports: [
@@ -58,7 +62,8 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
             { path: 'candidateView', component: CandidateViewComponent },           
             { path: 'certificationEdit/:id', component: CertificationComponent },
             { path: 'certificationView', component: CertificationViewComponent },
-            { path: 'resume', component: ResumeComponent }
+            { path: 'resumeEdit', component: ResumeComponent },
+            { path: 'resumeView', component: ResumeViewComponent }
           ]
         }
       ]

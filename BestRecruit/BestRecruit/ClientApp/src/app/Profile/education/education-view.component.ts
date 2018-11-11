@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from '../class/education';
 import { Router } from '@angular/router';
-import { educationService } from '../../shared/education-service';
+import { educationService } from '../../shared/services/education-service';
 
 @Component({
   selector: 'education-view',

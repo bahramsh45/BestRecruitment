@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from '../class/experience';
 import { Router } from '@angular/router';
-import { experienceService } from '../../shared/experience.service';
+import { experienceService } from '../../shared/services/experience.service';
 
 
 @Component({

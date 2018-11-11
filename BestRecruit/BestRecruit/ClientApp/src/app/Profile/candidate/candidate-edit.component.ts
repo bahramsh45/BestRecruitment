@@ -4,6 +4,7 @@ import { Candidate } from '../class/candidate'
 import { Address } from '../class/address'
 import { Contact } from '../class/contact'
 import { Router } from '@angular/router';
+import { ValidationStyleService } from '../../shared/services/validation.style.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class CandidateComponent implements OnInit {
   public employmentType: string[];
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private vs: ValidationStyleService) {
     this.candidate = new Candidate();
     this.address = new Address();
     this.contact = new Contact(); 
@@ -32,16 +33,10 @@ export class CandidateComponent implements OnInit {
   }
   actionOnSubmit(form) {
    
-   
-  
   }
 
   getStyle(f,form) {
-    if ((!f.valid && !f.pristine) || form ) {
-      return '#a94442';
-    }
-
-    return 'silver';
+    return this.vs.getStyle(f, form);
   }
 
   ngOnInit() {

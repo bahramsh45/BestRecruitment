@@ -1,24 +1,38 @@
 <h3>Certification</h3>
 <hr />
-<div class="row">
-  <div class="col-sm-6">
-    <label class="">Certification Name</label>
-    <input type="text" name="certificationname" [(ngModel)]="certification.certificationName" class="form-control" placeholder="Certification Name" />
+<form #certificationForm="ngForm" (ngSubmit)="actionOnSubmit(certificationForm)" novalidate>
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="">Certification Name</label>
+      <input type="text" name="certificationName" [ngStyle]="{'border-color' : getStyle(certificationName,certificationForm.submitted)}" [(ngModel)]="certification.certificationName" class="form-control" #certificationName="ngModel" required placeholder="Certification Name" />
+    </div>
   </div>
-
-</div>
-<div class="row">
-  <div class="col-sm-3">
-    <label class="">Year</label>
-    <input type="text" name="year" [(ngModel)]="certification.year" class="form-control" placeholder="Year" />
+  <div class="row">
+    <div class="col-sm-6">
+      <small [hidden]="certificationName.valid || (certificationName.pristine && !certificationForm.submitted)" class="text-danger">
+        Certification Name is required.
+      </small>
+    </div>
   </div>
- 
-</div>
-<div class="row" style="margin-top:30px">
-  <div class="col-sm-3">
-    <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="">Year</label>
+      <input type="number" name="year" [ngStyle]="{'border-color' : getStyle(year,certificationForm.submitted)}" [(ngModel)]="certification.year" #year="ngModel" required class="form-control" placeholder="Year" />
+    </div>
   </div>
-  <div class="col-sm-3">
-    <button class="btn btn-primary form-control">Save</button>
+  <div class="row">
+    <div class="col-sm-3">
+      <small [hidden]="year.valid || (year.pristine && !certificationForm.submitted)" class="text-danger">
+        Year is required.
+      </small>
+    </div>
   </div>
-</div>
+  <div class="row" style="margin-top:30px">
+    <div class="col-sm-3">
+      <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-primary form-control">Save</button>
+    </div>
+  </div>
+</form>

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Certification } from '../class/certification';
-import { certificationService } from '../../shared/certification-sevice';
+import { certificationService } from '../../shared/services/certification-sevice';
 //import { HttpClient } from '@angular/common/http';
 
 @Component({

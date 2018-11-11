@@ -37,10 +37,12 @@
     <None Remove="ClientApp\src\app\Profile\class\skill.ts" />
     <None Remove="ClientApp\src\app\Profile\Profile.component.ts" />
     <None Remove="ClientApp\src\app\Profile\profile.module.ts" />
-    <None Remove="ClientApp\src\app\shared\certification-sevice.ts" />
-    <None Remove="ClientApp\src\app\shared\education-service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\certification-sevice.ts" />
+    <None Remove="ClientApp\src\app\shared\services\education-service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\experience.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\skill-service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\validation.style.service.ts" />
     <None Remove="ClientApp\src\app\shared\shared.module.ts" />
-    <None Remove="ClientApp\src\app\shared\skill-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,10 +53,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\contact.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\education.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\skill.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\skill-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\certification-sevice.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\education-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\experience.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\certification-sevice.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\education-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\experience.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\validation.style.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\skill-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\candidate.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\experience.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.component.ts" />
@@ -63,7 +66,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ClientApp\src\app\shared\experience-data.js.map">
+    <None Update="ClientApp\src\app\shared\services\experience-data.js.map">
       <DependentUpon>experience-data.js</DependentUpon>
     </None>
   </ItemGroup>

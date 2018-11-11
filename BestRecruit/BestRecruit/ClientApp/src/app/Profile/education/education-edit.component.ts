@@ -1,7 +1,8 @@
 import { Component, AfterViewChecked, OnInit} from '@angular/core';
 import { Education } from '../class/education';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { educationService } from '../../shared/education-service';
+import { educationService } from '../../shared/services/education-service';
+import { ValidationStyleService } from '../../shared/services/validation.style.service';
 declare var $: any;
 
 @Component({
@@ -19,12 +20,16 @@ export class EducationComponent implements OnInit, AfterViewChecked {
     format: 'dd-MM-yyyy',
     defaultOpen: false
   }
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: educationService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: educationService, private vs: ValidationStyleService) {
 
   }
 
   cancel() {
     this.router.navigate(["/profile/educationView"]);
+  }
+
+  getStyle(f, form) {
+    return this.vs.getStyle(f, form);
   }
 
 

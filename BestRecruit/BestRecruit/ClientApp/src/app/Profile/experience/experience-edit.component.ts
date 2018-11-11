@@ -2,7 +2,8 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Experience } from '../class/experience';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { experienceService } from '../../shared/experience.service';
+import { experienceService } from '../../shared/services/experience.service';
+import { ValidationStyleService } from '../../shared/services/validation.style.service';
 declare var $: any;
 
 
@@ -24,7 +25,7 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
     defaultOpen: false
   }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: experienceService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: experienceService,private vs : ValidationStyleService) {
 
   }
 
@@ -36,18 +37,9 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
 
   }
   getStyle(f, form) {
-    
-    if ((!f.valid && !f.pristine)) {
-      return '#a94442';
-    }
-
-    if (form && !f.valid) {
-      return '#a94442';
-
-    }
-
-    return 'silver';
+    return this.vs.getStyle(f, form);
   }
+
 
 
   ngOnInit() {

@@ -1,8 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { experienceService } from './experience.service';
-import { educationService } from './education-service';
-import { certificationService } from './certification-sevice';
-import { skillService } from './skill-service';
+import { experienceService } from './services/experience.service';
+import { educationService } from './services/education-service';
+import { certificationService } from './services/certification-sevice';
+import { skillService } from './services/skill-service';
+import { ValidationStyleService } from './services/validation.style.service';
 
 
 
@@ -15,7 +16,8 @@ export class SharedModule {
                   experienceService,
                   educationService,
                   certificationService,
-                  skillService
+                  skillService,
+                  ValidationStyleService
                  ]
     };
   }
