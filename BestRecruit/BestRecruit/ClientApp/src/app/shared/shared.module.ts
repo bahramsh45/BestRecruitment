@@ -4,6 +4,7 @@ import { educationService } from './services/education-service';
 import { certificationService } from './services/certification-sevice';
 import { skillService } from './services/skill-service';
 import { ValidationStyleService } from './services/validation.style.service';
+import { candidateService } from './services/candidate.service';
 
 
 
@@ -17,7 +18,8 @@ export class SharedModule {
                   educationService,
                   certificationService,
                   skillService,
-                  ValidationStyleService
+                  ValidationStyleService,
+                  candidateService
                  ]
     };
   }

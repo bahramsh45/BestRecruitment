@@ -4,6 +4,7 @@ import { Candidate } from '../class/candidate'
 import { Address } from '../class/address'
 import { Contact } from '../class/contact'
 import { Router } from '@angular/router';
+import { candidateService } from '../../shared/services/candidate.service'
 
 
 @Component({
@@ -16,15 +17,14 @@ export class CandidateViewComponent implements OnInit {
   public candidate: Candidate;
   public address: Address;
   public contact: Contact;
-  constructor(private router : Router) {
-    this.candidate = new Candidate();
-    this.address = new Address();
-    this.contact = new Contact(); 
+  constructor(private router: Router, private dataService: candidateService) {
+   
   }
 
   ngOnInit() {
-    this.candidate.firstName = "bahram";
-
+    this.candidate = this.dataService.getCandidate();
+    this.address = this.dataService.getAddress(1);
+    this.contact = this.dataService.getContact(1);
   }
 
   edit() {

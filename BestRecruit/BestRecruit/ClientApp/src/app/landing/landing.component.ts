@@ -3,7 +3,8 @@ import { Router} from '@angular/router';
 
 @Component({
   selector: 'Landing',
-  templateUrl: './landing.component.html',
+  templateUrl: './landing.component.html'
+ // styles:["./landing.component.css"]
 })
 export class LandingComponent {
 
