@@ -25,6 +25,10 @@ export class SkillComponent implements OnInit {
     this.router.navigate(["/profile/skillView"]);
   }
 
+  actionOnSubmit(form) {
+
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
     this.id = params['id'];

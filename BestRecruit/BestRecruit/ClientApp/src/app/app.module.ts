@@ -16,12 +16,14 @@ import { LandingComponent } from './landing/landing.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     HomeComponent,
     LandingComponent
+   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

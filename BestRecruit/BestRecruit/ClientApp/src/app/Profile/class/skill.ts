@@ -2,6 +2,6 @@ export class Skill {
   id: number;
   candiadateId: number;
   skillName: string;
-  yearOfExperince: number;
+  yearOfExperience: number;
   lastYearUsed: number;
 }

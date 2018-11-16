@@ -28,6 +28,11 @@ export class CertificationComponent implements OnInit {
     return this.vs.getStyle(f, form);
   }
 
+  actionOnSubmit(form) {
+
+
+  }
+
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {

@@ -33,6 +33,12 @@ export class EducationComponent implements OnInit, AfterViewChecked {
   }
 
 
+  actionOnSubmit(form) {
+
+
+  }
+
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];

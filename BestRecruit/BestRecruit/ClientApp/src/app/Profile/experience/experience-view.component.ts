@@ -9,7 +9,7 @@ import { experienceService } from '../../shared/services/experience.service';
   templateUrl: './experience-view.component.html',
   providers: []
 })
-export class ExperienceListComponent implements OnInit {
+export class ExperienceViewComponent implements OnInit {
 
   public experienceList: Experience[];
  
