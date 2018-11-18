@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-sm-6">
     <label class="">Name</label>
-    <input type="text" name="resumename" class="form-control" placeholder="Resume Name" />
+    <input type="text" name="resumename" [(ngModel)]="resume.name" class="form-control" placeholder="Resume Name" />
   </div>
 
 </div>
@@ -18,21 +18,22 @@
   </div>
 <div class="row">
   <div class="col-sm-3" style="margin-top:10px">
-    <input type="checkbox" name="active" />
+    <input type="checkbox" name="active" [(ngModel)]="resume.active" />
     <label>Active</label>
   </div>
   <div class="col-sm-3" style="margin-top:10px">
     <label>status</label>
     <span>&nbsp;</span>
-    <span>Public</span>
-    <input type="radio" name="public" placeholder="Last Year Used" />
-    <span>Private</span>
-    <input type="radio" name="private" placeholder="Last Year Used" />
+    <span>public</span>
+    <input type="checkbox" [(ngModel)]="resume.status" [ngModelOptions]="{standalone: true}" />
   </div>
 </div>
 
 <div class="row" style="margin-top:30px">
-  <div class="col-sm-6">
-    <button class="btn btn-primary form-control">Add Resume</button>
+  <div class="col-sm-3">
+    <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn btn-primary form-control">Save</button>
   </div>
 </div>

@@ -14,3 +14,4 @@
 /BestRecruit/node_modules
 /BestRecruit/package-lock.json
 /BestRecruit/DatabaseAccess/bin/Debug/netstandard2.0
+/BestRecruit/DatabaseAccess/bin/Release/netstandard2.0

@@ -62,7 +62,7 @@ import { ResumeViewComponent } from './resume/resume-view.component';
             { path: 'candidateView', component: CandidateViewComponent },           
             { path: 'certificationEdit/:id', component: CertificationComponent },
             { path: 'certificationView', component: CertificationViewComponent },
-            { path: 'resumeEdit', component: ResumeComponent },
+            { path: 'resumeEdit/:id', component: ResumeComponent },
             { path: 'resumeView', component: ResumeViewComponent }
           ]
         }

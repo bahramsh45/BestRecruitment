@@ -1,38 +1,35 @@
 <h3>Resumes</h3>
 <hr />
-<div class="row">
-  <div class="col-sm-6">
-    <label class="">Name</label>
-    <input type="text" name="resumename" class="form-control" placeholder="Resume Name" />
+<div *ngFor="let r of resumeList">
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="">Name</label>
+      <span class="form-control">{{ r.name }}</span>
+    </div>
+    <div class="col-sm-1">
+      <div>&nbsp;</div>
+      <a [routerLink]='["/profile/resumeEdit",r.id]' class="btn btn-primary"><i class="fa fa-edit"></i></a>
+    </div>
+    <div class="col-sm-1">
+      <div>&nbsp;</div>
+      <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+    </div>
   </div>
-
+  <div class="row">
+    <div class="col-sm-3" style="margin-top:10px">
+      <span><i class="{{ getActive(r.active) }}"></i></span>
+      <label>Active</label>
+    </div>
+    <div class="col-sm-3" style="margin-top:10px">
+      <label>Status</label>
+      <span>&nbsp;</span>
+      <span style="color:green">{{ getStatus(r.status) }}</span>
+    </div>
+  </div>
+  <hr />
 </div>
-<div class="row">
-  <div class="col-sm-6" style="margin-top:10px">
-    <label class="">Upload</label>
-
-    <label class="btn btn-default">
-       <input type="file"  hidden>
-    </label>
-  </div>
-  </div>
-<div class="row">
-  <div class="col-sm-3" style="margin-top:10px">
-    <input type="checkbox" name="active" />
-    <label>Active</label>
-  </div>
-  <div class="col-sm-3" style="margin-top:10px">
-    <label>status</label>
-    <span>&nbsp;</span>
-    <span>Public</span>
-    <input type="radio" name="public" placeholder="Last Year Used" />
-    <span>Private</span>
-    <input type="radio" name="private" placeholder="Last Year Used" />
-  </div>
-</div>
-
 <div class="row" style="margin-top:30px">
   <div class="col-sm-6">
-    <button class="btn btn-primary form-control">Add Resume</button>
+    <button class="btn btn-primary form-control" (click)="addResume()">Add Resume</button>
   </div>
 </div>
