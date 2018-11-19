@@ -7,7 +7,7 @@
     contactId: number;
     authorized: boolean;
     relocation: boolean;
-    employmentType: string;
+    employmentType: number;
     rate: number;
     salary: number;
     readyToWorkDate: Date;

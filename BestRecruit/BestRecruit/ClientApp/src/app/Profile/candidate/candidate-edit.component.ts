@@ -5,6 +5,8 @@ import { Address } from '../class/address'
 import { Contact } from '../class/contact'
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
+import { candidateService } from '../../shared/services/candidate.service';
+import { EmploymentType } from '../class/employmentType';
 
 
 @Component({
@@ -18,13 +20,18 @@ export class CandidateComponent implements OnInit {
   public candidate: Candidate;
   public address: Address;
   public contact: Contact;
-  public employmentType: string[];
+  public empList: EmploymentType[];
+
+  settings = {
+    bigBanner: false,
+    timePicker: false,
+    format: 'dd-MM-yyyy',
+    defaultOpen: false
+  }
 
 
-  constructor(private router: Router, private vs: ValidationStyleService) {
-    this.candidate = new Candidate();
-    this.address = new Address();
-    this.contact = new Contact(); 
+  constructor(private router: Router, private vs: ValidationStyleService,private dataService: candidateService) {
+   
   }
 
   cancel() {
@@ -41,8 +48,10 @@ export class CandidateComponent implements OnInit {
 
   ngOnInit() {
 
-    this.employmentType = ['Full Time', 'Part Time', 'Contract'];
-    //this.candidate.firstName = "bahram";
+    this.empList = this.dataService.getEmpTypeList();
+    this.candidate = this.dataService.getCandidate();
+    this.address = this.dataService.getAddress(1001);
+    this.contact = this.dataService.getContact(1001);
 
   }
 

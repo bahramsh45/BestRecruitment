@@ -79,19 +79,14 @@
       <input type="text" name="country" [(ngModel)]="address.country" class="form-control" placeholder="Country" />
     </div>
   </div>
-  <!--<div class="row" style="margin-top:30px;">
-    <div class="col-sm-12" style="float:right">
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </div>-->
   <h3>Other</h3>
   <hr />
   <div class="row">
     <div class="col-sm-4" style="margin-top:10px">
       <label>Employment Type</label>
-      <select class="form-control">
-        <option *ngFor="let emp of employmentType" >
-          {{emp}}
+      <select name="employmentType" class="form-control" [(ngModel)]="candidate.employmentType">
+        <option *ngFor="let emp of empList"  [value]="emp.id" >
+          {{emp.description}}
         </option>
       </select>
     </div>
@@ -100,8 +95,8 @@
 
     </div>
     <div class="col-sm-3" style="margin-top:10px">
-      <label class="" for="city">Start Date</label>
-      <input type="date" name="city" class="form-control" placeholder="City" />
+      <label class="">Start Date</label>
+      <angular2-date-picker name="readyToWorkDate" [(ngModel)]="candidate.readyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
 
     </div>
 
