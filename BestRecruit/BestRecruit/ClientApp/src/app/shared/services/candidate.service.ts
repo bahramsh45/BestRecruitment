@@ -15,7 +15,7 @@ export class candidateService {
     contactId: 1,
     authorized: true,
     relocation: false,
-    employmentType: 1,
+    employmentType: 3,
     rate: 100,
     salary: 0,
     readyToWorkDate: new Date(2019, 2, 1),
@@ -68,6 +68,18 @@ export class candidateService {
 
   getEmpTypeList(): EmploymentType[] {
       return this.empType;
+  }
+
+  getEmpType(id): string {
+    var result = "";
+    this.empType.map(function (t) {
+
+      if (t.id == id) {
+        result = t.description;
+      }
+
+    })
+    return result;
   }
 
 
