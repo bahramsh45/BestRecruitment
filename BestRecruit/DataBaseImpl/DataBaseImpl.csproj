@@ -50,74 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Candidate.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateCertification.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateEducation.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateExperience.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateResume.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateSkill.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.cs">
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Address.cs" />
+    <Compile Include="Candidate.cs" />
+    <Compile Include="CandidateCertification.cs" />
+    <Compile Include="CandidateEducation.cs" />
+    <Compile Include="CandidateExperience.cs" />
+    <Compile Include="CandidateResume.cs" />
+    <Compile Include="CandidateSkill.cs" />
+    <Compile Include="Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecuritmentModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecuritmentModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RecuritmentModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecuritmentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RecuritmentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RecuritmentModel.edmx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="RecuritmentModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RecuritmentModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="RecuritmentModel.edmx.diagram">
-      <DependentUpon>RecuritmentModel.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RecuritmentModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RecuritmentModel.Context.cs</LastGenOutput>
-      <DependentUpon>RecuritmentModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="RecuritmentModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecuritmentModel.edmx</DependentUpon>
-      <LastGenOutput>RecuritmentModel.cs</LastGenOutput>
-    </Content>
+    <Compile Include="Recruitment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
