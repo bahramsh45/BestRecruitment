@@ -50,6 +50,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataBaseImpl\DataBaseImpl.csproj" />
+    <ProjectReference Include="..\DataRepository\DataRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\address.ts" />

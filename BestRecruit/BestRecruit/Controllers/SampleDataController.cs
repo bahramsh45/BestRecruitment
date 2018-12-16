@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DataRepository;
+using DataBaseImpl;
 
 namespace BestRecruit.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        ICandidateRepository _candidateRepository;
+
+        public SampleDataController(ICandidateRepository candidateRepsitory)
+        {
+            _candidateRepository = candidateRepsitory;
+    }
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -39,6 +48,11 @@ namespace BestRecruit.Controllers
                     return 32 + (int)(TemperatureC / 0.5556);
                 }
             }
+        }
+
+        public IEnumerable<Candidate> GetCandidates()
+        {
+            return _candidateRepository.GetAll();
         }
     }
 }
