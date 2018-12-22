@@ -8,6 +8,7 @@ import { candidateService } from '../../shared/services/candidate.service'
 import { EmploymentType } from '../class/employmentType';
 
 
+
 @Component({
   selector: 'candidate-view',
   templateUrl: './candidate-view.component.html'
@@ -20,7 +21,7 @@ export class CandidateViewComponent implements OnInit {
   public contact: Contact;
   public empList: EmploymentType[];
   constructor(private router: Router, private dataService: candidateService) {
-   
+    
   }
 
   getEmploymentType(p) {
@@ -31,9 +32,16 @@ export class CandidateViewComponent implements OnInit {
 
   ngOnInit() {
     this.empList = this.dataService.getEmpTypeList();
-    this.candidate = this.dataService.getCandidate();
-    this.address = this.dataService.getAddress(1);
-    this.contact = this.dataService.getContact(1);
+    this.dataService.getCandidate().subscribe(res => {
+      if (res) {
+        this.candidate = res.candidate;
+        this.address = res.address;
+        this.contact = res.contact;
+
+      }
+    });
+   // this.contact = this.dataService.getContact(1);
+    
   }
 
   edit() {

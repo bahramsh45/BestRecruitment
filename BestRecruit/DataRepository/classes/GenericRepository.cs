@@ -2,9 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Data.Entity;
-
-
+using Microsoft.EntityFrameworkCore;
 
 namespace DataRepository
 {

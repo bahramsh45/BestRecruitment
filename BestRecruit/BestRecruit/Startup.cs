@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,16 +24,23 @@ namespace BestRecruit
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<ICandidateRepository, CandidateRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            var connection = @"data source=bestrecuritment.database.windows.net;initial catalog=BestRecuritment;user id=bestrecuritadmin;password=Bahr4490;MultipleActiveResultSets=True;App=EntityFramework";
+
+            services.AddDbContext<Recruitment>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,5 +73,22 @@ namespace BestRecruit
                 }
             });
         }
+
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        //{
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
+        //    else
+        //    {
+        //        // The default HSTS value is 30 days. You may want to change this for 
+        //        // production scenarios, see https://aka.ms/aspnetcore-hsts.
+        //        app.UseHsts();
+        //    }
+
+        //    app.UseHttpsRedirection();
+        //    app.UseMvc();
+        //}
     }
 }

@@ -16,8 +16,12 @@ namespace DataRepository
             Edit(candidate);
         }
 
-        public Candidate GetSingle(int CandidateId)
+        public Candidate GetCandidate(int CandidateId)
         {
+            if (CandidateId == 0)
+            {
+                return new Candidate();
+            }
             var query = GetAll().FirstOrDefault(x => x.Id == CandidateId);
             return query;
         }

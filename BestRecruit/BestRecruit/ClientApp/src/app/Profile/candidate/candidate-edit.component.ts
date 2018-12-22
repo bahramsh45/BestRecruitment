@@ -49,9 +49,9 @@ export class CandidateComponent implements OnInit {
   ngOnInit() {
 
     this.empList = this.dataService.getEmpTypeList();
-    this.candidate = this.dataService.getCandidate();
-    this.address = this.dataService.getAddress(1001);
-    this.contact = this.dataService.getContact(1001);
+   // this.candidate = this.dataService.getCandidate();
+  //  this.address = this.dataService.getAddress(1001);
+  //  this.contact = this.dataService.getContact(1001);
 
   }
 

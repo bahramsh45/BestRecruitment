@@ -1,17 +1,26 @@
 namespace DataBaseImpl
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+   
+    using Microsoft.EntityFrameworkCore;
 
     public partial class Recruitment : DbContext
     {
         public Recruitment()
-            : base("name=Recruitment")
         {
         }
 
+        public Recruitment(DbContextOptions<Recruitment> options)
+            : base(options)
+        {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"data source=bestrecuritment.database.windows.net;initial catalog=BestRecuritment;user id=bestrecuritadmin;password=Bahr4490;MultipleActiveResultSets=True;App=EntityFramework");
+            }
+        }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Candidate> Candidates { get; set; }
         public virtual DbSet<CandidateCertification> CandidateCertifications { get; set; }
@@ -21,7 +30,7 @@ namespace DataBaseImpl
         public virtual DbSet<CandidateSkill> CandidateSkills { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Address>()
                 .Property(e => e.Address1)
@@ -45,9 +54,9 @@ namespace DataBaseImpl
 
             modelBuilder.Entity<Address>()
                 .HasMany(e => e.Candidates)
-                .WithRequired(e => e.Address)
-                .HasForeignKey(e => e.AddrId)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Address).IsRequired()
+                .HasForeignKey(e => e.AddrId);
+                
 
             modelBuilder.Entity<Candidate>()
                 .Property(e => e.FirstName)
@@ -71,29 +80,29 @@ namespace DataBaseImpl
 
             modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateCertifications)
-                .WithRequired(e => e.Candidate)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Candidate).IsRequired();
+
 
             modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateEducations)
-                .WithRequired(e => e.Candidate)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Candidate).IsRequired();
+
 
             modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateExperiences)
-                .WithRequired(e => e.Candidate)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Candidate).IsRequired();
+
 
             modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateResumes)
-                .WithRequired(e => e.Candidate)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Candidate);
+
+
 
             modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateSkills)
-                .WithRequired(e => e.Candidate)
-                .WillCascadeOnDelete(false);
-
+                .WithOne(e => e.Candidate).IsRequired();
+               
             modelBuilder.Entity<CandidateCertification>()
                 .Property(e => e.CertificationName)
                 .IsUnicode(false);
@@ -152,8 +161,8 @@ namespace DataBaseImpl
 
             modelBuilder.Entity<Contact>()
                 .HasMany(e => e.Candidates)
-                .WithRequired(e => e.Contact)
-                .WillCascadeOnDelete(false);
+                .WithOne(e => e.Contact).IsRequired();
+               
         }
     }
 }
