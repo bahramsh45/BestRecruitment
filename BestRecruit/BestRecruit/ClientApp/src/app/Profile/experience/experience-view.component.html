@@ -1,42 +1,44 @@
 <h3>Experience</h3>
 <hr />
-<div *ngFor="let e of experienceList">
-  <div class="row">
-    <div class="col-sm-6">
-      <label class="">Employer</label>
-      <span class="form-control">{{e.employer}}</span>
+<div *ngIf="experienceList">
+  <div *ngFor="let e of experienceList">
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="">Employer</label>
+        <span class="form-control">{{e.employerName}}</span>
+      </div>
+      <div class="col-sm-1">
+        <div>&nbsp;</div>
+        <a [routerLink]='["/profile/experienceEdit",e.id]' class="btn btn-primary"><i class="fa fa-edit"></i></a>
+      </div>
+      <div class="col-sm-1">
+        <div>&nbsp;</div>
+        <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+      </div>
+
     </div>
-    <div class="col-sm-1">
-      <div>&nbsp;</div>
-      <a [routerLink]='["/profile/experienceEdit",e.id]' class="btn btn-primary"><i class="fa fa-edit"></i></a>
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="">Start Date</label>
+        <span class="form-control">{{e.startDate | date}}</span>
+      </div>
+      <div class="col-sm-3">
+        <label>End Date</label>
+        <span class="form-control">{{e.endDate | date}}</span>
+      </div>
     </div>
-    <div class="col-sm-1">
-      <div>&nbsp;</div>
-      <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+    <div class="row">
+      <div class="col-sm-6">
+        <label>Description</label>
+        <textarea class="form-control" disabled="disabled" rows="3">{{e.description}}</textarea>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div class="row" style="margin-top:30px">
+    <div class="col-sm-6" style="padding-bottom:10px;">
+      <button class="btn btn-primary form-control" (click)="addExperience()">Add Experience</button>
     </div>
 
   </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <label class="">Start Date</label>
-      <span class="form-control">{{e.startDate | date}}</span>
-    </div>
-    <div class="col-sm-3">
-      <label>End Date</label>
-      <span class="form-control">{{e.endDate | date}}</span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <label>Description</label>
-      <textarea class="form-control" disabled="disabled" rows="3">{{e.description}}</textarea>
-    </div>
-  </div>
-  <hr />
-</div>
-<div class="row" style="margin-top:30px">
-  <div class="col-sm-6" style="padding-bottom:10px;">
-    <button class="btn btn-primary form-control" (click)="addExperience()">Add Experience</button>
-  </div>
-  
 </div>

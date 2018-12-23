@@ -26,6 +26,8 @@ namespace BestRecruit
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<ICandidateExperienceRepository, CandidateExperienceRepository>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

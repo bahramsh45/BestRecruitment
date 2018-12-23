@@ -25,7 +25,9 @@ export class ExperienceViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.experienceList = this.dataService.getExperiences();
+    this.dataService.getExperiences().subscribe(res => {
+      this.experienceList = res
+    });
 
   }
   

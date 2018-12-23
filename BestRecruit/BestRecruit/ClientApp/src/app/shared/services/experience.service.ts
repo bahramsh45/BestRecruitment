@@ -1,41 +1,24 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class experienceService  {
+  _baseurl: string;
+ 
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this._baseurl = baseUrl;
 
-  private expList: any = [
-    {
-      id: 1,
-      candiadateId: 1001,
-      employer: 'CIBC',
-      startDate: new Date(2018, 1, 1),
-      endDate: new Date(2018, 12, 12),
-      description: 'very bad company'
-    },
-    {
-      id: 2,
-      candiadateId: 1001,
-      employer: 'IBM',
-      startDate: new Date(2017, 1, 1),
-      endDate: new Date(2017, 12, 1),
-      description: 'very good company'
-    },
-    {
-      id: 3,
-      candiadateId: 1001,
-      employer: 'Fedex',
-      startDate: new Date(2016, 1, 1),
-      endDate: new Date(2016, 12, 2),
-      description: 'nice!'
-    }
-  ];
+  }
+
   getExperiences() :any {
-    return this.expList;
+    let params = new HttpParams().set("id", "2")
+    return this.http.get(this._baseurl + 'api/Candidate/GetCandidateExperiences', { params: params });
   }
 
   getExperience(id): any {
-    return this.expList.filter(x => x.id == id)[0];
+    let params = new HttpParams().set("id", id);
+    return this.http.get(this._baseurl + 'api/Candidate/GetCandidateExperience', { params: params });
   }
 
   

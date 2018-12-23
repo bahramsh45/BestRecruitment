@@ -48,8 +48,10 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
       this.id = params['id'];
 
     });
-    var result = this.dataService.getExperience(this.id);
-    this.experience = this.id == 0 ? new Experience() : result;
+    this.dataService.getExperience(this.id).subscribe(res => {
+       this.experience = this.id == 0 ? new Experience() : res;
+    });
+    
    
 
   };
