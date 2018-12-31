@@ -33,8 +33,16 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
     this.router.navigate(["/profile/experienceView"]);
   }
 
-  actionOnSubmit(form) {
+  actionOnSubmit(exp) {
 
+    if (exp.id == 0 || exp.id == undefined) {
+      this.dataService.AddExperience(exp)
+    }
+    else {
+      this.dataService.PutExperience(exp)
+    }
+
+    this.router.navigate(["/profile/experienceView"]);
   }
   getStyle(f, form) {
     return this.vs.getStyle(f, form);
@@ -45,12 +53,13 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
   ngOnInit() {
     
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.id = params['id'];
+      this.id  = params['id'];
+      this.dataService.getExperience(this.id).subscribe(res => {
+        this.experience = this.id == 0 ? new Experience() : res;
+      });
 
     });
-    this.dataService.getExperience(this.id).subscribe(res => {
-       this.experience = this.id == 0 ? new Experience() : res;
-    });
+    
     
    
 

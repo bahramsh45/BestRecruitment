@@ -89,8 +89,8 @@ namespace DataBaseImpl
 
 
             modelBuilder.Entity<Candidate>()
-                .HasMany(e => e.CandidateExperiences)
-                .WithOne(e => e.Candidate).IsRequired();
+                .HasMany(e => e.CandidateExperiences);
+               // .WithOne(e => e.Candidate).IsRequired();
 
 
             modelBuilder.Entity<Candidate>()

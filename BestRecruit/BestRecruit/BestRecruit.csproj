@@ -27,6 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\CandidateController.cs" />
+    <Compile Remove="Controllers\CandidateExperienceController1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <None Remove="ClientApp\src\app\Profile\class\address.ts" />
@@ -45,6 +50,7 @@
     <None Remove="ClientApp\src\app\shared\services\certification-sevice.ts" />
     <None Remove="ClientApp\src\app\shared\services\education-service.ts" />
     <None Remove="ClientApp\src\app\shared\services\experience.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\list.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\resume.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\skill-service.ts" />
     <None Remove="ClientApp\src\app\shared\services\validation.style.service.ts" />
@@ -67,6 +73,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\resume.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\skill.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\candidate.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\list.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\resume.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\certification-sevice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\education-service.ts" />

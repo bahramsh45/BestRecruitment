@@ -17,6 +17,9 @@ import { LandingComponent } from './landing/landing.component';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,7 @@ import { LandingComponent } from './landing/landing.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
+    BrowserModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot([

@@ -1,7 +1,7 @@
 export class Experience {
     id: number;
-    candiadateId: number;
-    employer: string;
+    candidateId: number;
+    employerName: string;
     startDate: Date;
     endDate: Date;
     description: string;

@@ -7,7 +7,8 @@ namespace DataRepository
     {
         List<CandidateExperience> GetCandidateExperiences(int CandidateId);
         CandidateExperience GetCandidateExperience(int Id);
-        void AddCandidateExperience(CandidateExperience candidateExperience);
+        int AddCandidateExperience(CandidateExperience candidateExperience);
+        void DeleteCandidateExperience(CandidateExperience candidateExperience);
         void EditCandidateExperience(CandidateExperience candidateExperience);
         void SaveCandidateExperience();
     }

@@ -1,7 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { Candidate} from '../../Profile/class/candidate'
-import { Address } from '../../Profile/class/address';
-import { Contact } from '../../Profile/class/contact';
 import { EmploymentType } from '../../Profile/class/employmentType';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -25,8 +23,9 @@ export class candidateService {
 
 
   getCandidate(): any {
-    let params = new HttpParams().set("id", "2")
-    return this.http.get(this._baseurl + 'api/Candidate/GetCandidate', { params: params });
+    let id = 2;
+    return this.http.get<Candidate>(this._baseurl + 'api/Candidates/GetCandidate/' + id)  
+  
   }
 
 

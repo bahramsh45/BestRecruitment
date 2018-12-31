@@ -6,6 +6,7 @@ import { skillService } from './services/skill-service';
 import { ValidationStyleService } from './services/validation.style.service';
 import { candidateService } from './services/candidate.service';
 import { resumeService } from './services/resume.service';
+import { listService } from './services/list.service';
 
 
 
@@ -21,7 +22,9 @@ export class SharedModule {
                   skillService,
                   ValidationStyleService,
                   candidateService,
-                  resumeService
+                  resumeService,
+                  listService
+
                  ]
     };
   }

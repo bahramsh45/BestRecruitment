@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using DataBaseImpl;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataRepository
@@ -20,7 +21,7 @@ namespace DataRepository
 
         public virtual IQueryable<T> GetAll()
         {
-
+          
             IQueryable<T> query = _entities.Set<T>();
             return query;
         }
