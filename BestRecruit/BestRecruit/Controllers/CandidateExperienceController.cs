@@ -60,8 +60,8 @@ namespace BestRecruit.Controllers
 
             _candidateExperienceRepository.EditCandidateExperience(candidateExperience);
 
-           
-            return NoContent();
+
+            return Ok(candidateExperience);
         }
 
 

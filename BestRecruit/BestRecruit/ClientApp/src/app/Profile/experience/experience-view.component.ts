@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Experience } from '../class/experience';
 import { Router } from '@angular/router';
 import { experienceService } from '../../shared/services/experience.service';
 import { Observable } from 'rxjs/Observable';

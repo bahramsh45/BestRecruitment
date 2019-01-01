@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing/landing.component';
+import { Toaster_Token } from './shared/services/ToasterService';
+
+declare let toastr: any; 
 
 
 
@@ -46,7 +49,7 @@ import { LandingComponent } from './landing/landing.component';
      ProfileModule
   ],
   
-  providers: [],
+  providers: [{ provide: Toaster_Token, useValue: toastr }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
-
+import { Toaster_Token } from './ToasterService';
 import { Injectable, Inject} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Experience } from '../../Profile/class/experience';
 import { Subject } from 'rxjs/Subject'
-import { Observable } from 'rxjs/Observable'
+
 
 
 
@@ -14,9 +14,15 @@ export class experienceService  {
   private _explist = new Subject();
   expList$ = this._explist.asObservable();
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, @Inject(Toaster_Token) private _toasterService: any) {
     this._baseurl = baseUrl;
-   }
+  }
+
+
+  formatDate(d:string):Date {
+    var st = new Date(d);
+    return new Date(st.getFullYear() + '-' + ((st.getMonth() + 1).toString().length == 1 ? "0" + (st.getMonth() + 1).toString() : (st.getMonth() + 1).toString()) + '-' + (st.getDate().toString().length == 1 ? "0" + st.getDate().toString() : st.getDate().toString()));
+  }
 
   getExperiences() :any {
     let candidateId = 2;
@@ -32,11 +38,11 @@ export class experienceService  {
 
   DeleteExperience(id): any {
     return this.http.delete(this._baseurl + 'api/CandidateExperience/DeleteCandidateExperience/' + id).
-      subscribe(data => {
-        
+      subscribe(() => {
+        this._toasterService.success('Experience removed successfully!');
         var idx = this.experienceList.findIndex(x => x.id == id);
-        this.experienceList.splice(0, idx);
-        
+        this.experienceList.splice(idx, 1);
+       
         this.notify();
       },
         err => {
@@ -48,21 +54,21 @@ export class experienceService  {
    
     let headers = new HttpHeaders().set('content-type', 'application/json');
     experience.candidateId = 2;
-    var st = new Date(experience.startDate.toString());
-    experience.startDate = new Date(st.getFullYear() + '-' + (st.getMonth().toString().length == 1 ? "0" + st.getMonth().toString() : st.getMonth().toString()) + '-' + (st.getDate().toString().length == 1 ? "0" + st.getDate().toString() : st.getDate().toString()));
-
-    var et = new Date(experience.endDate.toString());
-    experience.endDate = new Date(et.getFullYear() + '-' + (et.getMonth().toString().length == 1 ? "0" + et.getMonth().toString() : et.getMonth().toString()) + '-' + (et.getDate().toString().length == 1 ? "0" + et.getDate().toString() : et.getDate().toString()));
+    experience.startDate = this.formatDate(experience.startDate.toString());
+    experience.endDate = this.formatDate(experience.endDate.toString());
+    
     
     return this.http.post(this._baseurl + 'api/CandidateExperience', experience, { headers: headers }).
       subscribe(data => {
+         this._toasterService.success('New experience added successfully!');
+       
          experience.id = Object.keys(data).map(function (key) { return data[key] })[0];
          this.experienceList.push(experience);
          this.notify();
      
       },
       err => {
-        alert(err);
+        alert(err.message);
       });
      
   }
@@ -70,18 +76,26 @@ export class experienceService  {
   PutExperience(experience: Experience): any {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
-    var st = new Date(experience.startDate.toString());
-    experience.startDate =new Date(st.getFullYear() + '-' + (st.getMonth().toString().length == 1 ? "0" + st.getMonth().toString() : st.getMonth().toString()) + '-' + (st.getDate().toString().length == 1 ? "0" + st.getDate().toString() : st.getDate().toString()));
-
-    var et = new Date(experience.endDate.toString());
-    experience.endDate = new Date(et.getFullYear() + '-' + (et.getMonth().toString().length == 1 ? "0" + et.getMonth().toString() : et.getMonth().toString()) + '-' + (et.getDate().toString().length == 1 ? "0" + et.getDate().toString() : et.getDate().toString()));
+    experience.startDate = this.formatDate(experience.startDate.toString());
+    experience.endDate = this.formatDate(experience.endDate.toString());
 
     return this.http.put(this._baseurl + 'api/CandidateExperience', experience, { headers: headers }).
       subscribe(data => {
+        this._toasterService.success('Experience updated successfully!');
+       
+        experience.id = Object.keys(data).map(function (key) { return data[key] })[0];
+        experience.candidateId = Object.keys(data).map(function (key) { return data[key] })[1];
+        experience.employerName = Object.keys(data).map(function (key) { return data[key] })[2];
+        experience.startDate = Object.keys(data).map(function (key) { return data[key] })[3];
+        experience.endDate = Object.keys(data).map(function (key) { return data[key] })[4];
+        experience.description = Object.keys(data).map(function (key) { return data[key] })[5];
+        var idx = this.experienceList.findIndex(x => x.id == experience.id);
+        this.experienceList[idx] = experience;
+
         this.notify();
       },
         err => {
-          alert(err);
+          alert(err.message);
         });
 
     
