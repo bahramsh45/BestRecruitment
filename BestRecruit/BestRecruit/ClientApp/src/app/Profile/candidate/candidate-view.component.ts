@@ -1,11 +1,9 @@
 
-import { Component, OnInit } from '@angular/core'
-import { Candidate } from '../class/candidate'
-import { Address } from '../class/address'
-import { Contact } from '../class/contact'
+import { Component, OnInit} from '@angular/core'
 import { Router } from '@angular/router';
 import { candidateService } from '../../shared/services/candidate.service'
 import { EmploymentType } from '../class/employmentType';
+import { CandidateViewModel } from '../class/candidateViewModel';
 
 
 
@@ -16,40 +14,29 @@ import { EmploymentType } from '../class/employmentType';
 
 export class CandidateViewComponent implements OnInit {
 
-  public candidate: Candidate;
-  public address: Address;
-  public contact: Contact;
+  public candidateVW: CandidateViewModel;
   public empList: EmploymentType[];
   constructor(private router: Router, private dataService: candidateService) {
-    
+   
   }
 
   getEmploymentType(p) {
     var result = this.dataService.getEmpType(p);
-    return result;
- 
+    return result; 
   }
-
+  
   ngOnInit() {
+    this.dataService._cVW$.subscribe(res => {     
+        this.candidateVW = res     
+    });
     this.empList = this.dataService.getEmpTypeList();
     this.dataService.getCandidate().subscribe(res => {
-      if (res) {
-        this.candidate = res.candidate;
-        this.address = res.address;
-        this.contact = res.contact;
-
-      }
-    });
-   // this.contact = this.dataService.getContact(1);
-    
+      this.candidateVW = res    
+    });  
   }
 
   edit() {
-    this.router.navigate(["/profile/candidateEdit"]);
-   
+    this.router.navigate(["/profile/candidateEdit"]);  
   }
 
-  
-
-  
 }

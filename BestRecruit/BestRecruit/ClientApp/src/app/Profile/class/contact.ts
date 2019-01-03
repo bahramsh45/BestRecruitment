@@ -1,7 +1,6 @@
 
-  export class Contact {
+export class Contact {
     id: number;
-    candiadateId: number;
     phoneNumber:	string;
     mobile: string;
     fax : string;

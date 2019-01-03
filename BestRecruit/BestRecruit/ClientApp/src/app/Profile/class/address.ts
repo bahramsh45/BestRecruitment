@@ -1,6 +1,5 @@
- export class Address {
+export class Address {
     id: number;
-    candiadateId: number;
     address1 : string;
     address2: string;
     country: string;

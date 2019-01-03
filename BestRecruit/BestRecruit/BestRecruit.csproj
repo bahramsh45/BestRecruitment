@@ -36,6 +36,7 @@
     <None Remove="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <None Remove="ClientApp\src\app\Profile\class\address.ts" />
     <None Remove="ClientApp\src\app\Profile\class\candidate.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\candidateViewModel.ts" />
     <None Remove="ClientApp\src\app\Profile\class\certification.ts" />
     <None Remove="ClientApp\src\app\Profile\class\contact.ts" />
     <None Remove="ClientApp\src\app\Profile\class\education.ts" />
@@ -67,6 +68,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-view.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\candidate\candidate-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\address.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\candidateViewModel.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\certification.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\contact.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\education.ts" />

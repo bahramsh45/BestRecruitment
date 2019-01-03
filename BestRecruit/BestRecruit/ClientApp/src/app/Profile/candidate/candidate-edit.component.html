@@ -4,124 +4,125 @@
   <h3 style="display:inline;">Profile</h3>
   <hr />
 </div>
-
-<form #candidateForm ="ngForm" (ngSubmit)="actionOnSubmit(candidateForm)" novalidate>
-  <div class="row">
-    <div class="col-sm-3">
-      <label class="">First Name</label>
-      <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,candidateForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidate.firstName" class="form-control"  required placeholder="First Name" />
-      <small   [hidden]="firstName.valid || (firstName.pristine && !candidateForm.submitted)"  class="text-danger">
-        First Name is required.
-      </small>
-    </div>
-    <div class="col-sm-3">
-      <label>Last Name</label>
-      <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,candidateForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidate.lastName" class="form-control" required placeholder="Last Name" />
-      <small [hidden]="lastName.valid || (lastName.pristine && !candidateForm.submitted)" class="text-danger">
-        Last Name is required.
-      </small>
-    </div>
-  </div>
-  <h3>Contact</h3>
-  <hr />
-  <div class="row">
-    <div class="col-sm-3">
-      <label class="">Phone</label>
-      <input type="text" name="phone" [ngStyle]="{'border-color' : getStyle(phone,candidateForm.submitted)}"  #phone="ngModel" [(ngModel)]="contact.phoneNumber" class="form-control" required placeholder="Phone" />
-      <small [hidden]="phone.valid || (phone.pristine && !candidateForm.submitted)" class="text-danger">
-        Phone Number is required.
-      </small>
-    </div>
-    <div class="col-sm-5">
-      <label class="">Email</label>
-      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,candidateForm.submitted)}" [(ngModel)]="contact.email" #email="ngModel" class="form-control" required email placeholder="Email"  />
-     
-      <div *ngIf="candidateForm.submitted && email.invalid" >
-        <div *ngIf="email.errors.required" class="text-danger">Email is required</div>
-        <div *ngIf="email.errors.email" class="text-danger">Invalid email address</div>
+<div *ngIf="displayCondition()">
+  <form #candidateForm="ngForm" (ngSubmit)="actionOnSubmit(candidateVW)" novalidate>
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="">First Name</label>
+        <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,candidateForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidateVW.candidate.firstName" class="form-control" required placeholder="First Name" />
+        <small [hidden]="firstName.valid || (firstName.pristine && !candidateForm.submitted)" class="text-danger">
+          First Name is required.
+        </small>
       </div>
-      
+      <div class="col-sm-3">
+        <label>Last Name</label>
+        <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,candidateForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidateVW.candidate.lastName" class="form-control" required placeholder="Last Name" />
+        <small [hidden]="lastName.valid || (lastName.pristine && !candidateForm.submitted)" class="text-danger">
+          Last Name is required.
+        </small>
+      </div>
+    </div>
+    <h3>Contact</h3>
+    <hr />
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="">Phone</label>
+        <input type="text" name="phone" [ngStyle]="{'border-color' : getStyle(phone,candidateForm.submitted)}" #phone="ngModel" [(ngModel)]="candidateVW.contact.phoneNumber" class="form-control" required placeholder="Phone" />
+        <small [hidden]="phone.valid || (phone.pristine && !candidateForm.submitted)" class="text-danger">
+          Phone Number is required.
+        </small>
+      </div>
+      <div class="col-sm-5">
+        <label class="">Email</label>
+        <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,candidateForm.submitted)}" [(ngModel)]="candidateVW.contact.email" #email="ngModel" class="form-control" required email placeholder="Email" />
+
+        <div *ngIf="candidateForm.submitted && email.invalid">
+          <div *ngIf="email.errors.required" class="text-danger">Email is required</div>
+          <div *ngIf="email.errors.email" class="text-danger">Invalid email address</div>
+        </div>
+
+
+      </div>
+      <div class="col-sm-2">
+        <label class="">Mobile</label>
+        <input type="text" name="mobile" [(ngModel)]="candidateVW.contact.mobile" class="form-control" placeholder="Mobile" />
+      </div>
+      <div class="col-sm-2">
+        <label class="">Skyp Id</label>
+        <input type="text" name="skypid" [(ngModel)]="candidateVW.contact.skypId" class="form-control" placeholder="Skyp Id" />
+      </div>
 
     </div>
-    <div class="col-sm-2">
-      <label class="">Mobile</label>
-      <input type="text" name="mobile" [(ngModel)]="contact.mobile" class="form-control" placeholder="Mobile" />
+    <h3>Address</h3>
+    <hr />
+    <div class="row">
+      <div class="col-sm-4">
+        <label class="">Address 1</label>
+        <input type="text" name="address1" [ngStyle]="{'border-color' : getStyle(address1,candidateForm.submitted)}" [(ngModel)]="candidateVW.address.address1" #address1="ngModel" class="form-control" required placeholder="Address 1" />
+        <small [hidden]="address1.valid || (address1.pristine && !candidateForm.submitted)" class="text-danger">
+          Address 1 is required.
+        </small>
+      </div>
+      <div class="col-sm-2">
+        <label class="" for="city">City</label>
+        <input type="text" name="city" [(ngModel)]="candidateVW.address.city" [ngStyle]="{'border-color' : getStyle(city,candidateForm.submitted)}" #city="ngModel" class="form-control" required placeholder="City" />
+        <small [hidden]="city.valid || (city.pristine && !candidateForm.submitted)" class="text-danger">
+          City is required.
+        </small>
+      </div>
+      <div class="col-sm-2">
+        <label class="" for="postalcode">Postal Code</label>
+        <input type="text" name="postalcode" [(ngModel)]="candidateVW.address.postalCode" class="form-control" placeholder="Postal Code" />
+      </div>
+      <div class="col-sm-3">
+        <label class="">Country</label>
+        <input type="text" name="country" [(ngModel)]="candidateVW.address.country" class="form-control" placeholder="Country" />
+      </div>
     </div>
-    <div class="col-sm-2">
-      <label class="">Skyp Id</label>
-      <input type="text" name="skypid" [(ngModel)]="contact.skypId" class="form-control" placeholder="Skyp Id" />
-    </div>
+    <h3>Other</h3>
+    <hr />
+    <div class="row">
+      <div class="col-sm-4" style="margin-top:10px">
+        <label>Employment Type</label>
+        <select name="employmentType" class="form-control" [(ngModel)]="candidateVW.candidate.employmentType">
+          <option *ngFor="let emp of empList" [value]="emp.id">
+            {{emp.description}}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-4" style="margin-top:10px">
+        <label>&nbsp;</label>
 
+      </div>
+      <div class="col-sm-3" style="margin-top:10px">
+        <label class="">Start Date</label>
+        <angular2-date-picker name="readdyToWorkDate" [(ngModel)]="candidateVW.candidate.readdyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-4" style="margin-top:10px">
+        <input type="checkbox" name="athorized" [(ngModel)]="candidateVW.candidate.authorized" />
+        <label>Authorized to work in Canada</label>
+      </div>
+      <div class="col-sm-4" style="margin-top:10px">
+        <input type="checkbox" name="relocate" [(ngModel)]="candidateVW.candidate.relocation" />
+        <label>Willing to Relocate</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" style="margin-top:10px">
+        <label>Notes</label>
+        <textarea name="note" [(ngModel)]="candidateVW.candidate.note" rows="3" style="width:100%"></textarea>
+
+      </div>
+      <div class="col-sm-6" style="margin-top:10px;text-align:right;padding-top:50px">
+        <button id="btnCancel" class="btn btn-danger" (click)="cancel()">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
+        <button id="btnSave" type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
+      </div>
+    </div>
+  </form>
   </div>
-  <h3>Address</h3>
-  <hr />
-  <div class="row">
-    <div class="col-sm-4">
-      <label class="">Address 1</label>
-      <input type="text" name="address1" [ngStyle]="{'border-color' : getStyle(address1,candidateForm.submitted)}"  [(ngModel)]="address.address1" #address1="ngModel" class="form-control" required placeholder="Address 1" />
-      <small [hidden]="address1.valid || (address1.pristine && !candidateForm.submitted)" class="text-danger">
-        Address 1 is required.
-      </small>
-    </div>
-    <div class="col-sm-2">
-      <label class="" for="city">City</label>
-      <input type="text" name="city" [(ngModel)]="address.city" [ngStyle]="{'border-color' : getStyle(city,candidateForm.submitted)}" #city="ngModel" class="form-control" required  placeholder="City" />
-      <small [hidden]="city.valid || (city.pristine && !candidateForm.submitted)" class="text-danger">
-        City is required.
-      </small>
-    </div>
-    <div class="col-sm-2">
-      <label class="" for="postalcode">Postal Code</label>
-      <input type="text" name="postalcode" [(ngModel)]="address.postalCode" class="form-control" placeholder="Postal Code" />
-    </div>
-    <div class="col-sm-3">
-      <label class="">Country</label>
-      <input type="text" name="country" [(ngModel)]="address.country" class="form-control" placeholder="Country" />
-    </div>
-  </div>
-  <h3>Other</h3>
-  <hr />
-  <div class="row">
-    <div class="col-sm-4" style="margin-top:10px">
-      <label>Employment Type</label>
-      <select name="employmentType" class="form-control" [(ngModel)]="candidate.employmentType">
-        <option *ngFor="let emp of empList"  [value]="emp.id" >
-          {{emp.description}}
-        </option>
-      </select>
-    </div>
-    <div class="col-sm-4" style="margin-top:10px">
-      <label>&nbsp;</label>
-
-    </div>
-    <div class="col-sm-3" style="margin-top:10px">
-      <label class="">Start Date</label>
-      <angular2-date-picker name="readyToWorkDate" [(ngModel)]="candidate.readyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
-
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="col-sm-4" style="margin-top:10px">
-      <input type="checkbox" name="athorized" />
-      <label>Authorized to work in Canada</label>
-    </div>
-    <div class="col-sm-4" style="margin-top:10px">
-      <input type="checkbox" name="relocate" />
-      <label>Willing to Relocate</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6" style="margin-top:10px">
-      <label>Notes</label>
-      <textarea rows="3" style="width:100%"></textarea>
-
-    </div>
-    <div class="col-sm-6" style="margin-top:10px;text-align:right;padding-top:50px">
-      <button id="btnCancel" class="btn btn-danger" (click)="cancel()">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
-      <button id="btnSave" type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
-    </div>
-  </div>
-</form>
 
 

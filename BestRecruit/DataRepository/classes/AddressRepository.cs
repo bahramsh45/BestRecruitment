@@ -6,14 +6,17 @@ namespace DataRepository
 {
     public class AddressRepository : GenericRepository<Recruitment, Address>, IAddressRepository
     {
-        public void AddAddress(Address address)
+        public int AddAddress(Address address)
         {
             Add(address);
+            Save();
+            return address.Id;
         }
 
         public void EditAddress(Address address)
         {
             Edit(address);
+            Save();
         }
 
         public Address GetAddress(int AddressId)

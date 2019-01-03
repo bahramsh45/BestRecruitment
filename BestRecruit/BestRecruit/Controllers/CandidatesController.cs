@@ -1,6 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using DataBaseImpl;
 using DataRepository;
 using BestRecruit.viewmodels;
 
@@ -53,7 +52,43 @@ namespace BestRecruit.Controllers
             return Ok(candidateVW);
         }
 
-        
+
+        [HttpPost]
+        public IActionResult PostCandidate([FromBody] CandidateViewModel candidateVW)
+        {
+            int Id;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            candidateVW.candidate.AddrId = _addressRepository.AddAddress(candidateVW.address);
+            candidateVW.candidate.ContactId = _contactRepository.AddContact(candidateVW.contact);
+          
+            Id = _candidateRepository.AddCandidate(candidateVW.candidate);
+          
+
+            return CreatedAtAction("PostExperience", new { id = Id }, candidateVW.candidate);
+        }
+
+        [HttpPut]
+        public IActionResult PutCandidate([FromBody] CandidateViewModel candidateVW)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+
+            }
+          
+            _candidateRepository.EditCandidate(candidateVW.candidate);
+            _addressRepository.EditAddress(candidateVW.address);
+            _contactRepository.EditContact(candidateVW.contact);
+
+            return Ok(candidateVW);
+        }
+
+
+
     }
 }
 

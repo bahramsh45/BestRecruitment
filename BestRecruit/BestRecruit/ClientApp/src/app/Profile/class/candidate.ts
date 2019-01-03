@@ -1,6 +1,6 @@
 
-  export class Candidate {
-    candiadateId: number;
+export class Candidate {
+    Id: number;
     firstName: string;
     lastName: string;
     addrId: number;

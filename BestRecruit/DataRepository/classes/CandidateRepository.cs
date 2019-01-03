@@ -6,14 +6,17 @@ namespace DataRepository
 {
     public class CandidateRepository : GenericRepository<Recruitment, Candidate>, ICandidateRepository
     {
-        public void AddCandidate(Candidate candidate)
+        public int AddCandidate(Candidate candidate)
         {
             Add(candidate);
+            Save();
+            return candidate.Id;
         }
 
         public void EditCandidate(Candidate candidate)
         {
             Edit(candidate);
+            Save();
         }
 
         public Candidate GetCandidate(int CandidateId)

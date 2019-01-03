@@ -6,14 +6,17 @@ namespace DataRepository
 {
     public class ContactRepository : GenericRepository<Recruitment, Contact>, IContactRepository
     {
-        public void AddContact(Contact contact)
+        public int AddContact(Contact contact)
         {
             Add(contact);
+            Save();
+            return contact.Id;
         }
 
         public void EditContact(Contact contact)
         {
             Edit(contact);
+            Save();
         }
 
         public Contact GetContact(int ContactId)
