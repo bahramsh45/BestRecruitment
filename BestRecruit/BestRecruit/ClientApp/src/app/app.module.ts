@@ -17,12 +17,6 @@ declare let toastr: any;
 
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

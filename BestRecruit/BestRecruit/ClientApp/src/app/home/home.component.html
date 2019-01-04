@@ -7,30 +7,33 @@
           <strong> Sign in to continue</strong>
         </div>
         <div class="panel-body">
-          <form role="form" (ngSubmit)="actionOnSubmit()" novalidate>
+          <form #loginForm="ngForm" (ngSubmit)="actionOnSubmit(loginForm)" novalidate>
             <fieldset>
-              <div class="row">
-                <!--<div class="center-block">
-                  <img class="profile-img"
-                       src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
-                </div>-->
-              </div>
-              <div class="row">
+
+              <div class="row" *ngIf="userinfo">
                 <div class="col-sm-12 col-md-10  col-md-offset-1 ">
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                       </span>
-                      <input class="form-control" placeholder="Username" name="loginname" value="bahram" type="text" autofocus>
+                      <input type="text" [(ngModel)]="userinfo.userName" #userName="ngModel" [ngStyle]="{'border-color' : getStyle(userName,loginForm.submitted)}" required name="userName" class="form-control" placeholder="User Name">
                     </div>
+                    <div *ngIf="!userName.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
+                      User Name is required.
+                    </div>
+
                   </div>
+
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                       </span>
-                      <input class="form-control" placeholder="Password" name="password" type="password" value="bah333">
+                      <input type="password" name="passWord" [(ngModel)]="userinfo.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,loginForm.submitted)}" class="form-control" required placeholder="passWord" />
+                    </div>
+                    <div *ngIf="!passWord.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
+                      Password is required.
                     </div>
                   </div>
                   <div class="form-group">

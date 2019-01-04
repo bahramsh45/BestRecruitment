@@ -44,9 +44,11 @@ export class CandidateComponent implements OnInit {
     this.router.navigate(["/profile/candidateView"]);
 
   }
-  actionOnSubmit(candidateVW) {
+  actionOnSubmit(candidateVW, form) {
+    if (form.valid) {
       this.dataService.PutCandidate(candidateVW);
       this.router.navigate(["/profile/candidateView"]);
+    }
   }
 
   getStyle(f,form) {

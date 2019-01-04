@@ -12,8 +12,7 @@ import { CandidateViewModel } from '../class/candidateViewModel';
   templateUrl: './candidate-view.component.html'
 })
 
-export class CandidateViewComponent implements OnInit {
-
+export class CandidateViewComponent implements OnInit  {
   public candidateVW: CandidateViewModel;
   public empList: EmploymentType[];
   constructor(private router: Router, private dataService: candidateService) {

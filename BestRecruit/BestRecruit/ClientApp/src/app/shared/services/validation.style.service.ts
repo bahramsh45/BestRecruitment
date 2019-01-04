@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
 export class ValidationStyleService {
 
   getStyle(f, form) {
-    if ((!f.valid && !f.pristine)) {
-      return '#a94442';
-    }
-    if (form && !f.valid) {
-      return '#a94442';
+    if (f != undefined) {
+      if ((!f.valid && !f.pristine)) {
+        return '#a94442';
+      }
+      if (form && !f.valid) {
+        return '#a94442';
+      }
     }
     return 'silver';
   }

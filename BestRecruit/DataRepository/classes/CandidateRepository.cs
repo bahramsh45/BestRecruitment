@@ -6,6 +6,12 @@ namespace DataRepository
 {
     public class CandidateRepository : GenericRepository<Recruitment, Candidate>, ICandidateRepository
     {
+
+        public bool IsPasswordValid(string PassWord)
+        {
+            return GetAll().Any(x => x.Password == PassWord);          
+        }
+
         public int AddCandidate(Candidate candidate)
         {
             Add(candidate);

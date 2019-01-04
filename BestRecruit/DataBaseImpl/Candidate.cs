@@ -49,6 +49,9 @@ namespace DataBaseImpl
         [StringLength(250)]
         public string Note { get; set; }
 
+        [StringLength(50)]
+        public string Password { get; set; }
+
         public virtual Address Address { get; set; }
 
         public virtual Contact Contact { get; set; }

@@ -45,6 +45,7 @@
     <None Remove="ClientApp\src\app\Profile\class\experience.ts" />
     <None Remove="ClientApp\src\app\Profile\class\resume.ts" />
     <None Remove="ClientApp\src\app\Profile\class\skill.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\userInfo.ts" />
     <None Remove="ClientApp\src\app\Profile\Profile.component.ts" />
     <None Remove="ClientApp\src\app\Profile\profile.module.ts" />
     <None Remove="ClientApp\src\app\shared\services\candidate.service.ts" />
@@ -75,6 +76,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\employmentType.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\resume.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\skill.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\userInfo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\candidate.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\list.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\resume.service.ts" />

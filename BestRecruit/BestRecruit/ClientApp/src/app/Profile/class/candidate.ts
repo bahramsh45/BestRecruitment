@@ -10,7 +10,7 @@ export class Candidate {
     employmentType: number;
     rate: number;
     salary: number;
-    readyToWorkDate: Date;
+    readdyToWorkDate: Date;
     notice: string;
     note: string;
   }

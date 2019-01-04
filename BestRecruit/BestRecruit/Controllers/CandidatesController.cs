@@ -24,6 +24,13 @@ namespace BestRecruit.Controllers
             _contactRepository = contactRepository;
         }
 
+        [HttpGet]
+        [Route("LoginCandidate")]
+        public IActionResult LoginCandidate([FromQuery] string userName, [FromQuery] string passWord)
+        {
+            var result = _candidateRepository.IsPasswordValid(passWord) && _contactRepository.IsUserNameValid(userName);
+            return Ok(result);
+        }
 
         [HttpGet]
         [Route("GetCandidate/{id}")]

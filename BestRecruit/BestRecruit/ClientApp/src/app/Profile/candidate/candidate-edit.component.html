@@ -5,7 +5,7 @@
   <hr />
 </div>
 <div *ngIf="displayCondition()">
-  <form #candidateForm="ngForm" (ngSubmit)="actionOnSubmit(candidateVW)" novalidate>
+  <form #candidateForm="ngForm" (ngSubmit)="actionOnSubmit(candidateVW,candidateForm)" novalidate>
     <div class="row">
       <div class="col-sm-3">
         <label class="">First Name</label>
@@ -36,7 +36,7 @@
         <label class="">Email</label>
         <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,candidateForm.submitted)}" [(ngModel)]="candidateVW.contact.email" #email="ngModel" class="form-control" required email placeholder="Email" />
 
-        <div *ngIf="candidateForm.submitted && email.invalid">
+        <div *ngIf="email.invalid">
           <div *ngIf="email.errors.required" class="text-danger">Email is required</div>
           <div *ngIf="email.errors.email" class="text-danger">Invalid email address</div>
         </div>
@@ -85,7 +85,7 @@
       <div class="col-sm-4" style="margin-top:10px">
         <label>Employment Type</label>
         <select name="employmentType" class="form-control" [(ngModel)]="candidateVW.candidate.employmentType">
-          <option *ngFor="let emp of empList" [value]="emp.id">
+          <option *ngFor="let emp of empList" [value]="emp.id" [selected]="candidateVW.candidate.employmentType">
             {{emp.description}}
           </option>
         </select>
@@ -97,9 +97,7 @@
       <div class="col-sm-3" style="margin-top:10px">
         <label class="">Start Date</label>
         <angular2-date-picker name="readdyToWorkDate" [(ngModel)]="candidateVW.candidate.readdyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
-
       </div>
-
     </div>
     <div class="row">
       <div class="col-sm-4" style="margin-top:10px">

@@ -6,6 +6,11 @@ namespace DataRepository
 {
     public class ContactRepository : GenericRepository<Recruitment, Contact>, IContactRepository
     {
+
+        public bool IsUserNameValid(string userName)
+        {
+            return GetAll().Any(x => x.Email == userName);
+        }
         public int AddContact(Contact contact)
         {
             Add(contact);
