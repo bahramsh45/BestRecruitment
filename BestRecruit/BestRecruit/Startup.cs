@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace BestRecruit
 {
@@ -22,6 +23,10 @@ namespace BestRecruit
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);//You can set Time   
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
@@ -53,6 +58,7 @@ namespace BestRecruit
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>

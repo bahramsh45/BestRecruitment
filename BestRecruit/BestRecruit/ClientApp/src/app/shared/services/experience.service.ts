@@ -25,8 +25,7 @@ export class experienceService  {
   }
 
   getExperiences() :any {
-    let candidateId = 2;
-    return this.http.get<Experience[]>(this._baseurl + 'api/CandidateExperience/GetCandidateExperiences/' + candidateId).subscribe(res => {
+    return this.http.get<Experience[]>(this._baseurl + 'api/CandidateExperience/GetCandidateExperiences/').subscribe(res => {
       this.experienceList = res;
       this.notify();
     });
@@ -53,7 +52,6 @@ export class experienceService  {
   AddExperience(experience: Experience): any {
    
     let headers = new HttpHeaders().set('content-type', 'application/json');
-    experience.candidateId = 2;
     experience.startDate = this.formatDate(experience.startDate.toString());
     experience.endDate = this.formatDate(experience.endDate.toString());
     

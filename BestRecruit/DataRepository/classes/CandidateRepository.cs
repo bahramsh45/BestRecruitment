@@ -7,9 +7,15 @@ namespace DataRepository
     public class CandidateRepository : GenericRepository<Recruitment, Candidate>, ICandidateRepository
     {
 
-        public bool IsPasswordValid(string PassWord)
+        public int AuthenticateUser(string userName, string passWord)
         {
-            return GetAll().Any(x => x.Password == PassWord);          
+            var result = GetAll().FirstOrDefault(x => x.UserName == userName &&  x.Password == passWord); 
+            if (result != null)
+            {
+                return result.Id;
+            }
+
+            return 0;
         }
 
         public int AddCandidate(Candidate candidate)

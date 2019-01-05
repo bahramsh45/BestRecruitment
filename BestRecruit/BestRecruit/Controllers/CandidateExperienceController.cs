@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DataBaseImpl;
 using DataRepository;
-using BestRecruit.viewmodels;
+using Microsoft.AspNetCore.Http;
 
 namespace BestRecruit.Controllers
 {
@@ -19,9 +19,10 @@ namespace BestRecruit.Controllers
         }
         
         [HttpGet]
-        [Route("GetCandidateExperiences/{id}")]
-        public IActionResult GetCandidateExperiences(int id)
+        [Route("GetCandidateExperiences")]
+        public IActionResult GetCandidateExperiences()
         {
+            var id = HttpContext.Session.GetInt32("CandidateId").Value;
             var result = _candidateExperienceRepository.GetCandidateExperiences(id);
             return Ok(result);
         }
@@ -38,6 +39,7 @@ namespace BestRecruit.Controllers
         [HttpPost]
         public IActionResult PostCandidateExperience([FromBody] CandidateExperience candidateExperience)
         {
+            candidateExperience.CandidateId = HttpContext.Session.GetInt32("CandidateId").Value;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -48,7 +50,7 @@ namespace BestRecruit.Controllers
             return CreatedAtAction("PostCandidateExperience", new { id = candidateExperience.Id }, candidateExperience);
         }
 
-        // PUT: api/CandidateExperience/5
+
         [HttpPut]
         public IActionResult PutCandidateExperience([FromBody] CandidateExperience candidateExperience)
         {

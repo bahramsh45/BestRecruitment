@@ -83,6 +83,11 @@ namespace DataBaseImpl
                .IsUnicode(false);
 
             modelBuilder.Entity<Candidate>()
+            .Property(e => e.UserName)
+            .IsUnicode(false);
+
+
+            modelBuilder.Entity<Candidate>()
                 .HasMany(e => e.CandidateCertifications)
                 .WithOne(e => e.Candidate).IsRequired();
 

@@ -33,8 +33,7 @@ export class candidateService {
 
 
   getCandidate(): any {
-    let id = 2;
-    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/' + id);
+    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/');
   }
 
 

@@ -52,6 +52,9 @@ namespace DataBaseImpl
         [StringLength(50)]
         public string Password { get; set; }
 
+        [StringLength(100)]
+        public string UserName { get; set; }
+
         public virtual Address Address { get; set; }
 
         public virtual Contact Contact { get; set; }

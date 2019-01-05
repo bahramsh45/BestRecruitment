@@ -22,8 +22,8 @@ export class HomeComponent {
 
   actionOnSubmit(form) {
     if (form.valid) {
-      this.dataService.LoginUser(this.userinfo.userName, this.userinfo.passWord).subscribe(x => {
-        if (x) {
+      this.dataService.LoginUser(this.userinfo.userName, this.userinfo.passWord).subscribe(pass => {
+        if (pass > 0) {
           this.router.navigate(["/landing"]);
         }
       })    

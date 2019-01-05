@@ -5,7 +5,7 @@ namespace DataRepository
 {
     public interface ICandidateRepository : IGenericRepository<Candidate>
     {
-        bool IsPasswordValid(string PassWord);
+        int AuthenticateUser(string userName, string passWord);
         Candidate GetCandidate(int CandidateId);
         int AddCandidate(Candidate candidate);
         void EditCandidate(Candidate candidate);

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DataRepository;
 using BestRecruit.viewmodels;
+using Microsoft.AspNetCore.Http;
 
 namespace BestRecruit.Controllers
 {
@@ -28,14 +29,19 @@ namespace BestRecruit.Controllers
         [Route("LoginCandidate")]
         public IActionResult LoginCandidate([FromQuery] string userName, [FromQuery] string passWord)
         {
-            var result = _candidateRepository.IsPasswordValid(passWord) && _contactRepository.IsUserNameValid(userName);
-            return Ok(result);
+            var candidateId = _candidateRepository.AuthenticateUser(userName,passWord);
+            if (candidateId > 0)
+            {            
+                HttpContext.Session.SetInt32("CandidateId", candidateId);
+            }
+            return Ok(candidateId);
         }
 
         [HttpGet]
-        [Route("GetCandidate/{id}")]
-        public IActionResult GetCandidate([FromRoute] int id)
+        [Route("GetCandidate")]
+        public IActionResult GetCandidate()
         {
+            var id = HttpContext.Session.GetInt32("CandidateId").Value;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -75,7 +81,7 @@ namespace BestRecruit.Controllers
             Id = _candidateRepository.AddCandidate(candidateVW.candidate);
           
 
-            return CreatedAtAction("PostExperience", new { id = Id }, candidateVW.candidate);
+            return CreatedAtAction("PostCandidate", new { id = Id }, candidateVW.candidate);
         }
 
         [HttpPut]
