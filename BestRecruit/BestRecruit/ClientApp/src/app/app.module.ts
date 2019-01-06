@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing/landing.component';
 import { Toaster_Token } from './shared/services/ToasterService';
+import { RegisterComponent } from './home/register.component';
 
 declare let toastr: any; 
 
@@ -22,7 +23,8 @@ declare let toastr: any;
     AppComponent,
     ProfileComponent,
     HomeComponent,
-    LandingComponent
+    LandingComponent,
+    RegisterComponent
    
   ],
   imports: [
@@ -35,6 +37,7 @@ declare let toastr: any;
     SharedModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'landing', component: LandingComponent },
 

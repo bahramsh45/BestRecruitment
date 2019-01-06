@@ -1,0 +1,82 @@
+
+<div class="container">
+  <div class="row" style="z-index:11111;margin-top:100px">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Register</strong>
+        </div>
+        <div class="panel-body">
+          <form #registerForm="ngForm" (ngSubmit)="actionOnSubmit(registerForm,candidateVW)" novalidate>
+            <fieldset>
+              <div class="row" *ngIf="displayCondition()">
+                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label class="">First Name</label>
+                      <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,registerForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidateVW.candidate.firstName" class="form-control" required placeholder="First Name" />
+                    </div>
+                    <div *ngIf="!firstName.valid && registerForm.submitted" class="text-danger">
+                      User Name is required.
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label class="">Last Name</label>
+                      <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,registerForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidateVW.candidate.lastName" class="form-control" required placeholder="Last Name" />
+                    </div>
+                    <div *ngIf="!lastName.valid && registerForm.submitted" class="text-danger">
+                      Last name is required.
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label class="">Email</label>
+                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidateVW.contact.email" class="form-control" required placeholder="Email" style="width:267px" />
+                    </div>
+                    <div *ngIf="!email.valid && registerForm.submitted" class="text-danger">
+                      Email is required.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label class="">Password</label>
+                      <input type="password" name="passWord" [(ngModel)]="candidateVW.candidate.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,registerForm.submitted)}" class="form-control" required placeholder="passWord" />
+                    </div>
+                    <div *ngIf="!passWord.valid && registerForm.submitted" class="text-danger">
+                      Password is required.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label class="">Upload Resume</label>
+                      <label class="btn btn-default">
+                        <input #file type="file" multiple (change)="upload(file.files)" style="width:237px" />
+                      </label>
+                      <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+                        {{progress}}%
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <img src="../../assets/back.jpg" alt="check_image" style="width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:-9999">
+</div>

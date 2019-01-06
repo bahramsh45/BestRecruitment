@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { CandidateViewModel } from '../../Profile/class/candidateViewModel';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Candidate } from '../../Profile/class/candidate';
 
 
 @Injectable()
@@ -51,6 +52,22 @@ export class candidateService {
 
     })
     return result;
+  }
+
+  PostCandidate(candidateVW: CandidateViewModel): any {
+
+    let headers = new HttpHeaders().set('content-type', 'application/json');
+    
+    return this.http.post(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
+      subscribe(() => {
+        this.BroadCast(candidateVW);
+        this._toasterService.success('Your Info Submitted successfully!');
+
+      },
+        err => {
+          alert(err.message);
+        });
+
   }
 
   PutCandidate(candidateVW: CandidateViewModel): any {

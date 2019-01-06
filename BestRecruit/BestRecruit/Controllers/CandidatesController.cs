@@ -100,8 +100,6 @@ namespace BestRecruit.Controllers
             return Ok(candidateVW);
         }
 
-
-
     }
 }
 
