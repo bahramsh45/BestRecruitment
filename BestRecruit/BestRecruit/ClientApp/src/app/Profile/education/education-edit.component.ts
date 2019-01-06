@@ -33,20 +33,29 @@ export class EducationComponent implements OnInit, AfterViewChecked {
   }
 
 
-  actionOnSubmit(form) {
+  actionOnSubmit(edu) {
 
+    if (edu.id == 0 || edu.id == undefined) {
+      this.dataService.AddEducation(edu)
+    }
+    else {
+      this.dataService.PutEducation(edu)
+    }
 
+    this.router.navigate(["/profile/educationView"]);
   }
 
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
+      this.dataService.getEducation(this.id).subscribe(res => {
+        this.education = this.id == 0 ? new Education() : res;
+      });
 
     });
 
-    var result = this.dataService.getEducation(this.id);
-    this.education = this.id == 0 ? new Education() : result;
+ 
     
   }
   ngAfterViewChecked() {

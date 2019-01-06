@@ -54,6 +54,10 @@ export class RegisterComponent {
     return this.vs.getStyle(f, form);
   }
 
+  cancel() {
+    this.router.navigate([""]);
+  }
+
   actionOnSubmit(form,candidateVW) {
    if (form.valid) {
      candidateVW.candidate.userName = candidateVW.contact.email;

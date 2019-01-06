@@ -113,10 +113,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\CandidateEducationRepository.cs" />
     <Compile Include="classes\CandidateExperienceRepository.cs" />
     <Compile Include="classes\ContactRepository.cs" />
     <Compile Include="classes\AddressRepository.cs" />
     <Compile Include="classes\CandidateRepository.cs" />
+    <Compile Include="interfaces\ICandidateEducationRepository.cs" />
     <Compile Include="interfaces\ICandidateExperienceRepository.cs" />
     <Compile Include="interfaces\IContactRepository.cs" />
     <Compile Include="interfaces\IAddressRepository.cs" />

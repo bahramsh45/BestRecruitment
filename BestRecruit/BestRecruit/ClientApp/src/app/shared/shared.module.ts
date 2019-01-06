@@ -8,8 +8,6 @@ import { candidateService } from './services/candidate.service';
 import { resumeService } from './services/resume.service';
 
 
-
-
 @NgModule()
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

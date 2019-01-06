@@ -1,6 +1,6 @@
 export class Education {
   id: number;
-  candiadateId: number;
+  candidateId: number;
   instutitionName: string;
   startDate: Date;
   endDate: Date;

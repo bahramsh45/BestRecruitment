@@ -1,40 +1,42 @@
 <h3>Education</h3>
 <hr />
-<form #educationForm="ngForm" (ngSubmit)="actionOnSubmit(educationForm)" novalidate>
-  <div class="row">
-    <div class="col-sm-6">
-      <label class="">Institution Name</label>
-      <input type="text" name="instutitionName" [ngStyle]="{'border-color' : getStyle(instutitionName,educationForm.submitted)}" [(ngModel)]="education.instutitionName" #instutitionName="ngModel" required class="form-control" placeholder="Instutition Name" />
+<form #educationForm="ngForm" (ngSubmit)="actionOnSubmit(education)" novalidate>
+  <div *ngIf="education">
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="">Institution Name</label>
+        <input type="text" name="instutitionName" [ngStyle]="{'border-color' : getStyle(instutitionName,educationForm.submitted)}" [(ngModel)]="education.instutitionName" #instutitionName="ngModel" required class="form-control" placeholder="Instutition Name" />
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <small [hidden]="instutitionName.valid || (instutitionName.pristine && !educationForm.submitted)" class="text-danger">
-        Instutition Name is required.
-      </small>
+    <div class="row">
+      <div class="col-sm-6">
+        <small [hidden]="instutitionName.valid || (instutitionName.pristine && !educationForm.submitted)" class="text-danger">
+          Instutition Name is required.
+        </small>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <label class="">Start Date</label>
-      <angular2-date-picker name="startDate" [(ngModel)]="education.startDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="">Start Date</label>
+        <angular2-date-picker name="startDate" [(ngModel)]="education.startDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+      </div>
+      <div class="col-sm-3">
+        <label>End Date</label>
+        <angular2-date-picker name="endDate" [(ngModel)]="education.endDate" #endDate="ngModel" [settings]="settings"></angular2-date-picker>
+      </div>
     </div>
-    <div class="col-sm-3">
-      <label>End Date</label>
-      <angular2-date-picker name="endDate" [(ngModel)]="education.endDate" #endDate="ngModel" [settings]="settings"></angular2-date-picker>
+    <div class="row">
+      <div class="col-sm-6">
+        <label>Degree</label>
+        <input type="text" name="degree" [ngStyle]="{'border-color' : getStyle(instutitionName,educationForm.submitted)}" [(ngModel)]="education.degree" class="form-control" #degree="ngModel" required placeholder="Degree" />
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <label>Degree</label>
-      <input type="text" name="degree" [ngStyle]="{'border-color' : getStyle(instutitionName,educationForm.submitted)}" [(ngModel)]="education.degree" class="form-control" #degree="ngModel" required placeholder="Degree" />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <small [hidden]="degree.valid || (degree.pristine && !educationForm.submitted)" class="text-danger">
-        Degree is required.
-      </small>
+    <div class="row">
+      <div class="col-sm-6">
+        <small [hidden]="degree.valid || (degree.pristine && !educationForm.submitted)" class="text-danger">
+          Degree is required.
+        </small>
+      </div>
     </div>
   </div>
   <div class="row" style="margin-top:30px">
