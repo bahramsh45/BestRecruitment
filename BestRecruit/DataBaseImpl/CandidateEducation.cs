@@ -20,6 +20,9 @@ namespace DataBaseImpl
 
         public DateTime? EndDate { get; set; }
 
+        [StringLength(50)]
+        public string Degree { get; set; }
+
         public virtual Candidate Candidate { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 <h3>Skills</h3>
 <hr />
-<div *ngFor="let e of skillList">
+<div *ngFor="let e of (skillList | async)">
   <div class="row">
     <div class="col-sm-6">
       <label class="">Skill Name</label>
@@ -12,13 +12,13 @@
     </div>
     <div class="col-sm-1">
       <div>&nbsp;</div>
-      <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+      <a (click)="deleteSkill(e.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-3">
       <label class="">Year Of Experience</label>
-      <span class="form-control">{{e.yearOfExperience}}</span>
+      <span class="form-control">{{e.yearsOfExperience}}</span>
     </div>
     <div class="col-sm-3">
       <label>Last Year Used</label>

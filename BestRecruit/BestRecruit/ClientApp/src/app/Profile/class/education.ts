@@ -1,7 +1,7 @@
 export class Education {
   id: number;
   candidateId: number;
-  instutitionName: string;
+  institutionName: string;
   startDate: Date;
   endDate: Date;
   degree: string;

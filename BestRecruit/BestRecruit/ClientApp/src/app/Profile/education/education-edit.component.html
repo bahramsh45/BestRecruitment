@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col-sm-6">
         <label class="">Institution Name</label>
-        <input type="text" name="instutitionName" [ngStyle]="{'border-color' : getStyle(instutitionName,educationForm.submitted)}" [(ngModel)]="education.instutitionName" #instutitionName="ngModel" required class="form-control" placeholder="Instutition Name" />
+        <input type="text" name="institutionName" [ngStyle]="{'border-color' : getStyle(institutionName,educationForm.submitted)}" [(ngModel)]="education.institutionName" #institutionName="ngModel" required class="form-control" placeholder="Instutition Name" />
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <small [hidden]="instutitionName.valid || (instutitionName.pristine && !educationForm.submitted)" class="text-danger">
-          Instutition Name is required.
+        <small [hidden]="institutionName.valid || (institutionName.pristine && !educationForm.submitted)" class="text-danger">
+          institution Name is required.
         </small>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { Toaster_Token } from './ToasterService';
+
 import { Injectable, Inject} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Experience } from '../../Profile/class/experience';
 import { Subject } from 'rxjs/Subject'
+import { Ng2IzitoastService } from 'ng2-izitoast';
 
 
 
@@ -14,7 +15,7 @@ export class experienceService  {
   private _explist = new Subject();
   expList$ = this._explist.asObservable();
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, @Inject(Toaster_Token) private _toasterService: any) {
+  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -38,7 +39,8 @@ export class experienceService  {
   DeleteExperience(id): any {
     return this.http.delete(this._baseurl + 'api/CandidateExperience/DeleteCandidateExperience/' + id).
       subscribe(() => {
-        this._toasterService.success('Experience removed successfully!');
+        this.iziToast.show({ title: "'Experience removed successfully!", position: "topRight", backgroundColor: "lime" });
+
         var idx = this.experienceList.findIndex(x => x.id == id);
         this.experienceList.splice(idx, 1);
        
@@ -58,7 +60,7 @@ export class experienceService  {
     
     return this.http.post(this._baseurl + 'api/CandidateExperience', experience, { headers: headers }).
       subscribe(data => {
-         this._toasterService.success('New experience added successfully!');
+        this.iziToast.show({ title: "New experience added successfully!", position: "topRight", backgroundColor: "lime" });
        
          experience.id = Object.keys(data).map(function (key) { return data[key] })[0];
          this.experienceList.push(experience);
@@ -79,7 +81,8 @@ export class experienceService  {
 
     return this.http.put(this._baseurl + 'api/CandidateExperience', experience, { headers: headers }).
       subscribe(data => {
-        this._toasterService.success('Experience updated successfully!');
+        this.iziToast.show({ title: "Experience updated successfully!", position: "topRight", backgroundColor: "lime" });
+
        
         experience.id = Object.keys(data).map(function (key) { return data[key] })[0];
         experience.candidateId = Object.keys(data).map(function (key) { return data[key] })[1];

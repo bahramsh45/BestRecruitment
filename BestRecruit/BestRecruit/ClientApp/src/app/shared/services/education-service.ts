@@ -1,8 +1,11 @@
-import { Toaster_Token } from './ToasterService';
+
 import { Injectable, Inject } from '@angular/core';
 import { Education } from '../../Profile/class/education';
 import { Subject } from 'rxjs/Subject'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Ng2IzitoastService } from 'ng2-izitoast';
+
+
 
 @Injectable()
 export class educationService {
@@ -11,7 +14,7 @@ export class educationService {
   private educationList: Education[];
   private _edulist = new Subject();
   eduList$ = this._edulist.asObservable();
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, @Inject(Toaster_Token) private _toasterService: any) {
+  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -34,7 +37,8 @@ export class educationService {
   DeleteEducation(id): any {
     return this.http.delete(this._baseurl + 'api/CandidateEducation/DeleteCandidateEducation/' + id).
       subscribe(() => {
-        this._toasterService.success('Education removed successfully!');
+        this.iziToast.show({ title: "Education removed successfully!", position: "topRight", backgroundColor: "lime" });
+
         var idx = this.educationList.findIndex(x => x.id == id);
         this.educationList.splice(idx, 1);
 
@@ -54,7 +58,7 @@ export class educationService {
 
     return this.http.post(this._baseurl + 'api/CandidateEducation', education, { headers: headers }).
       subscribe(data => {
-        this._toasterService.success('New education added successfully!');
+        this.iziToast.show({ title: "New education added successfully!", position: "topRight", backgroundColor: "lime" });
 
         education.id = Object.keys(data).map(function (key) { return data[key] })[0];
         this.educationList.push(education);
@@ -75,11 +79,12 @@ export class educationService {
 
     return this.http.put(this._baseurl + 'api/CandidateEducation', education, { headers: headers }).
       subscribe(data => {
-        this._toasterService.success('Education updated successfully!');
+        this.iziToast.show({ title: "Education updated successfully!", position: "topRight", backgroundColor: "lime" });
+  
 
         education.id = Object.keys(data).map(function (key) { return data[key] })[0];
         education.candidateId = Object.keys(data).map(function (key) { return data[key] })[1];
-        education.instutitionName = Object.keys(data).map(function (key) { return data[key] })[2];
+        education.institutionName = Object.keys(data).map(function (key) { return data[key] })[2];
         education.startDate = Object.keys(data).map(function (key) { return data[key] })[3];
         education.endDate = Object.keys(data).map(function (key) { return data[key] })[4];
         education.degree = Object.keys(data).map(function (key) { return data[key] })[5];

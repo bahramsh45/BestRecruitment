@@ -1,11 +1,13 @@
-import { Toaster_Token } from './ToasterService';
+
 import { Injectable, Inject } from '@angular/core';
 import { EmploymentType } from '../../Profile/class/employmentType';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { CandidateViewModel } from '../../Profile/class/candidateViewModel';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Candidate } from '../../Profile/class/candidate';
+import { Ng2IzitoastService } from 'ng2-izitoast';
+
+
 
 
 @Injectable()
@@ -17,7 +19,7 @@ export class candidateService {
   _cVW$ = this._cVW.asObservable();
 
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, @Inject(Toaster_Token) private _toasterService: any) {
+  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -61,8 +63,8 @@ export class candidateService {
     return this.http.post(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidateVW);
-        this._toasterService.success('Your Info Submitted successfully!');
-
+        this.iziToast.show({ title: "Your Info Submitted successfully!", position: "topRight", backgroundColor:"lime" });
+        
       },
         err => {
           alert(err.message);
@@ -77,8 +79,8 @@ export class candidateService {
     return this.http.put(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidateVW);
-        this._toasterService.success('Candidate Info updated successfully!');
-
+        this.iziToast.show({ title: "Candidate Info updated successfully!", position: "topRight", backgroundColor: "lime" });
+  
       },
         err => {
           alert(err.message);

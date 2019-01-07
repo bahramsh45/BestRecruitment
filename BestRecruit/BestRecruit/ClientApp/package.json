@@ -32,6 +32,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "materialize-css": "^1.0.0-rc.2",
+    "ng2-izitoast": "^2.0.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

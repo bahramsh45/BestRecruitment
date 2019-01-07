@@ -8,7 +8,8 @@ import { Candidate } from '../Profile/class/candidate';
 import { Contact } from '../Profile/class/contact';
 import { Address } from '../Profile/class/address';
 import { HttpClient, HttpRequest } from '@angular/common/http'
-import { Toaster_Token } from '../shared/services/ToasterService';
+import { Ng2IzitoastService } from 'ng2-izitoast';
+
 
 
 
@@ -20,7 +21,7 @@ export class RegisterComponent {
 
   public candidateVW: CandidateViewModel = new CandidateViewModel();
 
-  constructor(private http: HttpClient, private router: Router, private vs: ValidationStyleService, private dataService: candidateService, @Inject(Toaster_Token) private _toasterService: any) {
+  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
     this.candidateVW.candidate = new Candidate();
     this.candidateVW.contact = new Contact();
     this.candidateVW.address = new Address();
@@ -44,9 +45,7 @@ export class RegisterComponent {
     });
 
     this.http.request(uploadReq).subscribe(() => {
-
-      this._toasterService.success('Your resume uploded successfully!');
-   
+      this.iziToast.show({ title: "Your resume uploded successfully!", position: "topRight", backgroundColor: "lime" });
     });
   }  
 

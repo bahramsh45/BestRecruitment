@@ -1,7 +1,7 @@
 export class Skill {
   id: number;
-  candiadateId: number;
+  candidateId: number;
   skillName: string;
-  yearOfExperience: number;
+  yearsOfExperience: number;
   lastYearUsed: number;
 }

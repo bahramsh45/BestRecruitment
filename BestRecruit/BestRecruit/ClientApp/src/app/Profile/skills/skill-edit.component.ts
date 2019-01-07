@@ -25,20 +25,26 @@ export class SkillComponent implements OnInit {
     this.router.navigate(["/profile/skillView"]);
   }
 
-  actionOnSubmit(form) {
+  actionOnSubmit(sk) {
 
+    if (sk.id == 0 || sk.id == undefined) {
+      this.dataService.AddSkill(sk)
+    }
+    else {
+      this.dataService.PutSkill(sk)
+    }
+
+    this.router.navigate(["/profile/skillView"]);
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-    this.id = params['id'];
+      this.id = params['id'];
+      this.dataService.getSkill(this.id).subscribe(res => {
+        this.skill = this.id == 0 ? new Skill() : res;
+      });
 
     });
-
-    var result = this.dataService.getSkill(this.id);
-    this.skill = this.id == 0 ? new Skill() : result;
-
-    
   }
 }
 

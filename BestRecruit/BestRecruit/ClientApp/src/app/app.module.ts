@@ -11,11 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing/landing.component';
-import { Toaster_Token } from './shared/services/ToasterService';
+
 import { RegisterComponent } from './home/register.component';
-
-declare let toastr: any; 
-
+import { Ng2IziToastModule } from 'ng2-izitoast';
 
 
 @NgModule({
@@ -33,6 +31,7 @@ declare let toastr: any;
     FormsModule,
     CommonModule,
     BrowserModule,
+    Ng2IziToastModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot([
@@ -46,7 +45,7 @@ declare let toastr: any;
      ProfileModule
   ],
   
-  providers: [{ provide: Toaster_Token, useValue: toastr }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
