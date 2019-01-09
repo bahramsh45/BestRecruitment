@@ -12,6 +12,7 @@ import { candidateService } from '../shared/services/candidate.service';
 export class HomeComponent {
 
   public userinfo: userInfo = new userInfo();
+  public messageShow: boolean = false;
   constructor(private router: Router, private vs: ValidationStyleService,private dataService: candidateService) {
 
   }
@@ -24,7 +25,11 @@ export class HomeComponent {
     if (form.valid) {
       this.dataService.LoginUser(this.userinfo.userName, this.userinfo.passWord).subscribe(pass => {
         if (pass > 0) {
+          this.messageShow = false;
           this.router.navigate(["/landing"]);
+        }
+        else {
+          this.messageShow = true;
         }
       })    
     }

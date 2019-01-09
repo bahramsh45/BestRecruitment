@@ -63,7 +63,7 @@ export class candidateService {
     return this.http.post(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidateVW);
-        this.iziToast.show({ title: "Your Info Submitted successfully!", position: "topRight", backgroundColor:"lime" });
+        this.iziToast.show({ title: "Your account created successfully!", position: "topRight", backgroundColor:"lime" });
         
       },
         err => {
@@ -96,11 +96,8 @@ export class candidateService {
     return this.http.get(this._baseurl + 'api/Candidates/LoginCandidate/', { params: params });
   }
 
-
    BroadCast(cvw:any) {
     this._cVW.next(cvw);
-  
   }
-
 
 }

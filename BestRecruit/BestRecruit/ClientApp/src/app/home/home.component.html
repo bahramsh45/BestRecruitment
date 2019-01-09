@@ -30,7 +30,7 @@
                       <span class="input-group-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                       </span>
-                      <input type="password" name="passWord" [(ngModel)]="userinfo.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,loginForm.submitted)}" class="form-control" required placeholder="passWord" />
+                      <input type="password" name="passWord" [(ngModel)]="userinfo.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,loginForm.submitted)}" class="form-control" required placeholder="password" />
                     </div>
                     <div *ngIf="!passWord.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
                       Password is required.
@@ -38,6 +38,8 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+                    <br />
+                    <div *ngIf="messageShow" class="text-danger" style="text-align:center">Username or password is incorrect.</div>
                   </div>
                 </div>
               </div>
