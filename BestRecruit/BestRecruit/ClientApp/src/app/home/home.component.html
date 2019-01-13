@@ -17,7 +17,7 @@
                       <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                       </span>
-                      <input type="text" [(ngModel)]="userinfo.userName" #userName="ngModel" [ngStyle]="{'border-color' : getStyle(userName,loginForm.submitted)}" required name="userName" class="form-control" placeholder="User Name">
+                      <input type="text" [(ngModel)]="userinfo.userName" #userName="ngModel" [ngStyle]="{'border-color' : getStyle(userName,loginForm.submitted)}" required name="userName" class="form-control" placeholder="Your Email">
                     </div>
                     <div *ngIf="!userName.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
                       User Name is required.

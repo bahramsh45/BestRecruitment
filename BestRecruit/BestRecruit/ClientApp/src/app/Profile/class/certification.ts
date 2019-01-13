@@ -1,6 +1,6 @@
 export class Certification {
   id: number;
-  candiadateId: number;
+  candidateId: number;
   certificationName: string;
   year: number;
 }

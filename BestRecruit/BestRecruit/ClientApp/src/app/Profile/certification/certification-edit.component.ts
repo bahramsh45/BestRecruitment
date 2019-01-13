@@ -1,10 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { certificationService } from '../../shared/services/certification-sevice';
+import { Component, OnInit } from '@angular/core';
+import { certificationService } from '../../shared/services/certification.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Certification } from '../class/certification';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
-
-//import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'certification-edit',
@@ -16,7 +14,7 @@ export class CertificationComponent implements OnInit {
   id: number;
 
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: certificationService, private vs: ValidationStyleService ) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: certificationService, private vs: ValidationStyleService) {
 
   }
 
@@ -28,8 +26,16 @@ export class CertificationComponent implements OnInit {
     return this.vs.getStyle(f, form);
   }
 
-  actionOnSubmit(form) {
+  actionOnSubmit(c) {
 
+    if (c.id == 0 || c.id == undefined) {
+      this.dataService.AddCertification(c)
+    }
+    else {
+      this.dataService.PutCertification(c)
+    }
+
+    this.router.navigate(["/profile/certificationView"]);
 
   }
 
@@ -37,11 +43,14 @@ export class CertificationComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
+      this.dataService.getCertification(this.id).subscribe(res => {
+        this.certification = this.id == 0 ? new Certification() : res;
+      });
 
     });
-    this.certification = this.id == 0 ? new Certification() : this.dataService.getCertification(this.id)
+   
   }
 
-  
+
 }
 
