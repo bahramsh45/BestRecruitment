@@ -1,48 +1,50 @@
 <h3>Skills</h3>
 <hr />
-<form #skillForm="ngForm" (ngSubmit)="actionOnSubmit(skill)" novalidate>
-  <div class="row">
-    <div class="col-sm-6">
-      <label class="">Skill Name</label>
-      <input type="text" name="skillName" [ngStyle]="{'border-color' : getStyle(skillName,skillForm.submitted)}" [(ngModel)]="skill.skillName" class="form-control" #skillName="ngModel" required placeholder="Skill Name" />
+<form #skillForm="ngForm" (ngSubmit)="actionOnSubmit(skillForm,skill)" novalidate>
+  <div *ngIf="skill">
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="">Skill Name</label>
+        <input type="text" name="skillName" [ngStyle]="{'border-color' : getStyle(skillName,skillForm.submitted)}" [(ngModel)]="skill.skillName" class="form-control" #skillName="ngModel" required placeholder="Skill Name" />
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <small [hidden]="skillName.valid || (skillName.pristine && !skillForm.submitted)" class="text-danger">
-        Skill Name is required.
-      </small>
+    <div class="row">
+      <div class="col-sm-6">
+        <small [hidden]="skillName.valid || (skillName.pristine && !skillForm.submitted)" class="text-danger">
+          Skill Name is required.
+        </small>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <label class="">Year Of Experience</label>
-      <input type="number" name="yOfexp" class="form-control" [ngStyle]="{'border-color' : getStyle(yOfexp,skillForm.submitted)}" [(ngModel)]="skill.yearsOfExperience" #yOfexp="ngModel" required placeholder="Year Of Experince" />
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="">Year Of Experience</label>
+        <input type="number" name="yOfexp" class="form-control" [ngStyle]="{'border-color' : getStyle(yOfexp,skillForm.submitted)}" [(ngModel)]="skill.yearsOfExperience" #yOfexp="ngModel" required placeholder="Year Of Experince" />
+      </div>
+      <div class="col-sm-3">
+        <label>Last Year Used</label>
+        <input type="number" name="lastused" class="form-control" [ngStyle]="{'border-color' : getStyle(lastused,skillForm.submitted)}" [(ngModel)]="skill.lastYearUsed" #lastused="ngModel" required placeholder="Last Year Used" />
+      </div>
     </div>
-    <div class="col-sm-3">
-      <label>Last Year Used</label>
-      <input type="number" name="lastused" class="form-control" [ngStyle]="{'border-color' : getStyle(lastused,skillForm.submitted)}" [(ngModel)]="skill.lastYearUsed" #lastused="ngModel" required placeholder="Last Year Used" />
+    <div class="row">
+      <div class="col-sm-3">
+        <small [hidden]="yOfexp.valid || (yOfexp.pristine && !skillForm.submitted)" class="text-danger">
+          Year of Experience is required.
+        </small>
+      </div>
+      <div class="col-sm-3">
+        <small [hidden]="lastused.valid || (lastused.pristine && !skillForm.submitted)" class="text-danger">
+          Last time used is required.
+        </small>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <small [hidden]="yOfexp.valid || (yOfexp.pristine && !skillForm.submitted)" class="text-danger">
-        Year of Experience is required.
-      </small>
-    </div>
-    <div class="col-sm-3">
-      <small [hidden]="lastused.valid || (lastused.pristine && !skillForm.submitted)" class="text-danger">
-        Last time used is required.
-      </small>
-    </div>
-  </div>
 
-  <div class="row" style="margin-top:30px">
-    <div class="col-sm-3">
-      <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
-    </div>
-    <div class="col-sm-3">
-      <button class="btn btn-primary form-control">Save</button>
+    <div class="row" style="margin-top:30px">
+      <div class="col-sm-3">
+        <button class="btn btn-danger form-control" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-primary form-control">Save</button>
+      </div>
     </div>
   </div>
 </form>

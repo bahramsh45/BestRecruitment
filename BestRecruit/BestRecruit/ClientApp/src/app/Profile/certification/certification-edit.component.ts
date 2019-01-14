@@ -26,17 +26,19 @@ export class CertificationComponent implements OnInit {
     return this.vs.getStyle(f, form);
   }
 
-  actionOnSubmit(c) {
+  actionOnSubmit(form, c) {
 
-    if (c.id == 0 || c.id == undefined) {
-      this.dataService.AddCertification(c)
+    if (form.valid) {
+      if (c.id == 0 || c.id == undefined) {
+        this.dataService.AddCertification(c)
+      }
+      else {
+        this.dataService.PutCertification(c)
+      }
+
+      this.router.navigate(["/profile/certificationView"]);
+
     }
-    else {
-      this.dataService.PutCertification(c)
-    }
-
-    this.router.navigate(["/profile/certificationView"]);
-
   }
 
 

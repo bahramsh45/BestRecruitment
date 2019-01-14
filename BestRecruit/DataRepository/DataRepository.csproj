@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\CandidateCertificationRepository.cs" />
+    <Compile Include="classes\CandidateResumeRepository.cs" />
     <Compile Include="classes\CandidateSkillsRepository.cs" />
     <Compile Include="classes\CandidateEducationRepository.cs" />
     <Compile Include="classes\CandidateExperienceRepository.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="classes\AddressRepository.cs" />
     <Compile Include="classes\CandidateRepository.cs" />
     <Compile Include="interfaces\ICandidateCertificationRepository.cs" />
+    <Compile Include="interfaces\ICandidateResumeRepository.cs" />
     <Compile Include="interfaces\ICandidateSkillsRepository.cs" />
     <Compile Include="interfaces\ICandidateEducationRepository.cs" />
     <Compile Include="interfaces\ICandidateExperienceRepository.cs" />

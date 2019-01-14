@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { skillService } from '../../shared/services/skill-service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Skill } from '../class/skill';
@@ -25,16 +25,17 @@ export class SkillComponent implements OnInit {
     this.router.navigate(["/profile/skillView"]);
   }
 
-  actionOnSubmit(sk) {
+  actionOnSubmit(form, sk) {
+    if (form.valid) {
+      if (sk.id == 0 || sk.id == undefined) {
+        this.dataService.AddSkill(sk)
+      }
+      else {
+        this.dataService.PutSkill(sk)
+      }
 
-    if (sk.id == 0 || sk.id == undefined) {
-      this.dataService.AddSkill(sk)
+      this.router.navigate(["/profile/skillView"]);
     }
-    else {
-      this.dataService.PutSkill(sk)
-    }
-
-    this.router.navigate(["/profile/skillView"]);
   }
 
   ngOnInit() {

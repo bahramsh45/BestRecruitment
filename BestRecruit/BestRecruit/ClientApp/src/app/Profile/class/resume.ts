@@ -1,8 +1,8 @@
 export class Resume {
   id: number;
-  candiadateId: number;
+  candidateId: number;
   name: string;
   path: string;
-  status: number;
+  status: boolean;
   active: boolean;
 }

@@ -1,5 +1,5 @@
 
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../shared/services/validation.style.service';
 import { candidateService } from '../shared/services/candidate.service';
@@ -40,7 +40,7 @@ export class RegisterComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', `api/upload`, formData, {
+    const uploadReq = new HttpRequest('POST', 'api/upload', formData, {
       reportProgress: false,
     });
 

@@ -21,8 +21,7 @@ namespace DataBaseImpl
 
         public bool? Active { get; set; }
 
-        [StringLength(20)]
-        public string Status { get; set; }
+        public bool? Status { get; set; }
 
         public virtual Candidate Candidate { get; set; }
     }
