@@ -16,6 +16,7 @@ export class ResumeComponent implements OnInit {
   public resume: Resume;
   id: number;
   flag: boolean;
+  fileName: string;
 
   constructor(private router: Router,
     public iziToast: Ng2IzitoastService,
@@ -33,14 +34,23 @@ export class ResumeComponent implements OnInit {
   }
 
   upLoad(files) {
-      this.flag == true;
+      this.flag = true;
+      this.fileName = files[0].name;
       this.dataService.Upload(files);
   }
+
+  getFileName() {
+    var p = this.fileName.lastIndexOf('\\');
+    var f = this.fileName.substring(p + 1, this.fileName.length);
+    return f;
+  }
+  
 
   
   actionOnSubmit(form, res) {
     if (form.valid && this.flag) {
       if (res.id == 0 || res.id == undefined) {
+        res.path = this.fileName;
         this.dataService.AddResume(res)
       }
       else {
@@ -57,6 +67,7 @@ export class ResumeComponent implements OnInit {
       this.id = params['id'];
       this.dataService.getResume(this.id).subscribe(res => {
         this.resume = this.id == 0 ? new Resume() : res;
+        this.fileName = res.path;
       });
 
     });

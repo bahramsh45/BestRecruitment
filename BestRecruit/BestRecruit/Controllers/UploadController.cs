@@ -23,6 +23,7 @@ namespace BestRecruit.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public ActionResult UploadFile()
         {
+            string fullPath = "";
             try
             {
                 var file = Request.Form.Files[0];
@@ -36,13 +37,13 @@ namespace BestRecruit.Controllers
                 if (file.Length > 0)
                 {
                     string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    string fullPath = Path.Combine(newPath, fileName);
+                    fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
                 }
-                return Json("Upload Successful.");
+                return Json(fullPath);
             }
             catch (System.Exception ex)
             {

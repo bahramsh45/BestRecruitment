@@ -9,6 +9,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 export class resumeService {
 
   _baseurl: string;
+  filePath: string;
   private resumeList: Resume[];
   private _reslist = new Subject();
   resList$ = this._reslist.asObservable();
@@ -59,16 +60,18 @@ export class resumeService {
       reportProgress: false,
     });
 
-    this.http.request(uploadReq).subscribe(() => {
+    this.http.request(uploadReq).subscribe((data) => {
+      this.filePath = Object.keys(data).map(function (key) { return data[key] })[6];
       this.iziToast.show({ title: "Your resume uploaded successfully!", position: "topRight", backgroundColor: "lime" });
     });
   }  
 
   AddResume(resume: Resume): any {
 
+    resume.path = this.filePath;
     let headers = new HttpHeaders().set('content-type', 'application/json');
 
-
+   
     return this.http.post(this._baseurl + 'api/CandidateResume', resume, { headers: headers }).
       subscribe(data => {
         this.iziToast.show({ title: "New resume added successfully!", position: "topRight", backgroundColor: "lime" });

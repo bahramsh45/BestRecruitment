@@ -22,10 +22,13 @@
           <input #file type="file" multiple (change)="upLoad(file.files)" />
         </label>
       </div>
+      <div class="col-sm-6" style="margin-top:10px">
+         {{getFileName()}}
+      </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <small *ngIf="flag" class="text-danger">
+        <small *ngIf="!flag" class="text-danger">
           Resume File is required.
         </small>
       </div>
