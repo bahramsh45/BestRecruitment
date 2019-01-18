@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using DataRepository;
 using BestRecruit.viewmodels;
 using Microsoft.AspNetCore.Http;
+using BestRecruit.Utility;
+using System;
 
 namespace BestRecruit.Controllers
 {
@@ -79,7 +81,9 @@ namespace BestRecruit.Controllers
             candidateVW.candidate.ContactId = _contactRepository.AddContact(candidateVW.contact);
           
             Id = _candidateRepository.AddCandidate(candidateVW.candidate);
-          
+            var activationCode = new Guid();
+            EmailService.SendVerificationLinkEmail(candidateVW.contact.Email, activationCode.ToString(), "http", "", "");
+            
 
             return CreatedAtAction("PostCandidate", new { id = Id }, candidateVW.candidate);
         }
