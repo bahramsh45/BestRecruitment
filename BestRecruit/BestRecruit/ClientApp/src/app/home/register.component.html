@@ -14,7 +14,7 @@
 
                   <div class="form-group">
                     <div class="input-group">
-                      <label class="">First Name</label>
+                      <!--<label class="">First Name</label>-->
                       <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,registerForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidateVW.candidate.firstName" class="form-control" required placeholder="First Name" />
                     </div>
                     <div *ngIf="!firstName.valid && registerForm.submitted" class="text-danger">
@@ -25,7 +25,7 @@
 
                   <div class="form-group">
                     <div class="input-group">
-                      <label class="">Last Name</label>
+                      <!--<label class="">Last Name</label>-->
                       <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,registerForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidateVW.candidate.lastName" class="form-control" required placeholder="Last Name" />
                     </div>
                     <div *ngIf="!lastName.valid && registerForm.submitted" class="text-danger">
@@ -36,8 +36,8 @@
 
                   <div class="form-group">
                     <div class="input-group">
-                      <label class="">Email</label>
-                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidateVW.contact.email" class="form-control" required placeholder="Email" style="width:267px" />
+                      <!--<label class="">Email</label>-->
+                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidateVW.contact.email" class="form-control" required placeholder="Email"  />
                     </div>
                     <div *ngIf="!email.valid && registerForm.submitted" class="text-danger">
                       Email is required.
@@ -46,33 +46,31 @@
 
                   <div class="form-group">
                     <div class="input-group">
-                      <label class="">Password</label>
-                      <input type="password" name="passWord" [(ngModel)]="candidateVW.candidate.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,registerForm.submitted)}" class="form-control" required placeholder="passWord" />
+                      <!--<label class="">Password</label>-->
+                      <input type="password" name="passWord" [(ngModel)]="candidateVW.candidate.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,registerForm.submitted)}" class="form-control" required placeholder="Password" />
                     </div>
                     <div *ngIf="!passWord.valid && registerForm.submitted" class="text-danger">
                       Password is required.
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <div class="input-group">
+                  <!--<div class="form-group">-->
+                    <!--<div class="input-group">-->
                       <label class="">Upload Resume</label>
-                      <label class="btn btn-default">
-                        <input #file type="file" multiple (change)="upload(file.files)" style="width:237px" />
-                      </label>
-                      <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-                        {{progress}}%
-                      </span>
-                    </div>
-                  </div>
+                      <!--<label class="btn btn-default">-->
+                        <input #file type="file" multiple (change)="upload(file.files)" class="for"/>
+                      <!--</label>-->
+                    
+                    <!--</div>-->
+                  <!--</div>-->
 
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6">
-                        <input type="button" class="btn btn-lg btn-danger btn-block" (click)="cancel()" value="Cancel">
+                        <input type="button" class="btn-lg  btn-danger" (click)="cancel()" value="Cancel">
                       </div>
                       <div class="col-sm-6">
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+                        <input type="submit" class="btn-lg btn-primary" value="Submit">
                       </div>
                     </div>
                   </div>

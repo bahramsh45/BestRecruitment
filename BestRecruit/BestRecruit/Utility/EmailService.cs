@@ -14,7 +14,7 @@ namespace BestRecruit.Utility
             var toMail = new MailAddress(emailId);
            // var frontEmailPassowrd = "your password";
             string subject = "Your account created successfully";
-            string body = "<br/><br/>We are excited to tell you that your account is" +
+            string body = "<br/><br/>We are excited to inform you that your account is" +
                           " successfully created. Please click on the below link to verify your account" +
                           " <br/><br/><a href='" + varifyUrl + "'>" + varifyUrl + "</a> ";
 

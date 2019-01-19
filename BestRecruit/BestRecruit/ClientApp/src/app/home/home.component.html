@@ -1,56 +1,478 @@
 
-<div class="container">
-  <div class="row" style="z-index:11111;margin-top:200px">
-    <div class="col-sm-6 col-md-4 col-md-offset-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <strong> Sign in to continue</strong>
+
+
+<div class="ms-site-container ms-nav-fixed">
+ 
+  <div class="bg-light index-1 intro-full-next">
+    <section id="services">
+      <div class="wrap ms-hero-img-meeting ms-hero-bg-info color-white ms-bg-fixed">
+        <div class="container" style="height:665px">
+          <div class="row">
+            <div class="col-lg-12" style="text-align:right;position:fixed;background-color:beige;height:40px;top:0;left:15px;width:98.1%;padding-top:10PX;padding-right:15px">
+                  <a [routerLink]='["/login"]' style="text-decoration:none">Account Login</a>
+            </div>
+          </div>
+          <div class="text-center mb-4">
+            <h1 class="wow zoomInDown">Best Recruitment</h1>
+            <!--<h3 class="wow zoomInDown">
+      Connect
+      <span class="text-normal">Best Talent</span> and surprise yourself
+    </h3>-->
+          </div>
+
+
         </div>
-        <div class="panel-body">
-          <form #loginForm="ngForm" (ngSubmit)="actionOnSubmit(loginForm)" novalidate>
-            <fieldset>
+      </div>
+    </section>
+    <section id="portfolio" class="">
+      <div class="wrap ms-hero-bg-success ms-hero-img-keyboard ms-bg-fixed">
+        <div class="container index-1">
 
-              <div class="row" *ngIf="userinfo">
-                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-user"></i>
-                      </span>
-                      <input type="text" [(ngModel)]="userinfo.userName" #userName="ngModel" [ngStyle]="{'border-color' : getStyle(userName,loginForm.submitted)}" required name="userName" class="form-control" placeholder="Your Email">
-                    </div>
-                    <div *ngIf="!userName.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
-                      User Name is required.
-                    </div>
-
-                  </div>
-
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-lock"></i>
-                      </span>
-                      <input type="password" name="passWord" [(ngModel)]="userinfo.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,loginForm.submitted)}" class="form-control" required placeholder="password" />
-                    </div>
-                    <div *ngIf="!passWord.valid && loginForm.submitted" class="text-danger" style="padding-left:40px">
-                      Password is required.
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
-                    <br />
-                    <div *ngIf="messageShow" class="text-danger" style="text-align:center">Username or password is incorrect.</div>
+        </div>
+      </div>
+    </section>
+    <section id="pricing">
+      <div class="wrap ms-hero-img-airplane ms-hero-bg-royal ms-bg-fixed">
+        <!--<div class="container">
+          <div class="text-center mb-4">
+            <h2 class="uppercase color-white wow fadeInDown animation-delay-2">See our subscription plans</h2>
+            <p class="lead uppercase color-light wow fadeInDown animation-delay-2">Surprise with our unique features</p>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <div class="price-table price-table-success wow zoomInUp">
+                <header class="price-table-header">
+                  <span class="price-table-category">Personal</span>
+                  <h3>
+                    <sup>$</sup>19
+                    <sub>/mo.</sub>
+                  </h3>
+                </header>
+                <div class="price-table-body">
+                  <ul class="price-table-list">
+                    <li>
+                      <i class="zmdi zmdi-code"></i> Lorem ipsum dolor sit amet.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-globe"></i> Voluptate ex quam autem. Dolor.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-settings"></i> Dignissimos velit reiciendis.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-cloud"></i> Nihil corrupti soluta vitae non.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-star"></i> Atque molestiae, blanditiis ratione.
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-success btn-raised">
+                      <i class="zmdi zmdi-cloud-download"></i> Get Now
+                    </a>
                   </div>
                 </div>
               </div>
-            </fieldset>
-          </form>
-        </div>
-        <div class="panel-footer ">
-          Don't have an account! <a  [routerLink]='["/register"]'> Sign Up Here </a>
+            </div>
+            <div class="col-lg-4">
+              <div class="price-table price-table-info prominent wow zoomInDown">
+                <header class="price-table-header">
+                  <span class="price-table-category">Professional</span>
+                  <h3>
+                    <sup>$</sup>49
+                    <sub>/mo.</sub>
+                  </h3>
+                </header>
+                <div class="price-table-body">
+                  <ul class="price-table-list">
+                    <li>
+                      <i class="zmdi zmdi-code"></i> Lorem ipsum dolor sit amet.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-globe"></i> Voluptate ex quam autem. Dolor.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-settings"></i> Dignissimos velit reiciendis.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-cloud"></i> Nihil corrupti soluta vitae non.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-star"></i> Atque molestiae, blanditiis ratione.
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-info btn-raised">
+                      <i class="zmdi zmdi-cloud-download"></i> Get Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="price-table price-table-danger wow zoomInUp">
+                <header class="price-table-header">
+                  <span class="price-table-category">Business</span>
+                  <h3>
+                    <sup>$</sup>99
+                    <sub>/mo.</sub>
+                  </h3>
+                </header>
+                <div class="price-table-body">
+                  <ul class="price-table-list">
+                    <li>
+                      <i class="zmdi zmdi-code"></i> Lorem ipsum dolor sit amet.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-globe"></i> Voluptate ex quam autem. Dolor.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-settings"></i> Dignissimos velit reiciendis.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-cloud"></i> Nihil corrupti soluta vitae non.
+                    </li>
+                    <li>
+                      <i class="zmdi zmdi-star"></i> Atque molestiae, blanditiis ratione.
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-raised">
+                      <i class="zmdi zmdi-cloud-download"></i> Get Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <!--container -->
+      </div>
+    </section>
+    <section id="about">
+      <div class="container pt-6">
+        <br />
+        <br />
+        <br />
+        <h2 class="right-line">About Us</h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="color-primary wow fadeInUp animation-delay-2">Description</h3>
+            <p class="wow fadeInUp animation-delay-2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat cum laudantium quos tempora magnam voluptas sint perspiciatis nulla ipsa itaque atque quod incidunt maiores iusto, laborum, magni aliquam. Aut eligendi nesciunt nobis eum
+              dolorum maxime corporis dicta, repudiandae eveniet ab laboriosam minima voluptate quaerat sequi modi suscipit cumque unde rerum.
+            </p>
+            <p class="wow fadeInUp animation-delay-2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis porro, magni obcaecati cupiditate nulla rem quae, eveniet corrupti reprehenderit maiores nobis doloribus expedita non quasi itaque. Incidunt, delectus quidem vitae laudantium,
+              natus quibusdam odio eius eligendi tenetur! Ea, repudiandae eveniet ab minima laboriosam minima voluptate quaerat sequi harum.
+            </p>
+          </div>
+          <!--<div class="col-lg-6">
+            <h3 class="color-primary wow fadeInUp animation-delay-2">Knowledge</h3>
+            <div class="progress progress-lg wow fadeInUp animation-delay-6">
+              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> HTML 5 &amp; CSS 3 </div>
+            </div>
+            <div class="progress progress-lg wow fadeInUp animation-delay-8">
+              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> Javascript &amp; Jquery </div>
+            </div>
+            <div class="progress progress-lg wow fadeInUp animation-delay-10">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> PHP 5 &amp; MYSQL 5 </div>
+            </div>
+            <div class="progress progress-lg wow fadeInUp animation-delay-12">
+              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"> C/C++ </div>
+            </div>
+            <div class="progress progress-lg wow fadeInUp animation-delay-14">
+              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> Python </div>
+            </div>
+            <div class="progress progress-lg wow fadeInUp animation-delay-16">
+              <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"> Node.js </div>
+            </div>
+          </div>-->
         </div>
       </div>
+    </section>
+    <!--<section id="team">
+      <div class="container pt-6">
+        <h1 class="color-primary text-center wow fadeInUp animation-delay-2">Our Team</h1>
+        <div class="row">
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-danger wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-danger ms-hero-img-city">
+                <img src="assets/img/demo/avatar1.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-danger">Victoria Smith</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-info wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-info ms-hero-img-city">
+                <img src="assets/img/demo/avatar2.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-info">Charlie Durant</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-warning wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-warning ms-hero-img-city">
+                <img src="assets/img/demo/avatar3.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-warning">Joan Fawert</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-royal wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-royal ms-hero-img-city">
+                <img src="assets/img/demo/avatar4.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-royal">Sophie Marks</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-success wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-success ms-hero-img-city">
+                <img src="assets/img/demo/avatar5.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-success">Cris Polner</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="card mt-4 card-primary wow zoomInUp animation-delay-7">
+              <div class="ms-hero-bg-primary ms-hero-img-city">
+                <img src="assets/img/demo/avatar6.jpg" alt="..." class="img-avatar-circle">
+              </div>
+              <div class="card-body pt-6 text-center">
+                <h3 class="color-primary">Julia Robert</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur alter adipisicing elit. Facilis, natuse inse voluptates officia repudiandae beatae magni es magnam autem molestias.</p>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-facebook">
+                  <i class="zmdi zmdi-facebook"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-twitter">
+                  <i class="zmdi zmdi-twitter"></i>
+                </a>
+                <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mt-1 mr-1 no-mr-md btn-instagram">
+                  <i class="zmdi zmdi-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>-->
+    <section id="contact" class="mt-6">
+      <div class="wrap ms-hero-bg-warning ms-hero-img-team ms-bg-fixed">
+        <div class="container">
+          <h1 class="text-center color-white mb-4 wow fadeInUp animation-delay-2">Contact Us</h1>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card card-primary animated zoomInUp animation-delay-5">
+                <div class="card-body">
+                  <form class="form-horizontal">
+                    <fieldset class="container">
+                      <div class="form-group row">
+                        <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Name</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-9">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Subject</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="textArea" class="col-lg-2 control-label">Message</label>
+                        <div class="col-lg-9">
+                          <textarea class="form-control" rows="3" id="textArea" placeholder="Yout message..."></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row justify-content-end">
+                        <div class="col-lg-10">
+                          <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                          <button type="button" class="btn btn-danger">Cancel</button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- container -->
+      </div>
+      <!--<iframe width="100%" height="340" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48342.06480344582!2d-73.980069429762!3d40.775680208459505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral+Park!5e0!3m2!1sen!2sus!4v1491233314840"></iframe>-->
+    </section>
+    <footer class="ms-footer">
+      <div class="container">
+        <p>Copyright &copy; Best Recuirtment 2018</p>
+      </div>
+    </footer>
+    <div class="btn-back-top">
+      <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised ">
+        <i class="zmdi zmdi-long-arrow-up"></i>
+      </a>
     </div>
   </div>
-  <img src="../../assets/back.jpg" alt="check_image" style="width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:-9999">
 </div>
+<!-- ms-site-container -->
+<div class="ms-slidebar sb-slidebar sb-left sb-momentum-scrolling sb-style-overlay">
+  <header class="ms-slidebar-header">
+    <div class="ms-slidebar-login">
+      <a href="javascript:void(0)" class="withripple">
+        <i class="zmdi zmdi-account"></i> Login
+      </a>
+      <a href="javascript:void(0)" class="withripple">
+        <i class="zmdi zmdi-account-add"></i> Register
+      </a>
+    </div>
+    <div class="ms-slidebar-title">
+      <form class="search-form">
+        <input id="search-box-slidebar" type="text" class="search-input" placeholder="Search..." name="q" />
+        <label for="search-box-slidebar">
+          <i class="zmdi zmdi-search"></i>
+        </label>
+      </form>
+      <div class="ms-slidebar-t">
+        <span class="ms-logo ms-logo-sm">M</span>
+        <h3>
+          Material
+          <span>Style</span>
+        </h3>
+      </div>
+    </div>
+  </header>
+  <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
+    <li>
+      <a data-scroll class="link" href="#home">
+        <i class="zmdi zmdi-home"></i> Home
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#services">
+        <i class="zmdi zmdi-flight-takeoff"></i> Services
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#portfolio">
+        <i class="zmdi zmdi-desktop-mac"></i> Portfolio
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#pricing">
+        <i class="zmdi zmdi-money-box"></i> Pricing
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#about">
+        <i class="zmdi zmdi-info-outline"></i> About Us
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#team">
+        <i class="zmdi zmdi-accounts"></i> Team
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="#contact">
+        <i class="zmdi zmdi-email"></i> Contact
+      </a>
+    </li>
+    <li>
+      <a data-scroll class="link" href="index.html">
+        <i class="zmdi zmdi-swap"></i> Main Site
+      </a>
+    </li>
+  </ul>
+  <div class="ms-slidebar-social ms-slidebar-block">
+    <h4 class="ms-slidebar-block-title">Social Links</h4>
+    <div class="ms-slidebar-social">
+      <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-sm btn-facebook">
+        <i class="zmdi zmdi-facebook"></i>
+        <span class="badge-pill badge-pill-pink">12</span>
+      </a>
+      <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-sm btn-twitter">
+        <i class="zmdi zmdi-twitter"></i>
+        <span class="badge-pill badge-pill-pink">4</span>
+      </a>
+      <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-sm btn-youtube">
+        <i class="zmdi zmdi-youtube"></i>
+      </a>
+      <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-sm btn-instagram">
+        <i class="zmdi zmdi-instagram"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

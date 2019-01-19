@@ -14,6 +14,7 @@ import { LandingComponent } from './landing/landing.component';
 
 import { RegisterComponent } from './home/register.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
+import { LoginComponent } from './home/login.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
     AppComponent,
     ProfileComponent,
     HomeComponent,
+    LoginComponent,
     LandingComponent,
     RegisterComponent
    
@@ -36,6 +38,7 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
     SharedModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'landing', component: LandingComponent },
