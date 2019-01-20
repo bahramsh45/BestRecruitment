@@ -7,15 +7,15 @@ namespace DataRepository
     public class CandidateRepository : GenericRepository<Recruitment, Candidate>, ICandidateRepository
     {
 
-        public int AuthenticateUser(string userName, string passWord)
+        public Candidate AuthenticateUser(string userName, string passWord)
         {
             var result = GetAll().FirstOrDefault(x => x.UserName == userName &&  x.Password == passWord); 
             if (result != null)
             {
-                return result.Id;
+                return result;
             }
 
-            return 0;
+            return null;
         }
 
         public int AddCandidate(Candidate candidate)

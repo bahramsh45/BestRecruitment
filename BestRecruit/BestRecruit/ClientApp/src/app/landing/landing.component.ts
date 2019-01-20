@@ -1,19 +1,29 @@
-import { Component } from '@angular/core';
-import { Router} from '@angular/router';
+import { Component, OnInit,Inject } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
   selector: 'Landing',
   templateUrl: './landing.component.html'
- // styles:["./landing.component.css"]
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
 
-  constructor(private router: Router) {
+  fName: string;
+  lName: string;
+  public Name: string;
+  constructor(@Inject(SESSION_STORAGE) private storage:StorageService,private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
   actionOnSubmit() {
     this.router.navigate(["/profile"]);
+  }
+
+  ngOnInit() {
+    const CandidateInfo = this.storage.get("CandidateInfo") || [];
+     
+    this.Name = CandidateInfo[0].firstName + " " + CandidateInfo[0].lastName;
+    
   }
   
 

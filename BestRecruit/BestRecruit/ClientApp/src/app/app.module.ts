@@ -15,6 +15,8 @@ import { LandingComponent } from './landing/landing.component';
 import { RegisterComponent } from './home/register.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 import { LoginComponent } from './home/login.component';
+import { StorageServiceModule } from 'angular-webstorage-service';
+
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { LoginComponent } from './home/login.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    StorageServiceModule,
     FormsModule,
     CommonModule,
     BrowserModule,

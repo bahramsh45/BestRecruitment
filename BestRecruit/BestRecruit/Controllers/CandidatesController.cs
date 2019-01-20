@@ -31,12 +31,12 @@ namespace BestRecruit.Controllers
         [Route("LoginCandidate")]
         public IActionResult LoginCandidate([FromQuery] string userName, [FromQuery] string passWord)
         {
-            var candidateId = _candidateRepository.AuthenticateUser(userName,passWord);
-            if (candidateId > 0)
-            {            
-                HttpContext.Session.SetInt32("CandidateId", candidateId);
+            var candidate = _candidateRepository.AuthenticateUser(userName,passWord);
+            if (candidate != null)
+            {
+                HttpContext.Session.SetInt32("CandidateId", candidate.Id);
             }
-            return Ok(candidateId);
+            return Ok(candidate);
         }
 
         [HttpGet]

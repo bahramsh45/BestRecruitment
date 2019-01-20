@@ -1,8 +1,15 @@
 <style>
   a img:hover {
-    opacity:1 !important;
+    opacity: 1 !important;
   }
 </style>
+
+<div class="row">
+  <div class="col-lg-12 wow zoomInDown" style="text-align:right;position:fixed;background-color:none;height:40px;top:0;left:15px;width:98.1%;padding-top:10PX;padding-right:15px">
+    <span>{{Name}}&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+    <a [routerLink]='["/login"]' style="text-decoration:none;color:darkblue">Logout</a>
+  </div>
+</div>
 
 <div class="container" style="margin-top:200px">
   <div class="row">
@@ -10,13 +17,13 @@
       <a [routerLink]='["/profile/candidateView"]'><img src="../../assets/profile1.png" width="340" style="opacity:0.6" /></a>
     </div>
     <div class="col-sm-3">
-      <a [routerLink]='["/search"]'><img src="../../assets/search.png" width="340" style="opacity:0.6"/></a>
+      <a [routerLink]='["/search"]'><img src="../../assets/search.png" width="340" style="opacity:0.6" /></a>
     </div>
     <div class="col-sm-3">
       <a [routerLink]='["/profile/resumeView"]'><img src="../../assets/resume.png" width="340" style="opacity:0.6" /></a>
     </div>
     <div class="col-sm-3">
-      <a [routerLink]='["/apply"]'><img src="../../assets/apply.png" width="340" style="opacity:0.6"/></a>
+      <a [routerLink]='["/apply"]'><img src="../../assets/apply.png" width="340" style="opacity:0.6" /></a>
     </div>
   </div>
 </div>
