@@ -4,6 +4,7 @@ import { Skill } from '../../Profile/class/skill';
 import { Subject } from 'rxjs/Subject'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { localStorageService } from '../../shared/services/storage.service';
 
 
 
@@ -14,13 +15,14 @@ export class skillService {
   private skillList: Skill[];
   private _slist = new Subject();
   sList$ = this._slist.asObservable();
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
 
   getSkills(): any {
-    return this.http.get<Skill[]>(this._baseurl + 'api/CandidateSkill/GetCandidateSkills/').subscribe(res => {
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
+    return this.http.get<Skill[]>(this._baseurl + 'api/CandidateSkill/GetCandidateSkills/' + CandidateInfo[0].candidateId).subscribe(res => {
       this.skillList = res;
       this.notify();
     });

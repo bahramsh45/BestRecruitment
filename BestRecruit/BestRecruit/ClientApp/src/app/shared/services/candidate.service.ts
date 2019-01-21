@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { CandidateViewModel } from '../../Profile/class/candidateViewModel';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { localStorageService } from '../../shared/services/storage.service';
 
 
 
@@ -19,7 +20,7 @@ export class candidateService {
   _cVW$ = this._cVW.asObservable();
 
 
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -36,7 +37,8 @@ export class candidateService {
 
 
   getCandidate(): any {
-    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/');
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
+    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/' + CandidateInfo[0].candidateId);
   }
 
 

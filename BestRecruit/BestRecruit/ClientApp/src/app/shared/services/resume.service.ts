@@ -3,6 +3,7 @@ import { Resume } from '../../Profile/class/resume';
 import { Subject } from 'rxjs/Subject';
 import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { localStorageService } from '../../shared/services/storage.service';
 
 
 @Injectable()
@@ -13,13 +14,14 @@ export class resumeService {
   private resumeList: Resume[];
   private _reslist = new Subject();
   resList$ = this._reslist.asObservable();
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
 
   getResumes(): any {
-    return this.http.get<Resume[]>(this._baseurl + 'api/CandidateResume/GetCandidateResumes/').subscribe(res => {
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
+    return this.http.get<Resume[]>(this._baseurl + 'api/CandidateResume/GetCandidateResumes/' + CandidateInfo[0].candidateId).subscribe(res => {
       this.resumeList = res;
       this.notify();
     });

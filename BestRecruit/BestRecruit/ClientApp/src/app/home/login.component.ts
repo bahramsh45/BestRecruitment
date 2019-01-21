@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../shared/services/validation.style.service';
 import { userInfo } from '../Profile/class/userInfo';
 import { candidateService } from '../shared/services/candidate.service';
-import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { localStorageService } from '../shared/services/storage.service';
+
 
 
 
@@ -17,7 +18,7 @@ export class LoginComponent {
   public userinfo: userInfo = new userInfo();
   public messageShow: boolean = false;
   CandidateInfo = [];
-  constructor(@Inject(SESSION_STORAGE) private storage:StorageService,private router: Router, private vs: ValidationStyleService,private dataService: candidateService) {
+  constructor(private storage: localStorageService,private router: Router, private vs: ValidationStyleService,private dataService: candidateService) {
 
   }
 
@@ -43,8 +44,7 @@ export class LoginComponent {
             lastName: Object.keys(candidate).map(function (key) { return candidate[key] })[2]
           });
 
-          // insert updated array to local storage
-          this.storage.set("CandidateInfo", this.CandidateInfo);
+          this.storage.setStorage("CandidateInfo", this.CandidateInfo);
           this.messageShow = false;
           this.router.navigate(["/landing"]);
         }

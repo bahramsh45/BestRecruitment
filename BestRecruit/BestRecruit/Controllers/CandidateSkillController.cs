@@ -19,10 +19,9 @@ namespace BestRecruit.Controllers
         }
         
         [HttpGet]
-        [Route("GetCandidateSkills")]
-        public IActionResult GetCandidateSkills()
+        [Route("GetCandidateSkills/{id}")]
+        public IActionResult GetCandidateSkills(int id)
         {
-            var id = HttpContext.Session.GetInt32("CandidateId").Value;
             var result = _candidateSkillsRepository.GetCandidateSkills(id);
             return Ok(result);
         }

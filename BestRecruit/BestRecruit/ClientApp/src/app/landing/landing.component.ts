@@ -1,6 +1,6 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { localStorageService } from '../shared/services/storage.service';
 
 @Component({
   selector: 'Landing',
@@ -11,7 +11,7 @@ export class LandingComponent implements OnInit {
   fName: string;
   lName: string;
   public Name: string;
-  constructor(@Inject(SESSION_STORAGE) private storage:StorageService,private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private storage: localStorageService,private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -20,10 +20,8 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    const CandidateInfo = this.storage.get("CandidateInfo") || [];
-     
-    this.Name = CandidateInfo[0].firstName + " " + CandidateInfo[0].lastName;
-    
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];    
+    this.Name = CandidateInfo[0].firstName + " " + CandidateInfo[0].lastName;    
   }
   
 

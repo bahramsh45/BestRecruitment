@@ -6,6 +6,7 @@ import { skillService } from './services/skill-service';
 import { ValidationStyleService } from './services/validation.style.service';
 import { candidateService } from './services/candidate.service';
 import { resumeService } from './services/resume.service';
+import { localStorageService } from './services/storage.service';
 
 
 @NgModule()
@@ -20,7 +21,8 @@ export class SharedModule {
                   skillService,
                   ValidationStyleService,
                   candidateService,
-                  resumeService
+                  resumeService,
+                  localStorageService
                  
                  ]
     };

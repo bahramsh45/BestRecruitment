@@ -4,6 +4,7 @@ import { Certification } from '../../Profile/class/certification';
 import { Subject } from 'rxjs/Subject'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { localStorageService } from '../../shared/services/storage.service';
 
 
 
@@ -14,12 +15,13 @@ export class certificationService {
   private certificationList: Certification[];
   private _clist = new Subject();
   cList$ = this._clist.asObservable();
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
   getCertifications(): any {
-    return this.http.get<Certification[]>(this._baseurl + 'api/CandidateCertification/GetCandidateCertifications/').subscribe(res => {
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
+    return this.http.get<Certification[]>(this._baseurl + 'api/CandidateCertification/GetCandidateCertifications/' + CandidateInfo[0].candidateId).subscribe(res => {
       this.certificationList = res;
       this.notify();
     });

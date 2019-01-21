@@ -55,6 +55,7 @@
     <None Remove="ClientApp\src\app\shared\services\list.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\resume.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\skill-service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\storage.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\ToasterService.ts" />
     <None Remove="ClientApp\src\app\shared\services\validation.style.service.ts" />
     <None Remove="ClientApp\src\app\shared\shared.module.ts" />
@@ -83,6 +84,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\education-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\experience.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\certification.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\storage.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\ToasterService.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\validation.style.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\skill-service.ts" />

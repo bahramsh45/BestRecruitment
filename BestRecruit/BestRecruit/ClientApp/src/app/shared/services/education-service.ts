@@ -4,6 +4,7 @@ import { Education } from '../../Profile/class/education';
 import { Subject } from 'rxjs/Subject'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { localStorageService } from '../../shared/services/storage.service';
 
 
 
@@ -14,7 +15,7 @@ export class educationService {
   private educationList: Education[];
   private _edulist = new Subject();
   eduList$ = this._edulist.asObservable();
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -24,7 +25,8 @@ export class educationService {
   }
 
   getEducations(): any {
-    return this.http.get<Education[]>(this._baseurl + 'api/CandidateEducation/GetCandidateEducations/').subscribe(res => {
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
+    return this.http.get<Education[]>(this._baseurl + 'api/CandidateEducation/GetCandidateEducations/' + CandidateInfo[0].candidateId).subscribe(res => {
       this.educationList = res;
       this.notify();
     });

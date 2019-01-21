@@ -32,18 +32,14 @@ namespace BestRecruit.Controllers
         public IActionResult LoginCandidate([FromQuery] string userName, [FromQuery] string passWord)
         {
             var candidate = _candidateRepository.AuthenticateUser(userName,passWord);
-            if (candidate != null)
-            {
-                HttpContext.Session.SetInt32("CandidateId", candidate.Id);
-            }
             return Ok(candidate);
         }
 
         [HttpGet]
-        [Route("GetCandidate")]
-        public IActionResult GetCandidate()
+        [Route("GetCandidate/{id}")]
+        public IActionResult GetCandidate(int id)
         {
-            var id = HttpContext.Session.GetInt32("CandidateId").Value;
+           // var id = HttpContext.Session.GetInt32("CandidateId").Value;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
