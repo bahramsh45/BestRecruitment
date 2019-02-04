@@ -49,7 +49,8 @@ export class certificationService {
   AddCertification(certification: Certification): any {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
-
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];
+    certification.candidateId = CandidateInfo[0].candidateId;
     return this.http.post(this._baseurl + 'api/CandidateCertification', certification, { headers: headers }).
       subscribe(data => {
         this.iziToast.show({ title: "New Certification added successfully!", position: "topRight", backgroundColor: "lime" });

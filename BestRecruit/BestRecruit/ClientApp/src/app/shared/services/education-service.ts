@@ -56,7 +56,8 @@ export class educationService {
     let headers = new HttpHeaders().set('content-type', 'application/json');
     education.startDate = this.formatDate(education.startDate.toString());
     education.endDate = this.formatDate(education.endDate.toString());
-
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];
+    education.candidateId = CandidateInfo[0].candidateId;
 
     return this.http.post(this._baseurl + 'api/CandidateEducation', education, { headers: headers }).
       subscribe(data => {

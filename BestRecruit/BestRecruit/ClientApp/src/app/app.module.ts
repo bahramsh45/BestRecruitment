@@ -19,6 +19,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 
 
     ]),
-     ProfileModule
+    ProfileModule,
   ],
   
   providers: [],

@@ -9,6 +9,8 @@ import { localStorageService } from '../../shared/services/storage.service';
 
 
 
+
+
 @Injectable()
 export class experienceService  {
   _baseurl: string;
@@ -16,7 +18,7 @@ export class experienceService  {
   private _explist = new Subject();
   expList$ = this._explist.asObservable();
 
-  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private storage: localStorageService, private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
   }
 
@@ -58,7 +60,8 @@ export class experienceService  {
     let headers = new HttpHeaders().set('content-type', 'application/json');
     experience.startDate = this.formatDate(experience.startDate.toString());
     experience.endDate = this.formatDate(experience.endDate.toString());
-    
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];
+    experience.candidateId = CandidateInfo[0].candidateId;
     
     return this.http.post(this._baseurl + 'api/CandidateExperience', experience, { headers: headers }).
       subscribe(data => {

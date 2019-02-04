@@ -38,7 +38,7 @@ namespace BestRecruit.Controllers
         [HttpPost]
         public IActionResult PostCandidateEducation([FromBody] CandidateEducation candidateEducation)
         {
-            candidateEducation.CandidateId = HttpContext.Session.GetInt32("CandidateId").Value;
+        
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

@@ -53,7 +53,8 @@ export class skillService {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
 
-
+    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];
+    skill.candidateId = CandidateInfo[0].candidateId;
     return this.http.post(this._baseurl + 'api/CandidateSkill', skill, { headers: headers }).
       subscribe(data => {
         this.iziToast.show({ title: "New skill added successfully!", position: "topRight", backgroundColor: "lime" });
