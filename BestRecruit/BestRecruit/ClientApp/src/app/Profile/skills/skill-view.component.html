@@ -8,11 +8,11 @@
     </div>
     <div class="col-sm-1">
       <div>&nbsp;</div>
-      <a [routerLink]='["/profile/skillEdit",e.id]' class="btn btn-primary"><i class="fa fa-edit"></i></a>
+      <a [routerLink]='["/profile/skillEdit",e.id]' class="btn btn-raised btn-primary"><i class="fa fa-edit"></i></a>
     </div>
     <div class="col-sm-1">
       <div>&nbsp;</div>
-      <a (click)="deleteSkill(e.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+      <a (click)="deleteSkill(e.id)" class="btn btn-raised btn-danger"><i class="fa fa-trash"></i></a>
     </div>
   </div>
   <div class="row">
@@ -29,6 +29,6 @@
 </div>
 <div class="row" style="margin-top:30px">
   <div class="col-sm-6">
-    <button class="btn btn-primary form-control" (click)="addSkill()">Add Skill</button>
+    <button class="btn btn-raised btn-primary form-control" (click)="addSkill()">Add Skill</button>
   </div>
 </div>

@@ -8,11 +8,11 @@
     </div>
     <div class="col-sm-1">
       <div>&nbsp;</div>
-      <a [routerLink]='["/profile/certificationEdit",e.id]' class="btn btn-primary"><i class="fa fa-edit"></i></a>
+      <a [routerLink]='["/profile/certificationEdit",e.id]' class="btn btn-raised btn-primary"><i class="fa fa-edit"></i></a>
     </div>
     <div class="col-sm-1">
       <div>&nbsp;</div>
-      <a class="btn btn-danger" (click)="deleteCertification(e.id)"><i class="fa fa-trash"></i></a>
+      <a class="btn btn-raised btn-danger" (click)="deleteCertification(e.id)"><i class="fa fa-trash"></i></a>
     </div>
 
   </div>
@@ -26,6 +26,6 @@
 </div>
 <div class="row" style="margin-top:30px">
   <div class="col-sm-6">
-    <button class="btn btn-primary form-control" (click)="addCertification()">Add Certification</button>
+    <button class="btn btn-raised btn-primary form-control" (click)="addCertification()">Add Certification</button>
   </div>
 </div>
