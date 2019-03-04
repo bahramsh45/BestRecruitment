@@ -12,5 +12,7 @@ export class Candidate {
     salary: number;
     readdyToWorkDate: Date;
     notice: string;
+    userName: string;
+    passWord: string;
     note: string;
   }

@@ -46,7 +46,8 @@ export class CandidateComponent implements OnInit {
   }
   actionOnSubmit(candidateVW, form) {
     if (form.valid) {
-      this.dataService.PutCandidate(candidateVW);
+      this.candidateVW.candidate = candidateVW.candidate;
+      this.dataService.PutCandidate(this.candidateVW);
       this.router.navigate(["/profile/candidateView"]);
     }
   }
@@ -58,11 +59,12 @@ export class CandidateComponent implements OnInit {
   ngOnInit() {
 
     this.empList = this.dataService.getEmpTypeList();
-    this.dataService.getCandidate().subscribe(res => {
-      if (res) {
-        this.candidateVW = res;
-      }
-    });
+    this.candidateVW = this.dataService.CVM;
+    //this.dataService.getCandidate(2).subscribe(res => {
+    //  if (res) {
+    //    this.candidateVW = res;
+    //  }
+    //});
   }
 
   

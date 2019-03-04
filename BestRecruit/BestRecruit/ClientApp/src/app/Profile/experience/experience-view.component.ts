@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { experienceService } from '../../shared/services/experience.service';
+import { candidateService } from '../../shared/services/candidate.service';
 import { Observable } from 'rxjs/Observable';
+import { Experience } from '../class/experience';
 
 
 
@@ -12,15 +13,15 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ExperienceViewComponent implements OnInit {
 
-  public experienceList: Observable<any>;
+  public experienceList: Experience[];
  
 
-  constructor(private router: Router, public dataService: experienceService) {
+  constructor(private router: Router, public dataService: candidateService) {
     
   }
 
   deleteExperience(id) {
-    this.dataService.DeleteExperience(id);
+   // this.dataService.DeleteExperience(id);
   }
 
   addExperience() {
@@ -30,8 +31,8 @@ export class ExperienceViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.experienceList = this.dataService.expList$;
-    this.dataService.getExperiences();
+    // this.experienceList = this.dataService.expList$;
+    this.experienceList = this.dataService.CVM.candidateExperience;
     
 
   }

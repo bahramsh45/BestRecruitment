@@ -4,24 +4,40 @@ import { EmploymentType } from '../../Profile/class/employmentType';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { CandidateViewModel } from '../../Profile/class/candidateViewModel';
+import { Message } from '../../Profile/class/message';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { localStorageService } from '../../shared/services/storage.service';
+import { Router } from '@angular/router';
+
 
 
 
 
 @Injectable()
 export class candidateService {
-
+  
   _baseurl: string;
+  messageShow: boolean = false;
   public candidateVW: CandidateViewModel = new CandidateViewModel();
+  public message : Message = new Message();
   private _cVW = new BehaviorSubject<CandidateViewModel>(this.candidateVW);
+  private _message = new BehaviorSubject<Message>(this.message);
+  _ms$ = this._message.asObservable();
   _cVW$ = this._cVW.asObservable();
+  
 
-
-  constructor(private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private router: Router,private storage: localStorageService,private http: HttpClient, public iziToast: Ng2IzitoastService, @Inject('BASE_URL') baseUrl: string) {
     this._baseurl = baseUrl;
+
+  }
+
+  private candidateVW1: CandidateViewModel = new CandidateViewModel();
+  get CVM(): any {
+    return this.candidateVW1;
+  }
+  set CVM(cvm: any) {
+    this.candidateVW1 = cvm;
   }
 
   formatDate(d: string): Date {
@@ -36,9 +52,24 @@ export class candidateService {
   ]
 
 
-  getCandidate(): any {
-    const CandidateInfo = this.storage.getStorage("CandidateInfo") || []; 
-    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/' + CandidateInfo[0].candidateId);
+  getCandidateByEmail(email : string) {
+    let candidateId: number;
+    this.http.get<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/GetByEmail?' + "email=" + email ).
+      subscribe((data) => {
+
+       
+        let candidateVW1 = new CandidateViewModel(data);
+        this.CVM = candidateVW1;
+  
+         
+       })
+
+  }
+
+
+  getCandidate(candidateId: number): any {
+    let headers = new HttpHeaders().set('content-type', 'application/json');
+    return this.http.get<CandidateViewModel>(this._baseurl + 'api/Candidates/GetCandidate/' );
   }
 
 
@@ -58,31 +89,36 @@ export class candidateService {
     return result;
   }
 
-  PostCandidate(candidateVW: CandidateViewModel): any {
+  PostCandidate(candidateVW: CandidateViewModel) {
 
-    let headers = new HttpHeaders().set('content-type', 'application/json');
-    
-    return this.http.post(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidateVW.candidate.firstName, lastNme: candidateVW.candidate.lastName, userName: candidateVW.candidate.userName, password: candidateVW.candidate.passWord }).
       subscribe(() => {
-        this.BroadCast(candidateVW);
-        this.iziToast.show({ title: "Your account created successfully!", position: "topRight", backgroundColor:"lime" });
-        
+
+        let headers = new HttpHeaders().set('content-type', 'application/json');
+
+        this.http.post('https://bestrecruitapi.azurewebsites.net/api/Candidate/Add', candidateVW, { headers: headers }).
+          subscribe(() => {
+            this.BroadCast(candidateVW);
+            this.iziToast.show({ title: "Your account created successfully!", position: "topRight", backgroundColor: "lime" });
+
+          },
+            err => {
+              alert(err.message);
+            });
       },
         err => {
           alert(err.message);
         });
-
   }
 
   PutCandidate(candidateVW: CandidateViewModel): any {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
     candidateVW.candidate.readdyToWorkDate = this.formatDate(candidateVW.candidate.readdyToWorkDate.toString());
-    return this.http.put(this._baseurl + 'api/Candidates', candidateVW, { headers: headers }).
+    this.http.put('https://bestrecruitapi.azurewebsites.net/api/Candidate/Update', candidateVW, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidateVW);
         this.iziToast.show({ title: "Candidate Info updated successfully!", position: "topRight", backgroundColor: "lime" });
-  
       },
         err => {
           alert(err.message);
@@ -92,14 +128,30 @@ export class candidateService {
   }
 
   LoginUser(userName, passWord) {
-    let params = new HttpParams();
-    params = params.append('userName', userName);
-    params = params.append('passWord', passWord);
-    return this.http.get(this._baseurl + 'api/Candidates/LoginCandidate/', { params: params });
+   
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Login/", { userName: userName, password: passWord })
+      .subscribe(token => {
+        if (token) {
+          this.storage.setStorageSignle("Token", token);
+          this.router.navigate(["/landing"]);
+          this.message = new Message();
+          this.message.messageShow = false;
+          this._message.next(this.message);
+          this.getCandidateByEmail(userName);
+        }
+        else
+        {
+          this.message = new Message();
+          this.message.messageShow = true;
+          this._message.next(this.message);
+        }
+        
+      })
+  
   }
 
    BroadCast(cvw:any) {
-    this._cVW.next(cvw);
+     this._cVW.next(cvw);
   }
 
 }

@@ -59,7 +59,6 @@ export class RegisterComponent {
 
   actionOnSubmit(form,candidateVW) {
    if (form.valid) {
-     candidateVW.candidate.userName = candidateVW.contact.email;
      this.dataService.PostCandidate(candidateVW);
      this.router.navigate([""]);
     }

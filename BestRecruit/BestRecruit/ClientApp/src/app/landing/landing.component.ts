@@ -20,8 +20,8 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];    
-    this.Name = CandidateInfo[0].firstName + " " + CandidateInfo[0].lastName;    
+    //const CandidateInfo = this.storage.getStorage("CandidateInfo") || [];    
+    //this.Name = CandidateInfo[0].firstName + " " + CandidateInfo[0].lastName;    
   }
   
 

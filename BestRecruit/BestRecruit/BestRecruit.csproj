@@ -43,6 +43,7 @@
     <None Remove="ClientApp\src\app\Profile\class\employmentType.ts" />
     <None Remove="ClientApp\src\app\Profile\class\experience-data.ts" />
     <None Remove="ClientApp\src\app\Profile\class\experience.ts" />
+    <None Remove="ClientApp\src\app\Profile\class\Message.ts" />
     <None Remove="ClientApp\src\app\Profile\class\resume.ts" />
     <None Remove="ClientApp\src\app\Profile\class\skill.ts" />
     <None Remove="ClientApp\src\app\Profile\class\userInfo.ts" />
@@ -52,6 +53,7 @@
     <None Remove="ClientApp\src\app\shared\services\certification.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\education-service.ts" />
     <None Remove="ClientApp\src\app\shared\services\experience.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\HttpInterceptor.ts" />
     <None Remove="ClientApp\src\app\shared\services\list.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\resume.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\skill-service.ts" />
@@ -75,10 +77,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\contact.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\education.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\employmentType.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Profile\class\message.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\resume.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\skill.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\userInfo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\candidate.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\HttpInterceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\list.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\resume.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\education-service.ts" />

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,7 @@ import { RegisterComponent } from './home/register.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 import { LoginComponent } from './home/login.component';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { TokenInterceptor } from './shared/services/HttpInterceptor';
 
 
 
@@ -52,7 +53,13 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     ProfileModule,
   ],
   
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
