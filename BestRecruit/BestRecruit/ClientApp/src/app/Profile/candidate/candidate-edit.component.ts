@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
 import { candidateService } from '../../shared/services/candidate.service';
 import { EmploymentType } from '../class/employmentType';
-import { CandidateViewModel } from '../class/candidateViewModel';
 
 
 @Component({
@@ -21,7 +20,6 @@ export class CandidateComponent implements OnInit {
   public candidate: Candidate;
   public address: Address;
   public contact: Contact;
-  public candidateVW: CandidateViewModel;
   public empList: EmploymentType[];
 
   settings = {
@@ -37,17 +35,18 @@ export class CandidateComponent implements OnInit {
   }
 
   displayCondition() {
-    return this.candidateVW != undefined && this.candidateVW.candidate != undefined && this.candidateVW.address != undefined && this.candidateVW.contact != undefined;
+    return this.candidate != undefined  && this.candidate.address != undefined && this.candidate.contact != undefined;
   }
 
   cancel() {
     this.router.navigate(["/profile/candidateView"]);
 
   }
-  actionOnSubmit(candidateVW, form) {
+  actionOnSubmit(candidate, form) {
     if (form.valid) {
-      this.candidateVW.candidate = candidateVW.candidate;
-      this.dataService.PutCandidate(this.candidateVW);
+      this.candidate.userName = candidate.contact.email;
+      this.candidate = candidate;
+      this.dataService.PutCandidate(this.candidate);
       this.router.navigate(["/profile/candidateView"]);
     }
   }
@@ -59,12 +58,8 @@ export class CandidateComponent implements OnInit {
   ngOnInit() {
 
     this.empList = this.dataService.getEmpTypeList();
-    this.candidateVW = this.dataService.CVM;
-    //this.dataService.getCandidate(2).subscribe(res => {
-    //  if (res) {
-    //    this.candidateVW = res;
-    //  }
-    //});
+    this.candidate = this.dataService.CVM;
+   
   }
 
   

@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { certificationService } from '../../shared/services/certification.service';
+import { candidateService } from '../../shared/services/candidate.service';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -11,12 +11,12 @@ import { Observable } from 'rxjs/Observable';
 export class CertificationViewComponent implements OnInit {
   public certificationList: Observable<any>;
 
-  constructor(private router: Router, public dataService: certificationService) {
+  constructor(private router: Router, public dataService: candidateService) {
 
   }
 
   deleteCertification(id) {
-    this.dataService.DeleteCertification(id);
+   // this.dataService.DeleteCertification(id);
   }
 
 
@@ -28,8 +28,8 @@ export class CertificationViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.certificationList = this.dataService.cList$;
-    this.dataService.getCertifications();
+    this.certificationList  = this.dataService.CVM.candidateCertification;
+ 
 
   }
 }

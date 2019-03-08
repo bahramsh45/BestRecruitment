@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../shared/services/validation.style.service';
 import { candidateService } from '../shared/services/candidate.service';
-import { CandidateViewModel } from '../Profile/class/candidateViewModel';
-import { Candidate } from '../Profile/class/candidate';
+import { Candidate} from '../Profile/class/candidate';
 import { Contact } from '../Profile/class/contact';
 import { Address } from '../Profile/class/address';
 import { HttpClient, HttpRequest } from '@angular/common/http'
@@ -19,16 +18,16 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 })
 export class RegisterComponent {
 
-  public candidateVW: CandidateViewModel = new CandidateViewModel();
+  public candidate: Candidate = new Candidate();
 
   constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
-    this.candidateVW.candidate = new Candidate();
-    this.candidateVW.contact = new Contact();
-    this.candidateVW.address = new Address();
+    this.candidate = new Candidate();
+    this.candidate.contact = new Contact();
+    this.candidate.address = new Address();
   }
 
   displayCondition() {
-    return this.candidateVW != undefined && this.candidateVW.candidate != undefined && this.candidateVW.contact != undefined;
+    return this.candidate != undefined  && this.candidate.contact != undefined;
   }
 
   upload(files) {
@@ -57,9 +56,9 @@ export class RegisterComponent {
     this.router.navigate([""]);
   }
 
-  actionOnSubmit(form,candidateVW) {
+  actionOnSubmit(form,candidate) {
    if (form.valid) {
-     this.dataService.PostCandidate(candidateVW);
+     this.dataService.PostCandidate(candidate);
      this.router.navigate([""]);
     }
   }

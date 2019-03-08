@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { resumeService } from '../../shared/services/resume.service';
-import { Observable } from 'rxjs/Observable';
+import { candidateService } from '../../shared/services/candidate.service';
+import { Resume } from '../class/resume';
 
 
 @Component({
@@ -10,15 +10,15 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ResumeViewComponent implements OnInit {
 
-  public resumeList: Observable<any>;
+  public resumeList: Resume[];
  
 
-  constructor(private router: Router, public dataService: resumeService) {
+  constructor(private router: Router, public dataService: candidateService) {
 
   }
 
   deleteResume(id) {
-    this.dataService.DeleteResume(id);
+    //this.dataService.DeleteResume(id);
   }
 
 
@@ -42,8 +42,7 @@ export class ResumeViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.resumeList = this.dataService.resList$;
-    this.dataService.getResumes();
+    this.resumeList = this.dataService.CVM.candidateResume;
   }
 
 

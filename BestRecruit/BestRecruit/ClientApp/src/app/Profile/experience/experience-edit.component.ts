@@ -2,7 +2,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Experience } from '../class/experience';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { experienceService } from '../../shared/services/experience.service';
+import { candidateService } from '../../shared/services/candidate.service';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
 declare var $: any;
 
@@ -25,7 +25,7 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
     defaultOpen: false
   }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: experienceService,private vs : ValidationStyleService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public dataService: candidateService,private vs : ValidationStyleService) {
 
   }
 
@@ -36,10 +36,13 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
   actionOnSubmit(exp) {
 
     if (exp.id == 0 || exp.id == undefined) {
-      this.dataService.AddExperience(exp)
+      this.dataService.CVM.candidateExperience.push(exp);
+      this.dataService.PutCandidate(this.dataService.CVM);
     }
     else {
-      this.dataService.PutExperience(exp)
+      let ec = this.dataService.CVM.candidateExperience.find(x => x.id == exp.id);
+      ec = exp;
+      this.dataService.PutCandidate(this.dataService.CVM)
     }
 
     this.router.navigate(["/profile/experienceView"]);
@@ -51,17 +54,16 @@ export class ExperienceComponent implements OnInit, AfterViewChecked  {
 
 
   ngOnInit() {
-    
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.id  = params['id'];
-      this.dataService.getExperience(this.id).subscribe(res => {
-        this.experience = this.id == 0 ? new Experience() : res;
-      });
-
-    });
-    
-    
+    this.experience = new Experience();
    
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.id = params['id'];
+      if (this.dataService.CVM.candidateExperience && this.id != 0) {
+        this.experience  = this.dataService.CVM.candidateExperience.find(item => {
+          return item.id == this.id;
+        })
+      }
+    });
 
   };
 

@@ -5,18 +5,18 @@
   <hr />
 </div>
 <div *ngIf="displayCondition()">
-  <form #candidateForm="ngForm" (ngSubmit)="actionOnSubmit(candidateVW,candidateForm)" novalidate>
+  <form #candidateForm="ngForm" (ngSubmit)="actionOnSubmit(candidate,candidateForm)" novalidate>
     <div class="row">
       <div class="col-sm-3">
         <label class="">First Name</label>
-        <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,candidateForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidateVW.candidate.firstName" class="form-control" required placeholder="First Name" />
+        <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,candidateForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidate.firstName" class="form-control" required placeholder="First Name" />
         <small [hidden]="firstName.valid || (firstName.pristine && !candidateForm.submitted)" class="text-danger">
           First Name is required.
         </small>
       </div>
       <div class="col-sm-3">
         <label>Last Name</label>
-        <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,candidateForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidateVW.candidate.lastName" class="form-control" required placeholder="Last Name" />
+        <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,candidateForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidate.lastName" class="form-control" required placeholder="Last Name" />
         <small [hidden]="lastName.valid || (lastName.pristine && !candidateForm.submitted)" class="text-danger">
           Last Name is required.
         </small>
@@ -27,14 +27,14 @@
     <div class="row">
       <div class="col-sm-3">
         <label class="">Phone</label>
-        <input type="text" name="phone" [ngStyle]="{'border-color' : getStyle(phone,candidateForm.submitted)}" #phone="ngModel" [(ngModel)]="candidateVW.contact.phoneNumber" class="form-control" required placeholder="Phone" />
+        <input type="text" name="phone" [ngStyle]="{'border-color' : getStyle(phone,candidateForm.submitted)}" #phone="ngModel" [(ngModel)]="candidate.contact.phoneNumber" class="form-control" required placeholder="Phone" />
         <small [hidden]="phone.valid || (phone.pristine && !candidateForm.submitted)" class="text-danger">
           Phone Number is required.
         </small>
       </div>
       <div class="col-sm-5">
         <label class="">Email</label>
-        <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,candidateForm.submitted)}" [(ngModel)]="candidateVW.contact.email" #email="ngModel" class="form-control" required email placeholder="Email" />
+        <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,candidateForm.submitted)}" [(ngModel)]="candidate.contact.email" #email="ngModel" class="form-control" required email placeholder="Email" />
 
         <div *ngIf="email.invalid">
           <div *ngIf="email.errors.required" class="text-danger">Email is required</div>
@@ -45,11 +45,11 @@
       </div>
       <div class="col-sm-2">
         <label class="">Mobile</label>
-        <input type="text" name="mobile" [(ngModel)]="candidateVW.contact.mobile" class="form-control" placeholder="Mobile" />
+        <input type="text" name="mobile" [(ngModel)]="candidate.contact.mobile" class="form-control" placeholder="Mobile" />
       </div>
       <div class="col-sm-2">
         <label class="">Skyp Id</label>
-        <input type="text" name="skypid" [(ngModel)]="candidateVW.contact.skypId" class="form-control" placeholder="Skyp Id" />
+        <input type="text" name="skypid" [(ngModel)]="candidate.contact.skypId" class="form-control" placeholder="Skyp Id" />
       </div>
 
     </div>
@@ -58,25 +58,25 @@
     <div class="row">
       <div class="col-sm-4">
         <label class="">Address 1</label>
-        <input type="text" name="address1" [ngStyle]="{'border-color' : getStyle(address1,candidateForm.submitted)}" [(ngModel)]="candidateVW.address.address1" #address1="ngModel" class="form-control" required placeholder="Address 1" />
+        <input type="text" name="address1" [ngStyle]="{'border-color' : getStyle(address1,candidateForm.submitted)}" [(ngModel)]="candidate.address.address1" #address1="ngModel" class="form-control" required placeholder="Address 1" />
         <small [hidden]="address1.valid || (address1.pristine && !candidateForm.submitted)" class="text-danger">
           Address 1 is required.
         </small>
       </div>
       <div class="col-sm-2">
         <label class="" for="city">City</label>
-        <input type="text" name="city" [(ngModel)]="candidateVW.address.city" [ngStyle]="{'border-color' : getStyle(city,candidateForm.submitted)}" #city="ngModel" class="form-control" required placeholder="City" />
+        <input type="text" name="city" [(ngModel)]="candidate.address.city" [ngStyle]="{'border-color' : getStyle(city,candidateForm.submitted)}" #city="ngModel" class="form-control" required placeholder="City" />
         <small [hidden]="city.valid || (city.pristine && !candidateForm.submitted)" class="text-danger">
           City is required.
         </small>
       </div>
       <div class="col-sm-2">
         <label class="" for="postalcode">Postal Code</label>
-        <input type="text" name="postalcode" [(ngModel)]="candidateVW.address.postalCode" class="form-control" placeholder="Postal Code" />
+        <input type="text" name="postalcode" [(ngModel)]="candidate.address.postalCode" class="form-control" placeholder="Postal Code" />
       </div>
       <div class="col-sm-3">
         <label class="">Country</label>
-        <input type="text" name="country" [(ngModel)]="candidateVW.address.country" class="form-control" placeholder="Country" />
+        <input type="text" name="country" [(ngModel)]="candidate.address.country" class="form-control" placeholder="Country" />
       </div>
     </div>
     <h3>Other</h3>
@@ -84,8 +84,8 @@
     <div class="row">
       <div class="col-sm-4" style="margin-top:10px">
         <label>Employment Type</label>
-        <select name="employmentType" class="form-control" [(ngModel)]="candidateVW.candidate.employmentType">
-          <option *ngFor="let emp of empList" [value]="emp.id" [selected]="candidateVW.candidate.employmentType">
+        <select name="employmentType" class="form-control" [(ngModel)]="candidate.employmentType">
+          <option *ngFor="let emp of empList" [value]="emp.id" [selected]="candidate.employmentType">
             {{emp.description}}
           </option>
         </select>
@@ -96,23 +96,23 @@
       </div>
       <div class="col-sm-3" style="margin-top:10px">
         <label class="">Start Date</label>
-        <angular2-date-picker name="readdyToWorkDate" [(ngModel)]="candidateVW.candidate.readdyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
+        <angular2-date-picker name="readdyToWorkDate" [(ngModel)]="candidate.readdyToWorkDate" #startDate="ngModel" [settings]="settings"></angular2-date-picker>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4" style="margin-top:10px">
-        <input type="checkbox" name="athorized" [(ngModel)]="candidateVW.candidate.authorized" />
+        <input type="checkbox" name="athorized" [(ngModel)]="candidate.authorized" />
         <label>Authorized to work in Canada</label>
       </div>
       <div class="col-sm-4" style="margin-top:10px">
-        <input type="checkbox" name="relocate" [(ngModel)]="candidateVW.candidate.relocation" />
+        <input type="checkbox" name="relocate" [(ngModel)]="candidate.relocation" />
         <label>Willing to Relocate</label>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6" style="margin-top:10px">
         <label>Notes</label>
-        <textarea name="note" [(ngModel)]="candidateVW.candidate.note" rows="3" style="width:100%"></textarea>
+        <textarea name="note" [(ngModel)]="candidate.note" rows="3" style="width:100%"></textarea>
 
       </div>
       <div class="col-sm-6" style="margin-top:10px;text-align:right;padding-top:50px">

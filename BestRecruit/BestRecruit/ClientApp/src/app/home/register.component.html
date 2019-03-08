@@ -7,7 +7,7 @@
           <strong>Register</strong>
         </div>
         <div class="panel-body">
-          <form #registerForm="ngForm" (ngSubmit)="actionOnSubmit(registerForm,candidateVW)" novalidate>
+          <form #registerForm="ngForm" (ngSubmit)="actionOnSubmit(registerForm,candidate)" novalidate>
             <fieldset>
               <div class="row" *ngIf="displayCondition()">
                 <div class="col-sm-12 col-md-10  col-md-offset-1 ">
@@ -15,7 +15,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <!--<label class="">First Name</label>-->
-                      <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,registerForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidateVW.candidate.firstName" class="form-control" required placeholder="First Name" />
+                      <input type="text" name="firstName" [ngStyle]="{'border-color' : getStyle(firstName,registerForm.submitted)}" #firstName="ngModel" [(ngModel)]="candidate.firstName" class="form-control" required placeholder="First Name" />
                     </div>
                     <div *ngIf="!firstName.valid && registerForm.submitted" class="text-danger">
                       User Name is required.
@@ -26,7 +26,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <!--<label class="">Last Name</label>-->
-                      <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,registerForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidateVW.candidate.lastName" class="form-control" required placeholder="Last Name" />
+                      <input type="text" name="lastName" [ngStyle]="{'border-color' : getStyle(lastName,registerForm.submitted)}" #lastName="ngModel" [(ngModel)]="candidate.lastName" class="form-control" required placeholder="Last Name" />
                     </div>
                     <div *ngIf="!lastName.valid && registerForm.submitted" class="text-danger">
                       Last name is required.
@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <!--<label class="">Email</label>-->
-                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidateVW.contact.email" class="form-control" required placeholder="Email"  />
+                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidate.contact.email" class="form-control" required placeholder="Email"  />
                     </div>
                     <div *ngIf="!email.valid && registerForm.submitted" class="text-danger">
                       Email is required.
@@ -47,7 +47,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <!--<label class="">Password</label>-->
-                      <input type="password" name="passWord" [(ngModel)]="candidateVW.candidate.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,registerForm.submitted)}" class="form-control" required placeholder="Password" />
+                      <input type="password" name="passWord" [(ngModel)]="candidate.passWord" #passWord="ngModel" [ngStyle]="{'border-color' : getStyle(passWord,registerForm.submitted)}" class="form-control" required placeholder="Password" />
                     </div>
                     <div *ngIf="!passWord.valid && registerForm.submitted" class="text-danger">
                       Password is required.

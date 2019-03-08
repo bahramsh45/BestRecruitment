@@ -6,15 +6,15 @@
   <button class="btn btn-raised btn-primary" style="margin-top:20px;display:inline;float:right" (click)="edit()"><i class="fa fa-edit"></i></button>
 </div>
 
-<div *ngIf="candidateVW.candidate && candidateVW.address && candidateVW.contact">
+<div *ngIf="candidate && candidate.address && candidate.contact">
   <div class="row">
     <div class="col-sm-3">
       <label class="">First Name</label>
-      <span class="form-control">{{candidateVW.candidate.firstName}}</span>
+      <span class="form-control">{{candidate.firstName}}</span>
     </div>
     <div class="col-sm-3">
       <label>Last Name</label>
-      <span class="form-control">{{candidateVW.candidate.lastName}}</span>
+      <span class="form-control">{{candidate.lastName}}</span>
     </div>
   </div>
   <h3>Contact</h3>
@@ -22,19 +22,19 @@
   <div class="row">
     <div class="col-sm-3">
       <label class="">Phone</label>
-      <span class="form-control">{{candidateVW.contact.phoneNumber}}</span>
+      <span class="form-control">{{candidate.contact.phoneNumber}}</span>
     </div>
     <div class="col-sm-5">
       <label class="">Email</label>
-      <span class="form-control">{{candidateVW.contact.email}}</span>
+      <span class="form-control">{{candidate.contact.email}}</span>
     </div>
     <div class="col-sm-2">
       <label class="">Mobile</label>
-      <span class="form-control">{{candidateVW.contact.mobile}}</span>
+      <span class="form-control">{{candidate.contact.mobile}}</span>
     </div>
     <div class="col-sm-2">
       <label class="">Skyp Id</label>
-      <span class="form-control">{{candidateVW.contact.skypId}}</span>
+      <span class="form-control">{{candidate.contact.skypId}}</span>
     </div>
 
   </div>
@@ -43,19 +43,19 @@
   <div class="row">
     <div class="col-sm-4">
       <label class="">Address 1</label>
-      <span class="form-control">{{candidateVW.address.address1}}</span>
+      <span class="form-control">{{candidate.address.address1}}</span>
     </div>
     <div class="col-sm-2">
       <label class="" for="city">City</label>
-      <span class="form-control">{{candidateVW.address.city}}</span>
+      <span class="form-control">{{candidate.address.city}}</span>
     </div>
     <div class="col-sm-2">
       <label class="" for="postalcode">Postal Code</label>
-      <span class="form-control">{{candidateVW.address.postalCode}}</span>
+      <span class="form-control">{{candidate.address.postalCode}}</span>
     </div>
     <div class="col-sm-3">
       <label class="">Country</label>
-      <span class="form-control">{{candidateVW.address.country}}</span>
+      <span class="form-control">{{candidate.address.country}}</span>
     </div>
   </div>
   <h3>Other</h3>
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-sm-4" style="margin-top:10px">
       <label>Employment Type</label>
-      <span class="form-control">{{getEmploymentType(candidateVW.candidate.employmentType)}}</span>
+      <span class="form-control">{{getEmploymentType(candidate.employmentType)}}</span>
     </div>
     <div class="col-sm-4" style="margin-top:10px">
       <label>&nbsp;</label>
@@ -71,25 +71,25 @@
     </div>
     <div class="col-sm-3" style="margin-top:10px">
       <label class="" for="city">Start Date</label>
-      <span class="form-control">{{candidateVW.candidate.readdyToWorkDate | date}}</span>
+      <span class="form-control">{{candidate.readdyToWorkDate | date}}</span>
 
     </div>
 
   </div>
   <div class="row">
     <div class="col-sm-4" style="margin-top:10px">
-      <input type="checkbox" name="athorized" [checked]="candidateVW.candidate.authorized"/>
+      <input type="checkbox" name="athorized" [checked]="candidate.authorized"/>
       <label>Authorized to work in Canada</label>
     </div>
     <div class="col-sm-4" style="margin-top:10px">
-      <input type="checkbox" name="relocate"  [checked]="candidateVW.candidate.relocation"/>
+      <input type="checkbox" name="relocate"  [checked]="candidate.relocation"/>
       <label>Willing to Relocate</label>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6" style="margin-top:10px">
       <label>Notes</label>
-      <textarea rows="3" style="width:100%">{{candidateVW.candidate.note}}</textarea>
+      <textarea rows="3" style="width:100%">{{candidate.note}}</textarea>
 
     </div>
   </div>

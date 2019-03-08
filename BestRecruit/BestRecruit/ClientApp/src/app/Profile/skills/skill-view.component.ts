@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from '../class/skill';
-import { skillService } from '../../shared/services/skill-service';
-import { Observable } from 'rxjs/Observable';
+import { candidateService } from '../../shared/services/candidate.service';
+
 
 
 @Component({
@@ -11,14 +11,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SkillViewComponent implements OnInit {
 
-  public skillList: Observable<any>;
-  constructor(private router: Router, public dataService: skillService) {
+  public skillList: Skill[];
+  constructor(private router: Router, public dataService: candidateService) {
 
 
   }
 
   deleteSkill(id) {
-    this.dataService.DeleteSkill(id);
+    //this.dataService.DeleteSkill(id);
   }
 
   addSkill() {
@@ -28,8 +28,9 @@ export class SkillViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.skillList = this.dataService.sList$;
-    this.dataService.getSkills();
+
+    this.skillList = this.dataService.CVM.candidateSkill;
+
 
   }
 }

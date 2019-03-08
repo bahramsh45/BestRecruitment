@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from '../class/education';
 import { Router } from '@angular/router';
-import { educationService } from '../../shared/services/education-service';
-import { Observable } from 'rxjs/Observable';
+import { candidateService } from '../../shared/services/candidate.service';
+
 
 @Component({
   selector: 'education-view',
   templateUrl: './education-view.component.html'
 })
 export class EducationViewComponent implements OnInit {
-  public educationList: Observable<any>;
+  public educationList: Education[];
 
-  constructor(private router: Router, public dataService: educationService) {
+  constructor(private router: Router, public dataService: candidateService) {
 
   }
 
   deleteEducation(id) {
-    this.dataService.DeleteEducation(id);
+    //this.dataService.DeleteEducation(id);
   }
 
   
@@ -27,8 +27,7 @@ export class EducationViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.educationList = this.dataService.eduList$;
-    this.dataService.getEducations();
+    this.educationList = this.dataService.CVM.candidateEducation;
 
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
-import { resumeService } from '../../shared/services/resume.service';
+import { candidateService } from '../../shared/services/candidate.service';
 import { Resume } from '../class/resume';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 
@@ -21,7 +21,7 @@ export class ResumeComponent implements OnInit {
   constructor(private router: Router,
     public iziToast: Ng2IzitoastService,
     private activatedRoute: ActivatedRoute,
-    private dataService: resumeService,
+    private dataService: candidateService,
     private vs: ValidationStyleService) {
   }
 

@@ -1,7 +1,7 @@
 import { Component, AfterViewChecked, OnInit} from '@angular/core';
 import { Education } from '../class/education';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { educationService } from '../../shared/services/education-service';
+import { candidateService } from '../../shared/services/candidate.service';
 import { ValidationStyleService } from '../../shared/services/validation.style.service';
 declare var $: any;
 
@@ -20,7 +20,7 @@ export class EducationComponent implements OnInit, AfterViewChecked {
     format: 'dd-MM-yyyy',
     defaultOpen: false
   }
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: educationService, private vs: ValidationStyleService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private dataService: candidateService, private vs: ValidationStyleService) {
 
   }
 
@@ -34,12 +34,14 @@ export class EducationComponent implements OnInit, AfterViewChecked {
 
 
   actionOnSubmit(edu) {
-
     if (edu.id == 0 || edu.id == undefined) {
-      this.dataService.AddEducation(edu)
+      this.dataService.CVM.candidateEducation.push(edu);
+      this.dataService.PutCandidate(this.dataService.CVM);
     }
     else {
-      this.dataService.PutEducation(edu)
+      let ed = this.dataService.CVM.candidateEducation.find(x => x.id == edu.id);
+      ed = edu;
+      this.dataService.PutCandidate(this.dataService.CVM)
     }
 
     this.router.navigate(["/profile/educationView"]);
@@ -47,15 +49,17 @@ export class EducationComponent implements OnInit, AfterViewChecked {
 
 
   ngOnInit() {
+
+    this.education = new Education();
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.dataService.getEducation(this.id).subscribe(res => {
-        this.education = this.id == 0 ? new Education() : res;
-      });
-
+      if (this.dataService.CVM.candidateEducation && this.id != 0) {
+        this.education = this.dataService.CVM.candidateEducation.find(item => {
+          return item.id == this.id;
+        })
+      }
     });
-
- 
     
   }
   ngAfterViewChecked() {
@@ -67,7 +71,5 @@ export class EducationComponent implements OnInit, AfterViewChecked {
       $this.find('span').css('color', 'black');
 
     })
-
-
   }
 }
