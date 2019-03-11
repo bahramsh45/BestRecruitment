@@ -44,7 +44,6 @@ export class CandidateComponent implements OnInit {
   }
   actionOnSubmit(candidate, form) {
     if (form.valid) {
-      this.candidate.userId = candidate.contact.email;
       this.candidate = candidate;
       this.dataService.PutCandidate(this.candidate);
       this.router.navigate(["/profile/candidateView"]);
