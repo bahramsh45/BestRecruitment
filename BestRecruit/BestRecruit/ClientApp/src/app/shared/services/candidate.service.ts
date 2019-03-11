@@ -159,7 +159,7 @@ export class candidateService {
       item.startDate = this.formatDate(item.startDate.toString());
       item.endDate = this.formatDate(item.endDate.toString());
     });
-    candidate.userId = candidate.contact.email;
+    //candidate.userId = candidate.contact.email;
     this.http.put('https://bestrecruitapi.azurewebsites.net/api/Candidate/Update', candidate, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidate);
