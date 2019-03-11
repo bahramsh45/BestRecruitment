@@ -16,7 +16,11 @@ export class EducationViewComponent implements OnInit {
   }
 
   deleteEducation(id) {
-    //this.dataService.DeleteEducation(id);
+    this.dataService.deleteCandidateEducation(id);
+    this.dataService.CVM.candidateEducation = this.dataService.CVM.candidateEducation.filter(x => {
+      return x.id != id;
+    });
+    this.educationList = this.dataService.CVM.candidateEducation;
   }
 
   

@@ -20,12 +20,11 @@ export class ExperienceViewComponent implements OnInit {
   }
 
   deleteExperience(id) {
-
-    this.dataService.CVM.candidateExperience = this.dataService.CVM.candidateExperience.filter((item)=> {
-      return item.id !== id;
+    
+    this.dataService.deleteCandidateExperience(id);
+    this.dataService.CVM.candidateExperience = this.dataService.CVM.candidateExperience.filter(x => {
+      return x.id != id;
     });
-
-    this.dataService.PutCandidate(this.dataService.CVM);
     this.experienceList = this.dataService.CVM.candidateExperience;
 
   }

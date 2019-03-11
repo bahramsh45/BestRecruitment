@@ -1,7 +1,7 @@
 
 import { Injectable, Inject } from '@angular/core';
 import { EmploymentType } from '../../Profile/class/employmentType';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Candidate} from '../../Profile/class/candidate';
 import { Message } from '../../Profile/class/message';
@@ -9,9 +9,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { localStorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
-
-
-
 
 
 @Injectable()
@@ -52,25 +49,57 @@ export class candidateService {
   ]
 
 
-  getCandidateByEmail(email : string) {
+  getCurrentCandidate() {
   
-    this.http.get<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/GetByEmail?' + "email=" + email ).
+    this.http.get<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/GetCurrentCandidate').
       subscribe((data) => {
-        
-        let candidate1 = new Candidate(data);
-        this.CVM = candidate1;
+        if (data.succeeded) {
+          let candidate1 = new Candidate(data.data);
+          this.CVM = candidate1;
+        }
          
        })
 
   }
 
+  deleteCandidateExperience(id) {
 
-  getCandidate(candidateId: number): any {
-    let headers = new HttpHeaders().set('content-type', 'application/json');
-    return this.http.get<Candidate>(this._baseurl + 'api/Candidates/GetCandidate/' );
+    
+    this.http.delete<any>('https://bestrecruitapi.azurewebsites.net//api/Candidate/DeleteExperience?id=' + id).subscribe(x => {
+
+      this.iziToast.show({ title: "The experience deleted successfully!", position: "topRight", backgroundColor: "lime" });
+
+    })
   }
 
+  deleteCandidateEducation(id) {
 
+    this.http.delete<any>('https://bestrecruitapi.azurewebsites.net//api/Candidate/DeleteEducation?id=' + id).subscribe(x => {
+
+      this.iziToast.show({ title: "The education deleted successfully!", position: "topRight", backgroundColor: "lime" });
+
+    })
+  }
+
+  deleteCandidateSkill(id) {
+
+    this.http.delete<any>('https://bestrecruitapi.azurewebsites.net//api/Candidate/DeleteSkill?id=' + id).subscribe(x => {
+
+      this.iziToast.show({ title: "The skill deleted successfully!", position: "topRight", backgroundColor: "lime" });
+
+    })
+  }
+
+  deleteCandidateCertification(id) {
+
+    this.http.delete<any>('https://bestrecruitapi.azurewebsites.net//api/Candidate/DeleteCertification?id=' + id).subscribe(x => {
+
+      this.iziToast.show({ title: "The certification deleted successfully!", position: "topRight", backgroundColor: "lime" });
+
+    })
+  }
+
+  
   getEmpTypeList(): EmploymentType[] {
       return this.empType;
   }
@@ -87,7 +116,7 @@ export class candidateService {
     return result;
   }
 
-  PostCandidate(candidate: Candidate) {
+  postCandidate(candidate: Candidate) {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
 
@@ -103,14 +132,20 @@ export class candidateService {
   }
 
 
-    //this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastNme: candidate.lastName, userName: candidate.userName, password: candidate.passWord }).
-    //  subscribe(() => {
-    //  }
-    //    ,
-    //    err => {
-    //      alert(err.message);
-    //    });
- // }
+  register(candidate) {
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastNme: candidate.lastName, userName: candidate.email, password: candidate.passWord }).
+      subscribe(() => {
+        this.postCandidate(candidate);
+
+      }
+        ,
+        err => {
+          alert(err.message);
+        });
+  
+  }
+
+    
 
   PutCandidate(candidate: Candidate): any {
 
@@ -124,7 +159,7 @@ export class candidateService {
       item.startDate = this.formatDate(item.startDate.toString());
       item.endDate = this.formatDate(item.endDate.toString());
     });
-    candidate.userName = candidate.contact.email;
+    candidate.userId = candidate.contact.email;
     this.http.put('https://bestrecruitapi.azurewebsites.net/api/Candidate/Update', candidate, { headers: headers }).
       subscribe(() => {
         this.BroadCast(candidate);
@@ -134,6 +169,28 @@ export class candidateService {
           alert(err.message);
         });
   }
+
+
+  uploadResume(candidateId,files) {
+    if (files.length === 0)
+      return;
+
+    const formData = new FormData();
+
+    for (let file of files)
+      formData.append(file.name, file);
+
+    const uploadReq = new HttpRequest('POST', 'https://bestrecruitapi.azurewebsites.net/api/File/UploadResume?candidateId=' + candidateId , formData, {
+      reportProgress: false,
+    });
+
+    this.http.request(uploadReq).subscribe((data) => {
+     // this.filePath = Object.keys(data).map(function (key) { return data[key] })[6];
+      this.iziToast.show({ title: "Your resume uploaded successfully!", position: "topRight", backgroundColor: "lime" });
+    });
+  }  
+
+ 
 
   LoginUser(userName, passWord) {
    
@@ -145,7 +202,7 @@ export class candidateService {
           this.message = new Message();
           this.message.messageShow = false;
           this._message.next(this.message);
-          this.getCandidateByEmail(userName);
+          this.getCurrentCandidate();
         }
         else
         {

@@ -6,7 +6,6 @@ import { candidateService } from '../shared/services/candidate.service';
 import { Candidate} from '../Profile/class/candidate';
 import { Contact } from '../Profile/class/contact';
 import { Address } from '../Profile/class/address';
-import { HttpClient, HttpRequest } from '@angular/common/http'
 import { Ng2IzitoastService } from 'ng2-izitoast';
 
 
@@ -20,7 +19,7 @@ export class RegisterComponent {
 
   public candidate: Candidate = new Candidate();
 
-  constructor(private http: HttpClient, public iziToast: Ng2IzitoastService, private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
+  constructor(public iziToast: Ng2IzitoastService, private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
     this.candidate = new Candidate();
     this.candidate.contact = new Contact();
     this.candidate.address = new Address();
@@ -31,21 +30,7 @@ export class RegisterComponent {
   }
 
   upload(files) {
-    if (files.length === 0)
-      return;
-
-    const formData = new FormData();
-
-    for (let file of files)
-      formData.append(file.name, file);
-
-    const uploadReq = new HttpRequest('POST', 'api/upload', formData, {
-      reportProgress: false,
-    });
-
-    this.http.request(uploadReq).subscribe(() => {
-      this.iziToast.show({ title: "Your resume uploded successfully!", position: "topRight", backgroundColor: "lime" });
-    });
+    this.dataService.uploadResume("",files);
   }  
 
   getStyle(f, form) {
@@ -57,8 +42,8 @@ export class RegisterComponent {
   }
 
   actionOnSubmit(form,candidate) {
-   if (form.valid) {
-     this.dataService.PostCandidate(candidate);
+    if (form.valid) {
+      this.dataService.register(candidate);
      this.router.navigate([""]);
     }
   }

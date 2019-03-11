@@ -34,9 +34,9 @@ export class ResumeComponent implements OnInit {
   }
 
   upLoad(files) {
-      this.flag = true;
-      this.fileName = files[0].name;
-      this.dataService.Upload(files);
+    this.flag = true;
+    this.fileName = files[0].name;
+    this.dataService.uploadResume(this.dataService.CVM.candiadte.userName, files);
   }
 
   getFileName() {
@@ -49,27 +49,34 @@ export class ResumeComponent implements OnInit {
   
   actionOnSubmit(form, res) {
     if (form.valid && this.flag) {
+
       if (res.id == 0 || res.id == undefined) {
         res.path = this.fileName;
-        this.dataService.AddResume(res)
+        this.dataService.CVM.candidateResume.push(res);
+        this.dataService.PutCandidate(this.dataService.CVM);
       }
       else {
-        this.dataService.PutResume(res)
+        let rc = this.dataService.CVM.candidateResume.find(x => x.id == res.id);
+        rc = res;
+        this.dataService.PutCandidate(this.dataService.CVM)
       }
-
+      
       this.router.navigate(["/profile/resumeView"]);
     }
   }
 
   ngOnInit() {
+
+    this.resume = new Resume();
     this.flag = false;
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.dataService.getResume(this.id).subscribe(res => {
-        this.resume = this.id == 0 ? new Resume() : res;
-        this.fileName = res.path;
-      });
-
+      if (this.dataService.CVM.candidateResume && this.id != 0) {
+        this.resume = this.dataService.CVM.candidateResume.find(item => {
+          return item.id == this.id;
+        })
+        this.fileName = this.dataService.CVM.candidateResume.path;
+      }
     });
 
   }

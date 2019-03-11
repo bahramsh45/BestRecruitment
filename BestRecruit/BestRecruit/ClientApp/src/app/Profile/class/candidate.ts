@@ -21,8 +21,8 @@ export class Candidate {
   salary: number;
   readdyToWorkDate: Date;
   notice: string;
-  userName: string;
-  passWord: string;
+  userId: string;
+  email: string;
   note: string;
   candidateExperience: Experience[];
   candidateEducation: Education[];
@@ -50,16 +50,19 @@ export class Candidate {
       this.contact.skypId = response.contact.skypId;
 
       this.Id = response.id;
+      this.email = response.email;
       this.firstName = response.firstName;
       this.lastName = response.lastName;
       this.relocation = response.relocation;
       this.rate = response.rate;
       this.employmentType = response.employmentType;
       this.notice = response.notice;
+      this.userId = response.userId;
       this.readdyToWorkDate = response.readdyToWorkDate;
       this.contactId = response.contactId;
       this.addrId = response.addrId;
       this.authorized = response.authorized;
+      this.note = response.note;
       this.candidateSkill = new Array<Skill>();
       this.candidateExperience = new Array<Experience>();
       this.candidateEducation = new Array<Education>();
@@ -69,7 +72,10 @@ export class Candidate {
       response.candidateSkill.map((item) => {
         let s = new Skill();
         s.id = item.id;
+        s.candidateId = item.candidateId;
         s.skillName = item.skillName;
+        s.lastYearUsed = item.lastYearUsed;
+        s.yearsOfExperience = item.yearsOfExperience;
         this.candidateSkill.push(s);
 
       });

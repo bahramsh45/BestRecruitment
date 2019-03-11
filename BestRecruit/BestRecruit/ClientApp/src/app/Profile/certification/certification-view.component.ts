@@ -16,7 +16,11 @@ export class CertificationViewComponent implements OnInit {
   }
 
   deleteCertification(id) {
-   // this.dataService.DeleteCertification(id);
+    this.dataService.deleteCandidateCertification(id);
+    this.dataService.CVM.candidateCertification = this.dataService.CVM.candidateCertification.filter(x => {
+      return x.id != id;
+    });
+    this.certificationList = this.dataService.CVM.candidateCertification;
   }
 
 

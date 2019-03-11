@@ -18,7 +18,11 @@ export class SkillViewComponent implements OnInit {
   }
 
   deleteSkill(id) {
-    //this.dataService.DeleteSkill(id);
+    this.dataService.deleteCandidateSkill(id);
+    this.dataService.CVM.candidateSkill = this.dataService.CVM.candidateSkill.filter(x => {
+      return x.id != id;
+    });
+    this.skillList = this.dataService.CVM.candidateSkill;
   }
 
   addSkill() {

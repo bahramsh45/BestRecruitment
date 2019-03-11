@@ -25,16 +25,19 @@ var Candidate = /** @class */ (function () {
             this.contact.mobile = response.contact.mobile;
             this.contact.skypId = response.contact.skypId;
             this.Id = response.id;
+            this.email = response.email;
             this.firstName = response.firstName;
             this.lastName = response.lastName;
             this.relocation = response.relocation;
             this.rate = response.rate;
             this.employmentType = response.employmentType;
             this.notice = response.notice;
+            this.userId = response.userId;
             this.readdyToWorkDate = response.readdyToWorkDate;
             this.contactId = response.contactId;
             this.addrId = response.addrId;
             this.authorized = response.authorized;
+            this.note = response.note;
             this.candidateSkill = new Array();
             this.candidateExperience = new Array();
             this.candidateEducation = new Array();
@@ -43,7 +46,10 @@ var Candidate = /** @class */ (function () {
             response.candidateSkill.map(function (item) {
                 var s = new skill_1.Skill();
                 s.id = item.id;
+                s.candidateId = item.candidateId;
                 s.skillName = item.skillName;
+                s.lastYearUsed = item.lastYearUsed;
+                s.yearsOfExperience = item.yearsOfExperience;
                 _this.candidateSkill.push(s);
             });
             response.candidateExperience.map(function (item) {

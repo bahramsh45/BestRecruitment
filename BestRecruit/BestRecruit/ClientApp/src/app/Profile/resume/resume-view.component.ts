@@ -18,7 +18,7 @@ export class ResumeViewComponent implements OnInit {
   }
 
   deleteResume(id) {
-    //this.dataService.DeleteResume(id);
+   // this.dataService.(id);
   }
 
 

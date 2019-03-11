@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <!--<label class="">Email</label>-->
-                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidate.contact.email" class="form-control" required placeholder="Email"  />
+                      <input type="text" name="email" [ngStyle]="{'border-color' : getStyle(email,registerForm.submitted)}" #email="ngModel" [(ngModel)]="candidate.email" class="form-control" required placeholder="Email"  />
                     </div>
                     <div *ngIf="!email.valid && registerForm.submitted" class="text-danger">
                       Email is required.
