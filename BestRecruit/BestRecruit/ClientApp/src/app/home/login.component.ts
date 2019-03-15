@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../shared/services/validation.style.service';
 import { userInfo } from '../Profile/class/userInfo';
@@ -13,11 +13,11 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   public userinfo: userInfo = new userInfo();
   public messageShow: Observable<any>;
-  CandidateInfo = [];
+  CandidateInfo = []; 
   constructor(private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
 
   }
@@ -36,5 +36,9 @@ export class LoginComponent {
       this.dataService.LoginUser(this.userinfo.userName, this.userinfo.passWord);
       this.messageShow = this.dataService._ms$;
     }
+  }
+
+  ngOnInit() {
+    this.userinfo.passWord = 'Bahr4490@';
   }
 }

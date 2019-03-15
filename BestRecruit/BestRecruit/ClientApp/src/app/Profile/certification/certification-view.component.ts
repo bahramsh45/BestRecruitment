@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './certification-view.component.html'
 })
 export class CertificationViewComponent implements OnInit {
-  public certificationList: Observable<any>;
+  public cert$: Observable<any>;
 
   constructor(private router: Router, public dataService: candidateService) {
 
@@ -20,7 +20,7 @@ export class CertificationViewComponent implements OnInit {
     this.dataService.CVM.candidateCertification = this.dataService.CVM.candidateCertification.filter(x => {
       return x.id != id;
     });
-    this.certificationList = this.dataService.CVM.candidateCertification;
+  
   }
 
 
@@ -32,7 +32,7 @@ export class CertificationViewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.certificationList  = this.dataService.CVM.candidateCertification;
+    this.cert$ = this.dataService._cVW$;
  
 
   }

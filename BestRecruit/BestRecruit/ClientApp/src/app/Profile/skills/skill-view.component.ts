@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from '../class/skill';
 import { candidateService } from '../../shared/services/candidate.service';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -11,7 +12,7 @@ import { candidateService } from '../../shared/services/candidate.service';
 })
 export class SkillViewComponent implements OnInit {
 
-  public skillList: Skill[];
+  public sk$: Observable<any>;
   constructor(private router: Router, public dataService: candidateService) {
 
 
@@ -22,7 +23,7 @@ export class SkillViewComponent implements OnInit {
     this.dataService.CVM.candidateSkill = this.dataService.CVM.candidateSkill.filter(x => {
       return x.id != id;
     });
-    this.skillList = this.dataService.CVM.candidateSkill;
+   
   }
 
   addSkill() {
@@ -32,9 +33,7 @@ export class SkillViewComponent implements OnInit {
 
   ngOnInit() {
 
-
-    this.skillList = this.dataService.CVM.candidateSkill;
-
+    this.sk$ = this.dataService._cVW$;
 
   }
 }

@@ -54,8 +54,9 @@ export class candidateService {
     this.http.get<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/GetCurrentCandidate').
       subscribe((data) => {
         if (data.succeeded) {
-          let candidate1 = new Candidate(data.data);
-          this.CVM = candidate1;
+          this.CVM = new Candidate(data.data);
+         
+          this.BroadCast(this.CVM);
         }
          
        })
@@ -120,9 +121,12 @@ export class candidateService {
 
     let headers = new HttpHeaders().set('content-type', 'application/json');
 
-    this.http.post('https://bestrecruitapi.azurewebsites.net/api/Candidate/Add', candidate, { headers: headers }).
-      subscribe(() => {
-        this.BroadCast(candidate);
+    this.http.post<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/Add', candidate, { headers: headers }).
+      subscribe((data) => {
+        if (data.succeeded) {
+          this.CVM = new Candidate(data.data);
+          this.BroadCast(this.CVM);
+        }
         this.iziToast.show({ title: "Your account created successfully!", position: "topRight", backgroundColor: "lime" });
 
       },
@@ -159,15 +163,20 @@ export class candidateService {
       item.startDate = this.formatDate(item.startDate.toString());
       item.endDate = this.formatDate(item.endDate.toString());
     });
-    //candidate.userId = candidate.contact.email;
-    this.http.put('https://bestrecruitapi.azurewebsites.net/api/Candidate/Update', candidate, { headers: headers }).
-      subscribe(() => {
-        this.BroadCast(candidate);
+
+    this.http.put<any>('https://bestrecruitapi.azurewebsites.net/api/Candidate/Update', candidate, { headers: headers }).
+      subscribe((data) => {
+
+        if (data.succeeded) {
+          this.CVM = new Candidate(data.data);
+          this.BroadCast(this.CVM);
+        }
+        
         this.iziToast.show({ title: "Candidate Info updated successfully!", position: "topRight", backgroundColor: "lime" });
       },
-        err => {
-          alert(err.message);
-        });
+      err => {
+        alert(err.message);
+      });
   }
 
 
