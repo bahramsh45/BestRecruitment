@@ -36,13 +36,18 @@ export class ResumeComponent implements OnInit {
   upLoad(files) {
     this.flag = true;
     this.fileName = files[0].name;
-    this.dataService.uploadResume(this.dataService.CVM.candiadte.userName, files);
+    this.dataService.uploadResume(this.dataService.CVM.userId, files);
   }
 
   getFileName() {
-    var p = this.fileName.lastIndexOf('\\');
-    var f = this.fileName.substring(p + 1, this.fileName.length);
-    return f;
+    if (this.fileName) {
+      var p = this.fileName.lastIndexOf('\\');
+      var f = this.fileName.substring(p + 1, this.fileName.length);
+      return f;
+    }
+
+    return '';
+   
   }
   
 

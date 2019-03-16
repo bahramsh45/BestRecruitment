@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { candidateService } from '../../shared/services/candidate.service';
-import { Resume } from '../class/resume';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -9,10 +9,9 @@ import { Resume } from '../class/resume';
   templateUrl: './resume-view.component.html'
 })
 export class ResumeViewComponent implements OnInit {
-
-  public resumeList: Resume[];
+  
+  public r$: Observable<any>;
  
-
   constructor(private router: Router, public dataService: candidateService) {
 
   }
@@ -41,8 +40,7 @@ export class ResumeViewComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.resumeList = this.dataService.CVM.candidateResume;
+    this.r$ = this.dataService._cVW$;
   }
 
 

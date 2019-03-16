@@ -180,7 +180,7 @@ export class candidateService {
   }
 
 
-  uploadResume(candidateId,files) {
+  uploadResume(userId,files) {
     if (files.length === 0)
       return;
 
@@ -189,7 +189,7 @@ export class candidateService {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'https://bestrecruitapi.azurewebsites.net/api/File/UploadResume?candidateId=' + candidateId , formData, {
+    const uploadReq = new HttpRequest('POST', 'https://bestrecruitapi.azurewebsites.net/api/File/UploadResume?candidateId=' + userId , formData, {
       reportProgress: false,
     });
 
