@@ -49,13 +49,7 @@
     <None Remove="ClientApp\src\app\Profile\Profile.component.ts" />
     <None Remove="ClientApp\src\app\Profile\profile.module.ts" />
     <None Remove="ClientApp\src\app\shared\services\candidate.service.ts" />
-    <None Remove="ClientApp\src\app\shared\services\certification.service.ts" />
-    <None Remove="ClientApp\src\app\shared\services\education-service.ts" />
-    <None Remove="ClientApp\src\app\shared\services\experience.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\HttpInterceptor.ts" />
-    <None Remove="ClientApp\src\app\shared\services\list.service.ts" />
-    <None Remove="ClientApp\src\app\shared\services\resume.service.ts" />
-    <None Remove="ClientApp\src\app\shared\services\skill-service.ts" />
     <None Remove="ClientApp\src\app\shared\services\storage.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\ToasterService.ts" />
     <None Remove="ClientApp\src\app\shared\services\validation.style.service.ts" />
@@ -82,25 +76,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\userInfo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\candidate.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\HttpInterceptor.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\list.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\resume.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\education-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\experience.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\certification.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\storage.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\ToasterService.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\validation.style.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\services\skill-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\class\experience.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Profile\profile.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\shared.module.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="ClientApp\src\app\shared\services\experience-data.js.map">
-      <DependentUpon>experience-data.js</DependentUpon>
-    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

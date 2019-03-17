@@ -137,7 +137,9 @@ export class candidateService {
 
 
   register(candidate) {
-    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastNme: candidate.lastName, userName: candidate.email, password: candidate.passWord }).
+    let c = candidate;
+   
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastNme: candidate.lastName, userType: 'Candidate', userName: candidate.email, password: candidate.passWord }).
       subscribe(() => {
         this.postCandidate(candidate);
 
