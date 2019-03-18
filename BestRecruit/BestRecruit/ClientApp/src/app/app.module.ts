@@ -17,6 +17,7 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
 import { LoginComponent } from './home/login.component';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { TokenInterceptor } from './shared/services/HttpInterceptor';
+import { ForgotPasswordComponent } from './home/forgotPassword.component';
 
 
 
@@ -28,7 +29,8 @@ import { TokenInterceptor } from './shared/services/HttpInterceptor';
     HomeComponent,
     LoginComponent,
     LandingComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent
    
   ],
   imports: [
@@ -45,6 +47,7 @@ import { TokenInterceptor } from './shared/services/HttpInterceptor';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'forgotPassword', component: ForgotPasswordComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'landing', component: LandingComponent },
 

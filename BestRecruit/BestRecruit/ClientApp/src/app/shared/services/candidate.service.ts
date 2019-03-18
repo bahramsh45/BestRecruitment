@@ -9,6 +9,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { localStorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
+import { Address } from '../../Profile/class/address';
+import { Contact } from '../../Profile/class/contact';
 
 
 @Injectable()
@@ -55,8 +57,8 @@ export class candidateService {
       subscribe((data) => {
         if (data.succeeded) {
           this.CVM = new Candidate(data.data);
-         
           this.BroadCast(this.CVM);
+          this.router.navigate(["/landing"]);
         }
          
        })
@@ -126,6 +128,7 @@ export class candidateService {
         if (data.succeeded) {
           this.CVM = new Candidate(data.data);
           this.BroadCast(this.CVM);
+          this.getCurrentCandidate();
         }
         this.iziToast.show({ title: "Your account created successfully!", position: "topRight", backgroundColor: "lime" });
 
@@ -139,16 +142,23 @@ export class candidateService {
   register(candidate) {
     let c = candidate;
    
-    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastNme: candidate.lastName, userType: 'Candidate', userName: candidate.email, password: candidate.passWord }).
-      subscribe(() => {
-        this.postCandidate(candidate);
-
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Register", { firstName: candidate.firstName, lastName: candidate.lastName, userType: 'Candidate', userName: candidate.email, password: candidate.passWord }).
+      subscribe(() => {       
+        this.LoginUser(candidate.email, candidate.passWord, candidate);
       }
         ,
         err => {
           alert(err.message);
         });
   
+  }
+
+  forgotPassword(candidate) {
+    this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/ForgotPassword", { email: candidate.email })
+      .subscribe(x => {
+
+
+      });
   }
 
     
@@ -203,17 +213,31 @@ export class candidateService {
 
  
 
-  LoginUser(userName, passWord) {
-   
+  LoginUser(userName, passWord , candidate) {
+    
     this.http.post("https://bestrecruitapi.azurewebsites.net/api/Auth/Login/", { userName: userName, password: passWord })
       .subscribe(token => {
         if (token) {
           this.storage.setStorageSignle("Token", token);
-          this.router.navigate(["/landing"]);
           this.message = new Message();
           this.message.messageShow = false;
           this._message.next(this.message);
-          this.getCurrentCandidate();
+          if (!candidate) {
+             this.getCurrentCandidate();
+          }
+          else {
+            candidate.userId = Object.keys(token).map(function (key) { return token[key] })[3];
+           
+            let can = new Candidate();
+            can.address = new Address();
+            can.contact = new Contact();
+            can.firstName = candidate.firstName;
+            can.lastName = candidate.lastName;
+            can.email = candidate.email;
+            can.userId = candidate.userId;
+            
+            this.postCandidate(can);
+          }
         }
         else
         {

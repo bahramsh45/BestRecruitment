@@ -1,23 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationStyleService } from '../shared/services/validation.style.service';
-import { userInfo } from '../Profile/class/userInfo';
 import { candidateService } from '../shared/services/candidate.service';
-import { Observable } from 'rxjs/Observable';
-
-
-
+import { Candidate } from '../Profile/class/candidate';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
+  selector: 'app-forgot-password',
+  templateUrl: './forgotPassword.component.html',
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
+  public candidate: Candidate = new Candidate();
 
-  public userinfo: userInfo = new userInfo();
-  public messageShow: Observable<any>;
-  CandidateInfo = []; 
   constructor(private router: Router, private vs: ValidationStyleService, private dataService: candidateService) {
 
   }
@@ -28,17 +22,16 @@ export class LoginComponent implements OnInit {
 
 
   cancel() {
-    this.router.navigate([""]);
+    this.router.navigate(["/login"]);
   }
 
   actionOnSubmit(form) {
     if (form.valid) {
-      this.dataService.LoginUser(this.userinfo.userName, this.userinfo.passWord,null);
-      this.messageShow = this.dataService._ms$;
+      this.dataService.forgotPassword(this.candidate.email);
     }
   }
 
   ngOnInit() {
-    this.userinfo.passWord = 'Bahr4490@';
+   
   }
 }
