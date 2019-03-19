@@ -3,7 +3,7 @@
 
 <div>
 
-  <div *ngFor="let e of exp$.source.value.candidateExperience">
+  <div *ngFor="let e of (exp$ | async).candidateExperience">
 
     <div class="row">
       <div class="col-sm-6">

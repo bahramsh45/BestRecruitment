@@ -1,6 +1,6 @@
 <h3>Resumes</h3>
 <hr />
-<div *ngFor="let r of r$.source.value.candidateResume">
+<div *ngFor="let r of (r$ | async).candidateResume">
   <div class="row">
     <div class="col-sm-6">
       <label class="">Name</label>

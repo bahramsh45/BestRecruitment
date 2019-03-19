@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing/landing.component';
-
 import { RegisterComponent } from './home/register.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 import { LoginComponent } from './home/login.component';
@@ -50,8 +49,6 @@ import { ForgotPasswordComponent } from './home/forgotPassword.component';
       { path: 'forgotPassword', component: ForgotPasswordComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'landing', component: LandingComponent },
-
-
     ]),
     ProfileModule,
   ],
